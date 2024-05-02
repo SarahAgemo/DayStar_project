@@ -1,0 +1,81 @@
+{% extends 'daystarApp/base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block content %}
+    <body>
+        {% if message != None %}
+        <div class="p-2 bg-green-500 text-white rounded-lg shadow-lg">
+            {{ message }}
+        </div>
+        {% endif %}
+
+        <form method="POST" action="" class="flex justify-center items-center h-screen bg-[url('/placeholder.svg?height=768&width=1024')] bg-cover">
+            {% csrf_token %}
+            <div class="bg-black bg-opacity-50 p-8 rounded-md w-[350px] space-y-4">
+                <h1 class="text-white text-lg font-bold text-center">Add baby here</h1>
+                <div class="space-y-3" style="display: flex; flex-direction: column; margin: 20px; margin-left: 400px;">
+
+                    <label class="block text-sm font-medium text-gray-200" for="baby-name">
+                        Name:
+                    </label>
+                    <input class="w-50 rounded-lg border p-2" id="baby-name" name="baby_name" placeholder="Enter Baby Name" type="text" />
+
+                    <label class="block text-sm font-medium text-gray-200" for="baby-age">
+                        Age:
+                    </label>
+                    <input class="w-50 rounded-lg border p-2" id="baby-age" name="baby_age" placeholder="Enter Baby Age" type="number" />
+
+                    <fieldset class="space-y-1">
+                        <legend class="text-sm font-medium text-gray-200">Gender:</legend>
+                        <div class="flex items-center">
+                            <input type="radio" id="gender-male" name="baby_gender" value="male" />
+                            <label class="text-sm text-gray-200 ml-2" for="gender-male">
+                                Male
+                            </label>
+                        </div>
+                        <div class="flex items-center">
+                            <input type="radio" id="gender-female" name="baby_gender" value="female" />
+                            <label class="text-sm text-gray-200 ml-2" for="gender-female">
+                                Female
+                            </label>
+                        </div>
+                    </fieldset>
+
+                    <label class="block text-sm font-medium text-gray-200" for="baby-location">
+                        Location:
+                    </label>
+                    <input class="w-50 rounded-lg border p-2" id="baby-location" name="baby_location" placeholder="Enter Baby Location" type="text" />
+
+                    <label class="block text-sm font-medium text-gray-200" for="parent-name">
+                        Name of Parent:
+                    </label>
+                    <input class="w-50 rounded-lg border p-2" id="parent-name" name="parents_name" placeholder="Enter Parent Name" type="text" />
+
+                    <label class="block text-sm font-medium text-gray-200" for="bringer-name">
+                        Name of Bringer:
+                    </label>
+                    <input class="w-50 rounded-lg border p-2" id="bringer-name" name="baby_bringer" placeholder="Enter Bringer Name" type="text" />
+
+                    <fieldset class="space-y-1">
+                        <legend class="text-sm font-medium text-gray-200">Period of Stay:</legend>
+                        <div class="flex items-center">
+                            <input type="radio" id="period-morning" name="period_of_stay" value="morning" />
+                            <label class="text-sm text-gray-200 ml-2" for="period-morning">
+                                Morning
+                            </label>
+                        </div>
+                        <div class="flex items-center">
+                            <input type="radio" id="period-afternoon" name="period_of_stay" value="afternoon" />
+                            <label class="text-sm text-gray-200 ml-2" for="period-afternoon">
+                                Afternoon
+                            </label>
+                        </div>
+                    </fieldset>
+
+                    <button class="bg-blue-500 text-white" type="submit" style="padding: 15px; border: solid 1px; margin-left: 80px; background: #5B7C84; width:200px; border-radius: 70px; cursor: pointer; font-weight: bold;">Add Baby</button>
+                </div>
+            </div>
+        </form>
+    </body>
+{% endblock %}

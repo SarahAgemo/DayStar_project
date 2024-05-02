@@ -1,0 +1,71 @@
+{% extends 'daystarApp/base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+
+<body>
+    {% block content %}
+
+   
+    <div class="p-4 flex gap-4 justify-end">
+        <a href="/add_baby/{{ baby.baby_id }}" class="p-2 bg-red-500 text-white rounded-lg shadow-lg"> Add baby </a>
+        <a href="/edit_baby/{{ baby.baby_id }}" class="p-2 bg-green-500 text-white rounded-lg shadow-lg"> Edit baby </a>
+        <a href="/delete_baby/{{ baby.baby_id }}" class="p-2 bg-red-500 text-white rounded-lg shadow-lg"> Delete baby </a>
+    </div>
+    <div class="w-full grid grid-cols-10 p-4">
+        <div class="col-span-2 p-4">
+            <img src="https://picsum.photos/200" class="h-[150px] rounded-lg" alt="">
+        </div>
+        <div class="col-span-8 p-4">
+            <table class="w-full h-full">
+                <tr>
+                    <th> Name </th>
+                    <td> {{ baby.baby_name }} </td>
+                </tr>
+                <tr>
+                    <th> Age </th>
+                    <td> {{ baby.baby_age }} </td>
+                </tr>
+                <tr>
+                    <th> Gender </th>
+                    <td> {{ baby.baby_gender }} </td>
+                    <tr>
+                        <th> Period of stay </th>
+                        <td> {{ baby.period_of_stay }} </td>
+                    </tr>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <h1 class="p-2"> {{ baby.baby_name }}'s Payments </h1>
+    <table class="w-full mt-4">
+        <thead class="bg-black text-white">
+            <tr>
+                <th> # </th>
+                <th> Transaction name </th>
+                <th> Amount Paid </th>
+                <th> Date Paid </th>
+                <th> Dolls </th>
+                <th> Description </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+               {% for baby_payments in all_payments %}
+                <td> {{ baby_payments.id }} </td>
+                <td> {{ baby_payments.baby }} </td>
+                <td> {{ baby_payments.amount }} </td>
+                <td> {{ baby_payments.date }} </td>
+                <td> {{ baby_payments.dolls }} </td>
+                <td> {{ baby_payments.description }} </td>
+                {% endfor %}
+            </tr>
+
+        </tbody>
+    </table>
+
+
+
+</body>
+{% endblock %}

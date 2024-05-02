@@ -1,0 +1,44 @@
+{% extends 'daystarApp/base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+
+<body>
+    {% block content %}
+
+<form method="POST" action="">
+
+    {% csrf_token %}
+    <div>
+        {{ baby_payments.baby.label_tag }}
+        {{ baby_payments.baby }}
+        {{ baby_payments.baby.errors }}
+    </div>
+    <div>
+        {{ baby_payments.date.label_tag }}
+        {{ baby_payments.date }}
+        {{ baby_payments.date.errors }}
+    </div>
+    <div>
+        {{ baby_payments.description.label_tag }}
+        {{ baby_payments.description }}
+        {{ baby_payments.description.errors }}
+
+    </div>
+    <div>
+        {{ baby_payments.dolls.label_tag }}
+        {{ baby_payments.dolls }}
+        {{ baby_payments.dolls.errors }}
+    </div>
+    <div>
+        {{ baby_payments.amount.label_tag }}
+        {{ baby_payments.amount }}
+        {{ baby_payments.amount.errors }}
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+
+</body>
+{% endblock %}

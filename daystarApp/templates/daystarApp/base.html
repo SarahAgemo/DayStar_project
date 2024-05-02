@@ -1,0 +1,186 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="Description" content="Enter your description here" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <title>Base</title>
+  <link rel="stylesheet" href="{% static 'css/base.css' %}">
+  <link rel="stylesheet" href="{% static 'css/index.css' %}">
+  <link rel="stylesheet" href="{% static 'css/index2.css' %}">
+  
+  <script src="{% static 'index.js' %}"></script>  
+</head>
+
+<body>
+  
+    
+
+     <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" style="margin-left: 50px;" href="#"><img src="{% static 'css/images/logo3.png' %}"
+        style="width: 100px;" alt=""></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="navbarNav" aria-expanded="false"
+      aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+
+    </button>
+    <!-- <header>
+
+      <div class="logosec">
+        <div class="logo"><a class="navbar-brand" style="margin-left: 50px;" href="#"><img
+              src="{% static 'css/images/logo3.png' %}" style="width: 100px;" alt=""></a>Welcome to DayStar Daycare</div>
+  
+      </div>
+  
+      <div class="message">
+        <div class="circle"></div>
+        <img src="https://media.geeksforgeeks.org/wp-content/uploads/20221210183322/8.png" class="icn" alt="">
+        <div class="dp">
+          <img src="https://media.geeksforgeeks.org/wp-content/uploads/20221210180014/profile-removebg-preview.png"
+            class="dpicn" alt="dp">
+        </div>
+      </div>
+  
+    </header> -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav" style="margin-left: 300px; padding: 10px;">
+        <li class="nav-item active">
+          <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'about_us' %}">About</a>
+        </li>
+        <li class="nav-item  dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">Sitters</a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="{% url 'sit_reg_form' %}">Registration forms</a>
+            <a class="dropdown-item" href="{% url 'sit_ass_babes' %}">Assigned babies</a>
+            <a class="dropdown-item" href="{% url 'sit_payments' %}">Payments</a>
+            <a class="dropdown-item" href="{% url 'sit_attend' %}">Attendance</a>
+            <a class="dropdown-item" href="{% url 'sit_comments' %}">Comments</a>
+
+
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">Babies</a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="{% url 'beb_reg_form' %}">Registration forms</a>
+            <a class="dropdown-item" href="{% url 'baby_attend' %}">Attendance</a>
+            <a class="dropdown-item" href="{% url 'baby_pay' %}">Payments</a>
+            <a class="dropdown-item" href="{% url 'baby_comments' %}">Comments</a>
+
+
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown3" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">Procurement</a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="">Stock</a>
+            <a class="dropdown-item" href="">Stock Status</a>
+            <a class="dropdown-item" href="{% url 'pro_dolls' %}">Dolls</a>
+            <a class="dropdown-item" href="">Add dolls</a>
+            <a class="dropdown-item" href="">Delete dolls</a>
+
+
+          </div>
+        </li>
+      </ul>
+
+
+
+    </div>
+    <a href="" class="split" style="margin-right: 50px; padding: 6px; border: 10px ; border-radius: 20px; width: 100px;  
+        text-align: center; background-color: #ff7424; color: white;  text-decoration: none;">Log out</a>
+
+  </nav> 
+
+
+
+
+
+
+    {% block content %}
+
+
+    {% endblock %}
+
+
+    <!-- footer -->
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3">
+            <h3>Daycare</h3>
+            <ul>
+              <li><a href="/">Home</a></li>
+              <li><a href="{% url 'about_us' %}">About</a></li>
+
+            </ul>
+          </div>
+          <div class="col-md-3">
+            <h3>Sitters</h3>
+            <ul>
+              <li><a href="{% url 'sit_reg_form' %}">Registration forms</a></li>
+              <li><a href="{% url 'sit_ass_babes' %}">Assigned babies</a></li>
+              <li><a href="{% url 'sit_payments' %}">Payments</a></li>
+              <li><a href="{% url 'sit_attend' %}">Attendance</a></li>
+              <li><a href="{% url 'sit_comments' %}">Comments</a></li>
+            </ul>
+          </div>
+          <div class="col-md-3">
+            <h3>Babies</h3>
+            <ul>
+              <li><a href="{%  url 'beb_reg_form' %}">Registration forms</a></li>
+              <li><a href="{% url 'baby_attend' %}">Attendance</a></li>
+              <li><a href="{% url 'baby_pay' %}">Payments</a></li>
+              <li><a href="{% url 'baby_comments' %}">Comments</a></li>
+            </ul>
+          </div>
+          <div class="col-md-3">
+            <h3>Procurement</h3>
+            <ul>
+              <li><a href="">Stock</a></li>
+              <li><a href="">Stock status</a></li>
+              <li><a href="{% url 'pro_dolls' %}">Dolls</a></li>
+              <li><a href="">Add dolls</a></li>
+              <li><a href="">Delete dolls</a></li>
+
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="copyright">
+        <p>&copy; 2024 DayStar daycare. All rights reserved.</p>
+      </div>
+      <a href="#" class="back-to-top">Back to Top</a>
+    </footer>
+
+
+    <!-- footer -->
+
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+      integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+      crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js"
+      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+      crossorigin="anonymous"></script>
+
+
+
+</body>
+
+</html>

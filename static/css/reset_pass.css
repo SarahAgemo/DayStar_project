@@ -1,0 +1,73 @@
+body {
+    
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #F1F7FC; 
+    font-family: "Open Sans", Helvetica, Arial, sans-serif;
+   }
+  
+  
+  .container {
+    background-color: transparent ;
+    padding: 30px;
+    border-radius: 5px;
+    /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); */
+    max-width: 400px;
+    
+    text-align: center;
+  }
+  
+  h1 {
+    margin-bottom: 20px;
+  }
+  
+  p {
+    margin-bottom: 15px;
+    color: #666;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  label {
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  .code-container {
+    display: flex;
+    justify-content: space-between; /* Distribute inputs evenly */
+    width: 100%; /* Ensure container fills available space */
+  }
+  
+  .code-input {
+    padding: 5px 10px; /* Adjust padding for desired spacing */
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    text-align: center; /* Center text within input */
+    width: 30px; /* Set desired width for each input field */
+    margin: 0 2px; /* Add spacing between input fields */
+  }
+  
+  button[type="submit"] {
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    background-color: #5B7C84;
+    border-radius: 30px;
+    font-size: 23px;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #085b22;
+  }
+  
+  

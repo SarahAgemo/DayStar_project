@@ -1,0 +1,64 @@
+{% extends 'daystarApp/base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+
+<body>
+    {% block content %}
+
+    <style>
+        /* Add CSS styles for flex container and items */
+        .product-list {
+            display: flex;
+            flex-wrap: wrap; /* Allow items to wrap to the next row if necessary */
+            justify-content: space-between; /* Space items evenly along the main axis */
+            list-style: none; /* Remove list styles */
+            padding: 0;
+        }
+ 
+        .product-item {
+            flex: 1; /* Grow to fill available space evenly */
+            max-width: 30%; /* Limit item width to avoid overcrowding */
+            margin: 10px; /* Add spacing between items */
+            border: 1px solid #ccc; /* Add a border for visual separation */
+            padding: 10px;
+            text-align: center;
+        }
+ 
+        /* Style the "Remove" button */
+        .remove-button {
+            display: block;
+            margin-top: 10px;
+            background-color: #dc3545; /* Red color for remove button */
+            color: #fff;
+            text-decoration: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Your Shopping Cart</h1>
+ 
+    <div class="product-list">
+        {% for doll in dolls %}
+        <div class="product-item">
+            <img src="{{ doll.doll_image.url }}" alt="{{ doll.doll_name }}" width="200" height="150">
+            <h2>{{ doll.doll_name }}</h2>
+            <p>{{ doll.doll_description }}</p>
+            <p>Price: ${{ doll.doll_price }}</p>
+            <a href="{% url 'remove_from_doll' doll.id %}" class="remove-button">Remove</a>
+        </div>
+        {% empty %}
+        <p>Your cart is empty.</p>
+        {% endfor %}
+    </div>
+ 
+    <p>Total Price: ${{ total_price }}</p>
+ 
+    <a href="{% url 'doll_list' %}" class="buy-now-button">Continue Shopping</a>
+</body>
+
+
+</body>
+{% endblock %}

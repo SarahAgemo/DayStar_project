@@ -1,0 +1,174 @@
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Open Sans", Helvetica, Arial, sans-serif;
+  background: #F1F7FC; 
+  
+}
+
+input,
+button {
+  border: none;
+  outline: none;
+  background: none;
+  font-family: "Open Sans", Helvetica, Arial, sans-serif;
+}
+
+
+ signUpActive {
+    background: #fff;
+  
+}
+
+.tip {
+  font-size: 30px;
+  margin: 40px auto 50px;
+  text-align: center;
+  color: #5B7C84;
+  font-weight: 700;
+}
+
+.cont {
+  overflow: hidden;
+  position: relative;
+  width: var(--contW);
+  height: 550px;
+  margin: 0 auto 100px;
+  /* background: #fff; */
+  /* border-radius: 15px; */
+  /* box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23); */
+}
+
+
+.form {
+  position: relative;
+  width: 500px;
+  height: 100%;
+  transition: transform var(--switchAT) ease-in-out;
+  padding: 50px 30px 0;
+  
+}
+
+
+
+button {
+  display: block;
+  margin: 0 auto;
+  width: var(--inputW);
+  height: var(--btnH);
+  border-radius: 30px;
+  color: #fff;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.img {
+  overflow: hidden;
+  z-index: 2;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: var(--imgW);
+  height: 100%;
+  padding-top: 360px;
+
+  
+  &__text {
+    z-index: 2;
+    position: absolute;
+    left: 0;
+    top: 50px;
+    width: 100%;
+    padding: 0 20px;
+    text-align: center;
+    color: #fff;
+    transition: transform var(--switchAT) ease-in-out;
+
+    
+  }
+
+  &__btn {
+    overflow: hidden;
+    z-index: 2;
+    position: relative;
+    width: 100px;
+    height: var(--btnH);
+    margin: 0 auto;
+    background: transparent;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 15px;
+    cursor: pointer;
+  
+
+
+
+    
+  }
+}
+
+label {
+  display: block;
+  width: var(--inputW);
+  margin: 25px auto 0;
+  text-align: center;
+
+  span {
+    font-size: 12px;
+    color: #cfcfcf;
+    
+  }
+}
+
+input {
+  display: block;
+  width: 100%;
+  margin-top: 5px;
+  padding-bottom: 5px;
+  font-size: 16px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+  text-align: center;
+}
+
+.forgot-pass {
+  margin-top: 15px;
+  text-align: center;
+  font-size: 12px;
+  color: #5B7C84;
+}
+
+.submit {
+  padding: 15px;
+  margin-top: 40px;
+  margin-bottom: 20px;
+  background: #5B7C84;
+  width:400px;
+  font-weight: bold;
+}
+
+.link-footer {
+  position: absolute;
+  left: 50%;
+  bottom: 50px;
+  transform: translateX(-50%);
+}
+
+
+#id_email{
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-family: inherit;
+    font-size: 25px;
+    margin: 0;
+    outline: 0;
+    padding: 10px;
+    width: 100%;
+}

@@ -1,0 +1,59 @@
+{% extends 'daystarApp/base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+
+<body>
+    {% block content %}
+
+    <style>
+        /* Add CSS styles for flex container and items */
+        .doll-list {
+            display: flex;
+            flex-wrap: wrap; /* Allow items to wrap to the next row if necessary */
+            justify-content: space-between; /* Space items evenly along the main axis */
+            list-style: none; /* Remove list styles */
+            padding: 0;
+        }
+ 
+        .doll-item {
+            flex: 1; /* Grow to fill available space evenly */
+            max-width: 30%; /* Limit item width to avoid overcrowding */
+            margin: 10px; /* Add spacing between items */
+            border: 1px solid #ccc; /* Add a border for visual separation */
+            padding: 10px;
+            text-align: center;
+        }
+ 
+        /* Style the "Buy Now" button */
+        .buy-now-button {
+            display: block;
+            margin-top: 10px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Doll Catalog</h1>
+     
+    <ul class="doll-list">
+        {% for doll in dolls %}
+            <li class="doll-item">
+                <img src="{{ doll.doll_image.url }}" alt="{{ doll.doll_name }}" width="200" height="150">
+                <h2>{{ doll.doll_name }}</h2>
+                <p>{{ doll.doll_description }}</p>
+                <p>Price: ${{ doll.doll_price }}</p>
+                <a href="/pro_dolls/{{doll.doll.id}}" class="buy-now-button">Buy Now</a>
+                <a class="buy-now-button" href="/add_to_dolls/{{doll.doll.id}}">Add to Cart</a>
+            </li>
+        {% endfor %} 
+    </ul> 
+
+
+
+</body>
+{% endblock %}
