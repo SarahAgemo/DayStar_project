@@ -1,0 +1,60 @@
+{% extends 'daystarApp/base.html' %}
+{% load static %}
+{% block content  %}
+<style>
+
+    h3{margin-left: 490px;
+    font-family: sans-serif;
+    color:#0C356A;
+    text-shadow: 2px 2px 4px #000000;}
+    
+</style>
+<h3>SITTERS  INFORMATION </h3><hr>
+    <table class="table table-bordered">
+        <thead class="table-dark">
+            <tr class=>
+               
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Gender</th>
+                <th scope="col">Location</th>
+                <th scope="col">Date of Birth</th>
+                <th scope="col">Next of Kin</th>
+                <th scope="col">NIN</th>
+                <th scope="col">Recommender's Name</th>
+                <th scope="col">Religion</th>
+                <th scope="col">Level of Education</th>
+                <th scope="col">Sitter's Number</th>
+                <th scope="col">Contacts</th>
+                <th scope=>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+           
+            <tr >
+                <td> {{ one_sitter.id }}</td>
+               <td>{{one_sitter.name}}</td>
+                <td>{{one_sitter.gender}}</td>
+                <td>{{one_sitter.location}}</td>
+                <td>{{one_sitter.date_of_birth}}</td>
+                <td>{{one_sitter.next_of_kin}}</td>
+                <td>{{one_sitter.national_identification_number}}</td>
+                <td>{{one_sitter.recommenders_name}}</td>
+                <td>{{one_sitter.religon}}</td>
+                <td>{{one_sitter.level_of_education}}</td>
+                <td>{{one_sitter.sitter_number}}</td>
+                <td>{{ one_sitter.contacts}}</td>
+                <td>
+                    <div>
+                        <a href="{% url 'sit_edit' id=one_sitter.id %}" class="btn btn-primary mb-3">Edit sitters</a>
+
+                    </div>
+                </td>
+            </tr>
+            
+        </tbody>
+    </table>
+</div>
+<a href="/sit_reg_form"><button class="btn btn-primary">Go back</button></a>
+</body>
+{% endblock %}

@@ -1,0 +1,78 @@
+{% extends 'daystarApp/base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block content %}
+<style>
+    .sitter-form {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+       max-width: 50%;
+        margin: auto;
+        border-radius: 5px;
+border: solid black;
+    margin-bottom: 6px;
+    border-radius: 10px;
+    padding-left: 20px;
+    padding-bottom: 15px;
+    padding-top: 15px;
+    padding-right: 15px;
+    background-color:white;
+
+    
+        
+       
+    }
+
+    h4 {
+        text-align: center;
+        font-family: sans-serif;
+        color: #0C356A;
+        text-shadow: 2px 2px 4px #000000;
+    }
+
+  
+    
+    
+    
+    
+
+    label {
+        font-weight: bold;
+        margin-top: 7px;
+        margin-bottom:5px ;
+    }
+
+    button[type="submit"] {
+    margin-top: 2px;
+       
+        background-color: blue;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        
+    }
+    body {background-color: darkgray;}
+
+        
+    
+</style>  
+
+<h4 > EDIT SITTERS INFORMATION </h4><hr>
+<div class="container">
+    <form method="POST" class="sitter-form">
+
+        {% csrf_token %}
+        {{ form | crispy }}
+        <button type="submit" class="btn btn-primary" >Update</button>
+    </form>
+</div>
+
+
+    
+
+
+{%endblock %}

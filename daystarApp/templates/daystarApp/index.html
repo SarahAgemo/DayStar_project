@@ -1,4 +1,4 @@
-{% extends 'daystarApp/base.html' %}
+ {% extends 'daystarApp/base.html' %}
 {% load static %}
 
 {% block content %}
@@ -57,7 +57,8 @@
     </div>
 
     <div class="" style="display: flex; flex-direction:column;">
-        <!-- 
+   
+         
         <div class="container1" 1>
             <div class="report-header">
                 <h1 class="recent-Articles">Recent babies</h1>
@@ -85,13 +86,13 @@
                    
                 </div>
             </div>
-        </div> -->
+        </div> 
 
         <!-- <div class="container1"2>
             <table class="w-full">
                 <div class="report-header">
                     <h1 class="recent-Articles">Recent Babies</h1>
-                    <button class="view" type="submit"> <a href="{% url 'baby_list' %}">View All</a></button>
+                    <button class="view" type="submit"> <a href="{">View All</a></button>
                 </div>
 
             
@@ -119,10 +120,10 @@
         </div>  -->
 
 
-        <table class="w-full">
+        {% comment %} <table class="w-full">
             <div class="report-header">
                 <h1 class="recent-Articles">Recent Babies</h1>
-                <button class="view" type="submit"> <a href="{% url 'baby_list' %}">View All</a></button>
+                <button class="view" type="submit"> <a href="">View All</a></button>
             </div>
             
                 <tr>
@@ -143,10 +144,10 @@
                 {% endfor %}
             </tbody>
 
-        </table>
+        </table> {% endcomment %}
 
 
-        <table class="w-full">
+        {% comment %} <table class="w-full">
             <div class="report-header">
                 <h1 class="recent-Articles">Recent Sitters</h1>
                 <button class="view" type="submit"> <a href="{% url 'baby_list' %}">View All</a></button>
@@ -170,14 +171,14 @@
                 {% endfor %}
             </tbody>
 
-        </table>
+        </table> {% endcomment %}
 
 
 
 
 
 
-        <!-- <div class="container2">
+         <div class="container2">
             <div class="report-header">
                 <h1 class="recent-Articles">Recent Sitters</h1>
                 <button class="view">View All</button>
@@ -212,9 +213,10 @@
                 </div>
             </div>
         </div>
-    </div> -->
+    </div>
+    {% endblock %} 
 
-        <div class="container2">
+        {% comment %} <div class="container2">
             <table>
                 <div class="report-header">
                     <h1 class="recent-Articles">Recent Sitters</h1>
@@ -251,4 +253,4 @@
 
 
 </body>
-{% endblock %}
+{% endblock %} {% endcomment %}

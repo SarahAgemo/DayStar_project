@@ -10,29 +10,31 @@ urlpatterns = [
     path('about_us/', views.about_us, name='about_us'),
 
     #babies
-    path('baby_attend/', views.baby_attend, name='baby_attend'),
-    path('baby_comments/', views.baby_comments, name='baby_comments'),
+    path('baby_arrival/', views.baby_arrival, name='baby_arrival'),
+    path('baby_depart/', views.baby_depart, name='baby_depart'),
     path('baby_pay/', views.baby_pay, name='baby_pay'),
     path('beb_reg_form/', views.beb_reg_form, name='beb_reg_form'),
-    path('baby_list/', views.baby_list, name='baby_list'),
-    path('add_baby/', views.add_baby, name='add_baby'),
-    path('view_bebs/<int:baby_id>', views.view_bebs, name='view_bebs'),
+    
+    
+    
 
     #dolls
-    # path('add_to_dolls/', views.add_to_dolls, name='add_to_dolls'),
-    # path('remove_from_dolls/', views.remove_from_dolls, name='remove_from_dolls'),
-    # path('view_dolls/', views.view_dolls, name='view_dolls'),
-    path('pro_dolls/', views.pro_dolls, name='pro_dolls'),
-    # path('doll_list/', views.doll_list, name='doll_list'),
+   
+    path('dolls/', views.dolls, name='dolls'),
+    path('stock/', views.stock, name='stock'),
     
 
     #sitters
-    path('sit_comments/', views.sit_comments, name='sit_comments'),
-    path('sit_attend/', views.sit_attend, name='sit_attend'),
-    path('sit_ass_babes/', views.sit_ass_babes, name='sit_ass_babes'),
+    
+    path('sit_arrival/', views.sit_arrival, name='sit_arrival'),
+    path('sit_depart/', views.sit_depart, name='sit_depart'),
     path('sit_payments/', views.sit_payments, name='sit_payments'),
+   #sitter registration 
     path('sit_reg_form/', views.sit_reg_form, name='sit_reg_form'),
-    path('view_sit/', views.view_sit, name='view_sit'),
+    path('sit_add/', views.sit_add, name='sit_add'),
+    path('sit_view/<int:id>/', views.sit_view, name='sit_view'),
+    path('sit_edit/<int:id>/', views.sit_edit, name='sit_edit'),
+    
     
     #authentication
     path('sign_in/', views.sign_in, name='sign_in'),

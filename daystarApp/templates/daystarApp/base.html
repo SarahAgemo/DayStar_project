@@ -61,10 +61,9 @@
             aria-haspopup="true" aria-expanded="false">Sitters</a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="{% url 'sit_reg_form' %}">Registration forms</a>
-            <a class="dropdown-item" href="{% url 'sit_ass_babes' %}">Assigned babies</a>
+            <a class="dropdown-item" href="{% url 'sit_arrival' %}">Arrival</a>
+            <a class="dropdown-item" href="{% url 'sit_depart' %}">Departure</a>
             <a class="dropdown-item" href="{% url 'sit_payments' %}">Payments</a>
-            <a class="dropdown-item" href="{% url 'sit_attend' %}">Attendance</a>
-            <a class="dropdown-item" href="{% url 'sit_comments' %}">Comments</a>
 
 
           </div>
@@ -73,10 +72,11 @@
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">Babies</a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="{% url 'beb_reg_form' %}">Registration forms</a>
-            <a class="dropdown-item" href="{% url 'baby_attend' %}">Attendance</a>
+            <a class="dropdown-item" href="{%  url 'beb_reg_form' %}">Registration forms</a>
+            <a class="dropdown-item" href="{% url 'baby_arrival' %}">Arrival</a>
+            <a class="dropdown-item" href="{% url 'baby_depart' %}">Departure</a>
             <a class="dropdown-item" href="{% url 'baby_pay' %}">Payments</a>
-            <a class="dropdown-item" href="{% url 'baby_comments' %}">Comments</a>
+            
 
 
           </div>
@@ -85,11 +85,9 @@
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown3" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">Procurement</a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="">Stock</a>
-            <a class="dropdown-item" href="">Stock Status</a>
-            <a class="dropdown-item" href="{% url 'pro_dolls' %}">Dolls</a>
-            <a class="dropdown-item" href="">Add dolls</a>
-            <a class="dropdown-item" href="">Delete dolls</a>
+            <a class="dropdown-item" href="{% url 'dolls' %}">Dolls</a>
+            <a class="dropdown-item" href="{% url 'stock' %}">Stock</a>
+            
 
 
           </div>
@@ -103,10 +101,6 @@
         text-align: center; background-color: #ff7424; color: white;  text-decoration: none;">Log out</a>
 
   </nav> 
-
-
-
-
 
 
     {% block content %}
@@ -130,30 +124,28 @@
           <div class="col-md-3">
             <h3>Sitters</h3>
             <ul>
-              <li><a href="{% url 'sit_reg_form' %}">Registration forms</a></li>
-              <li><a href="{% url 'sit_ass_babes' %}">Assigned babies</a></li>
-              <li><a href="{% url 'sit_payments' %}">Payments</a></li>
-              <li><a href="{% url 'sit_attend' %}">Attendance</a></li>
-              <li><a href="{% url 'sit_comments' %}">Comments</a></li>
+              <li><a class="dropdown-item" href="{% url 'sit_reg_form' %}">Registration forms</a></li>
+              <li><a class="dropdown-item" href="{% url 'sit_arrival' %}">Arrival</a></li>
+              <li><a class="dropdown-item" href="{% url 'baby_depart' %}">Departure</a></li>
+              <li><a class="dropdown-item" href="{% url 'sit_payments' %}">Payments</a></li>
             </ul>
           </div>
           <div class="col-md-3">
             <h3>Babies</h3>
             <ul>
-              <li><a href="{%  url 'beb_reg_form' %}">Registration forms</a></li>
-              <li><a href="{% url 'baby_attend' %}">Attendance</a></li>
-              <li><a href="{% url 'baby_pay' %}">Payments</a></li>
-              <li><a href="{% url 'baby_comments' %}">Comments</a></li>
+              <li><a class="dropdown-item" href="{%  url 'beb_reg_form' %}">Registration forms</a></li>
+              <li><a class="dropdown-item" href="{% url 'baby_arrival' %}">Arrival</a></li>
+              <li><a class="dropdown-item" href="{% url 'baby_depart' %}">Departure</a></li>
+              <li> <a class="dropdown-item" href="{% url 'baby_pay' %}">Payments</a></li>
             </ul>
           </div>
           <div class="col-md-3">
             <h3>Procurement</h3>
             <ul>
-              <li><a href="">Stock</a></li>
-              <li><a href="">Stock status</a></li>
-              <li><a href="{% url 'pro_dolls' %}">Dolls</a></li>
-              <li><a href="">Add dolls</a></li>
-              <li><a href="">Delete dolls</a></li>
+      
+              <li><a class="dropdown-item" href="{% url 'stock' %}">Stock</a></li>
+              <li><a class="dropdown-item" href="{% url 'dolls' %}">Dolls</a></li>
+              
 
             </ul>
           </div>
