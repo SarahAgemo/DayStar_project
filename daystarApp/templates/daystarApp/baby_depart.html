@@ -1,13 +1,74 @@
 {% extends 'daystarApp/base.html' %}
-{% load crispy_forms_tags %}
+
+
 {% load static %}
 
+{% block content%}
 
+<style>
+    
+    
+    .table-responsive {
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); 
+    }
+    h4{margin-left:490px;
+    margin-top:5px ;}
+
+    .table-container {
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        overflow-x: auto; /* Ensure horizontal scroll when needed */
+        max-width: 100%; /* Ensure the table container doesn't overflow its parent */
+    }
+    .table-responsive {
+        overflow-x: auto; /* Ensure horizontal scroll when needed */
+    }
+    h4 {
+        margin-left: 490px;
+        margin-top: 5px;
+        color:#0C356A;
+        text-shadow: 2px 2px 4px #000000;}
+        
+</style>
+</head>
 <body>
-    {% block content %}
+<h4 class="mb-3">Baby departure</h4><hr>
+<a href="/depart_adds" class="btn btn-primary mb-3">Add new baby departure</a>
+
+<div class="table_container">
+<div class="table-responsive">
+    <table class="table table-bordered table-hover">
+        <thead class="table-dark">
+            <tr class="table-dark">
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Baby picker</th>
+                <th scope="col">Date</th>
+                <th scope="col">Time out</th>
+                <th scope="col">comment</th>
+                <th scope=>Action</th>
+
+                
+            </tr>
+        </thead>
+        <tbody>
+            {% for baby in baby_leave %}
+            <tr style="background-color: white;">
+                <td>{{ baby.id }}</td>
+                <td>{{ baby.bname_of_baby }}</td>
+                <td>{{ baby.baby_picker }}</td>
+                <td>{{ baby.date_of_departure }}</td>
+                <td>{{ baby.timeout}}</td>
+                <td>{{ baby.comment }}</td>
+                <td>   
+                    <a href="{% url 'depart_views' id=baby.baby_id %}" class="btn btn-primary">View</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+</div>
 
 
-
-
-</body>
 {% endblock %}

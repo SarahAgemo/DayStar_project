@@ -1,8 +1,22 @@
 from django.db import models
 from django.utils import timezone
+import re
+from django.core.exceptions import ValidationError
 
 
 # Create your models here.
+ 
+
+def contacts(value):
+    if len(value) !=10:
+        raise ValidationError("Only 10 digits are allowed")
+
+def NIN(value):
+    if len(value) !=14:
+        raise ValidationError("Only 14 digits are allowed")           
+
+
+
 
    # Authentication 
 class Sign_in(models.Model):
@@ -50,7 +64,7 @@ class Baby(models.Model):
     baby_id = models.AutoField(primary_key=True)
     baby_name = models.CharField( max_length=20)
     baby_gender = models.CharField( max_length=20 )
-    baby_age = models.IntegerField( default=0)
+    date_of_birth = models.DateField( default=timezone.now)
     baby_location = models.CharField( max_length=20)
     # baby_image = models.ImageField(upload_to='baby_images', blank=True, null=True)
     parents_name = models.CharField( max_length=20)
@@ -62,7 +76,7 @@ class Baby(models.Model):
         return self.baby_name
 
     
-class Departure(models.Model):
+class BabyDeparture(models.Model):
     baby_id = models.AutoField(primary_key=True)
     name_of_baby = models.ForeignKey(Baby, on_delete=models.CASCADE)
     baby_picker = models.CharField( max_length=20)
@@ -80,12 +94,12 @@ class Sitterform(models.Model):
     location=models.CharField(choices=[('kabalagala', 'kabalagala')], max_length=100)
     date_of_birth=models.DateField(default=timezone.now) 
     next_of_kin=models.CharField( max_length=200)
-    national_identification_number=models.CharField(max_length=200)
+    national_identification_number=models.CharField(max_length=200, validators=[NIN])
     recommenders_name=models.CharField(max_length=200)
     religon=models.CharField(max_length=200,null=True, blank=True)
     level_of_education=models.CharField( choices=[('degree','Degree'),('diploma','Diploma'),('highschool certificate','Highschool certificate'),('others','Others')],max_length=200)
     sitter_number=models.IntegerField(default=0)
-    contacts=models.CharField(max_length=200) 
+    contacts=models.CharField(max_length=200, validators=[contacts]) 
     date=models.DateField()
     def __str__(self):
         return self.name
@@ -109,7 +123,7 @@ class Sitter_departure(models.Model):
     def __str__(self):
         return str(self.sitter_name)    
 
-class Arrival(models.Model):
+class BabyArrival(models.Model):
     baby_id = models.AutoField(primary_key=True)
     babys_name = models.ForeignKey(Baby, on_delete=models.CASCADE)
     baby_bringer = models.CharField( max_length=20)

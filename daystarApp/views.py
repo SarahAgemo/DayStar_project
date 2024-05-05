@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 from django.http import HttpResponse, HttpResponseRedirect
 from .models import *
-from .forms import *
+from . forms import *
 from django.template import loader
 from django.contrib.auth import authenticate
 from django.contrib import messages
@@ -52,11 +52,71 @@ def sit_reg_form(request):
 
 def sit_payments(request):
     return render(request, 'daystarApp/sit_payments.html')
-def sit_arrival(request):
-    return render(request, 'daystarApp/sit_arrival.html')
-def sit_depart(request):
-    return render(request, 'daystarApp/sit_depart.html')
 
+#sitter arrivals
+def sit_arrival(request):
+    sit_arrive = Sitter_arrival.objects.all()
+    return render(request, 'daystarApp/sit_arrival.html', {'sit_arrive': sit_arrive})
+
+
+def sit_adds(request):
+    if request.method == 'POST':
+        form = Sitter_arrival_Form(request. POST)
+        if form.is_valid():
+            form.save()
+            return redirect('sit_arrival')
+    else:
+        form = Sitter_arrival_Form()    
+    return render(request, 'daystarApp/sit_adds.html', {'form': form})
+
+def sit_views(request, id):
+    sit_info = Sitter_arrival.objects.get(id=id) 
+    return render(request, 'daystarApp/sit_views.html', {'sit_info': sit_info})
+
+def sit_edits(request, id):
+    edit = get_object_or_404(Sitter_arrival, id=id)
+    if request.method == 'POST':
+        form = Sitter_arrival_Form(request.POST, instance=edit)
+        if form.is_valid():
+            form.save()
+            return redirect('sit_arrival')
+    else:
+        form = Sitter_arrival_Form(instance=edit)
+
+    return render(request, 'daystarApp/sit_edits.html', {'form': form, 'edit': edit})
+
+
+#sitter departure
+def sit_depart(request):
+    sit_leave = Sitter_departure.objects.all()
+    return render(request, 'daystarApp/sit_depart.html', {'sit_leave': sit_leave})
+   
+
+def depart_view(request, id):
+    view = Sitter_departure.objects.get(id=id)
+    return render(request, 'daystarApp/depart_view.html', {'view': view})
+
+    
+def depart_add(request):
+    if request.method == 'POST':
+        form = Sitter_departure_Form(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('sit_depart')
+    else:
+        form = Sitter_departure_Form()    
+    return render(request, 'daystarApp/depart_add.html', {'form': form})
+
+def depart_edit(request, id):
+    depart = get_object_or_404(Sitter_departure, id=id )
+    if request.method == 'POST':
+        form = Sitter_departure_Form(request.POST, instance=depart)
+        if form.is_valid():
+            form.save()
+            return redirect('sit_depart')
+    else:
+        form = Sitter_departure_Form(instance=depart)    
+    return render(request, 'daystarApp/depart_edit.html', {'form': form, 'depart': depart})
 
 
 # procurement 
@@ -70,23 +130,109 @@ def stock(request):
    
 
     
-  
-
-    
-
-
 # Babies
 
+#baby registration
+
+def beb_reg_form(request):
+    baby_form = Baby.objects.all()
+    return render(request, 'daystarApp/beb_reg_form.html', {'baby_form': baby_form})
+
+def baby_add(request):
+    if request.method == 'POST':
+        form = Baby_Form(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('beb_reg_form')
+    else:
+        form = Baby_Form()
+    return render(request, 'daystarApp/baby_add.html', {'form': form})
+
+def baby_edit(request, id):
+    baby = get_object_or_404(Baby, baby_id=id)
+    if request.method == 'POST':
+        form = Baby_Form(request.POST, instance=baby)
+        if form.is_valid():
+            form.save()
+            return redirect('beb_reg_form')
+    else:
+        form = Baby_Form(instance=baby)
+    return render(request, 'daystarApp/baby_edit.html', {'form': form, 'baby': baby})
+
+
+def baby_view(request, id):
+    one_baby = get_object_or_404(Baby, baby_id=id)
+    return render(request, 'daystarApp/baby_view.html', {'one_baby': one_baby})
+
+
+
+#baby arrival
+def baby_arrival(request):
+    baby_arrive = BabyArrival.objects.all()
+    return render(request, 'daystarApp/baby_arrival.html', {'baby_arrive': baby_arrive})
+
+def baby_adds(request):
+    if request.method == 'POST':
+        form = Baby_arrival_Form(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('baby_arrival')
+    else:
+        form = Baby_arrival_Form()    
+    return render(request, 'daystarApp/baby_adds.html', {'form': form})
+
+def baby_views(request, id):
+    baby_info = BabyArrival.objects.get(baby_id=id)
+    return render(request, 'daystarApp/baby_views.html', {'baby_info': baby_info})
+
+def baby_edits(request, id):
+    edit = get_object_or_404(BabyArrival, baby_id=id)
+    if request.method == 'POST':
+        form = Baby_arrival_Form(request.POST, instance=edit)
+        if form.is_valid():
+            form.save()
+            return redirect('baby_arrival')
+    else:
+        form = Baby_arrival_Form(instance=edit)    
+    return render(request, 'daystarApp/baby_edits.html', {'form': form, 'edit': edit})
+
+#baby departure
+def baby_depart(request):
+    baby_leave = BabyDeparture.objects.all()
+    return render(request, 'daystarApp/baby_depart.html', {'baby_leave': baby_leave})
+
+def depart_adds(request):
+    if request.method == 'POST':
+        form = Baby_departure_Form(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('baby_depart')
+    else:
+        form = Baby_departure_Form()    
+    return render(request, 'daystarApp/depart_add.html', {'form': form})
+
+def depart_views(request, id):
+    view = BabyDeparture.objects.get(baby_id=id)
+    return render(request, 'daystarApp/depart_view.html', {'view': view})
+
+def depart_edits(request, id): 
+    depart = get_object_or_404(BabyDeparture, baby_id=id)
+    if request.method == 'POST':
+        form = Baby_departure_Form(request.POST, instance=depart)
+        if form.is_valid():
+            form.save()
+            return redirect('baby_depart')
+    else:
+        form = Baby_departure_Form(instance=depart)    
+    return render(request, 'daystarApp/depart_edit.html', {'form': form, 'depart': depart})
+
+   
+
+#baby payment
 def baby_pay(request):
     return render(request, 'daystarApp/baby_pay.html')
+   
 
-def baby_depart(request):
-    return render(request, 'daystarApp/baby_depart.html')
-
-def baby_arrival(request):
-    return render(request, 'daystarApp/baby_arrival.html')
-def beb_reg_form(request):
-    return render(request, 'daystarApp/beb_reg_form.html')
 
     
         

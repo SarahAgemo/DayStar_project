@@ -13,10 +13,7 @@ class Signup(ModelForm):
         model = Sign_up
         fields = '__all__'
 
-class Addbaby(ModelForm):
-    class Meta:
-        model = Baby
-        fields = '__all__'
+
 
 
 #Babies
@@ -25,14 +22,19 @@ class Baby_doll(ModelForm):
         model = Doll
         fields = '__all__' 
 
-class Arrival_Form(ModelForm):
+class Baby_Form(ModelForm):
     class Meta:
-        model = Arrival
+        model = Baby
+        fields = '__all__'        
+
+class Baby_arrival_Form(ModelForm):
+    class Meta:
+        model = BabyArrival
         fields = '__all__'
 
-class Departure_Form(ModelForm):  
+class Baby_departure_Form(ModelForm):  
     class Meta:
-        model = Departure
+        model = BabyDeparture
         fields = '__all__'      
 
 
@@ -53,8 +55,6 @@ class Sitter_departure_Form(ModelForm):
         model = Sitter_departure
         fields = '__all__'
 
-class Sitter_payment_Form(ModelForm):
-    class Meta:
-        model =                         
+                      
 
 

@@ -1,0 +1,52 @@
+{% extends 'daystarApp/base.html' %}
+{% load static %}
+{% block content  %}
+<style>
+
+    h3{margin-left: 490px;
+    font-family: sans-serif;
+    color:#0C356A;
+    text-shadow: 2px 2px 4px #000000;}
+    
+</style>
+<h3>BABIES  INFORMATION </h3><hr>
+    <table class="table table-bordered">
+        <thead class="table-dark">
+            <tr class="table-dark">
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Gender</th>
+                <th scope="col">Date of birth</th>
+                <th scope="col">Location</th>
+                <th scope="col">Parent's name</th>
+                <th scope="col">Period of stay</th>
+                <th scope="col">Registration date</th>
+                <th scope=>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+           
+            <tr >
+                <td>{{ one_baby.baby_id }}</td>
+                <td>{{ one_baby.baby_name }}</td>
+                <td>{{ one_baby.baby_gender }}</td>
+                <td>{{ one_baby.date_of_birth }}</td>
+                <td>{{ one_baby.baby_location }}</td>
+                <td>{{ one_baby.parents_name }}</td>
+                <td>{{ one_baby.period_of_stay }}</td>
+                <td>{{ one_baby.registration_date }}</td>
+                <td> 
+                <td>
+                    <div>
+                        <a href="{% url 'baby_edit' id=baby.baby_id %}" class="btn btn-primary mb-3">Edit babies</a>
+
+                    </div>
+                </td>
+            </tr>
+            
+        </tbody>
+    </table>
+</div>
+<a href="/beb_reg_form"><button class="btn btn-primary">Go back</button></a>
+</body>
+{% endblock %}

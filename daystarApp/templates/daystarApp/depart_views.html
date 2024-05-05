@@ -31,8 +31,8 @@
 </style>
 </head>
 <body>
-<h4 class="mb-3">LIST OF BABIES</h4><hr>
-<a href="/baby_add" class="btn btn-primary mb-3">Add new baby</a>
+<h4 class="mb-3">Baby departure form</h4><hr>
+
 
 <div class="table_container">
 <div class="table-responsive">
@@ -41,31 +41,28 @@
             <tr class="table-dark">
                 <th scope="col">#</th>
                 <th scope="col">Name</th>
-                <th scope="col">Gender</th>
-                <th scope="col">Date of birth</th>
-                <th scope="col">Location</th>
-                <th scope="col">Parent's name</th>
-                <th scope="col">Period of stay</th>
-                <th scope="col">Registration date</th>
+                <th scope="col">baby_picker</th>
+                <th scope="col">Date</th>
+                <th scope="col">Time out</th>
+                <th scope="col">comment</th>
                 <th scope=>Action</th>
+               
             </tr>
         </thead>
         <tbody>
-            {% for baby in baby_form %}
+            
             <tr style="background-color: white;">
-                <td>{{ baby.baby_id }}</td>
-                <td>{{ baby.baby_name }}</td>
-                <td>{{ baby.baby_gender }}</td>
-                <td>{{ baby.date_of_birth }}</td>
-                <td>{{ baby.baby_location }}</td>
-                <td>{{ baby.parents_name }}</td>
-                <td>{{ baby.period_of_stay }}</td>
-                <td>{{ baby.registration_date }}</td>
+                <td>{{ view.id }}</td>
+                <td>{{ view.name_of_baby }}</td>
+                <td>{{ view.baby_picker }}</td>
+                <td>{{ view.date_of_departure }}</td>
+                <td>{{ view.timeout }}</td>
+                <td>{{ view.Acomment }}</td>
                 <td>   
-                    <a href="{% url 'baby_view' id=baby.baby_id%}" class="btn btn-primary">View</a>
+                    <a href="{% url 'baby_views' id=view.id %}" class="btn btn-primary">Edit</a>
                 </td>
             </tr>
-            {% endfor %}
+        
         </tbody>
     </table>
 
@@ -74,5 +71,3 @@
 
 
 {% endblock %}
-
-
