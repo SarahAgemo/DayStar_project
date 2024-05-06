@@ -60,7 +60,7 @@
                 <td>{{ baby.timeout}}</td>
                 <td>{{ baby.comment }}</td>
                 <td>   
-                    <a href="{% url 'depart_views' id=baby.baby_id %}" class="btn btn-primary">View</a>
+                    <a href="{% url 'depart_baby_view' baby_id=baby.baby_id %}" class="btn btn-primary">View</a>
                 </td>
             </tr>
             {% endfor %}

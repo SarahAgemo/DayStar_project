@@ -52,14 +52,14 @@
         <tbody>
             
             <tr style="background-color: white;">
-                <td>{{ view.id }}</td>
-                <td>{{ view.name_of_baby }}</td>
-                <td>{{ view.baby_picker }}</td>
-                <td>{{ view.date_of_departure }}</td>
-                <td>{{ view.timeout }}</td>
-                <td>{{ view.Acomment }}</td>
+                <td>{{ depart_info.id }}</td>
+                <td>{{ depart_info.name_of_baby }}</td>
+                <td>{{ depart_info.baby_picker }}</td>
+                <td>{{ depart_info.date_of_departure }}</td>
+                <td>{{ depart_info.timeout }}</td>
+                <td>{{ depart_info.comment }}</td>
                 <td>   
-                    <a href="{% url 'baby_views' id=view.id %}" class="btn btn-primary">Edit</a>
+                    <a href="{% url 'depart_baby_edit' baby_id=depart_info.baby_id %}" class="btn btn-primary">Edit</a>
                 </td>
             </tr>
         

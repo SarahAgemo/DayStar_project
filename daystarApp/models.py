@@ -85,7 +85,7 @@ class BabyDeparture(models.Model):
     comment = models.TextField(null=True, blank=True)
 
     def __str__(self):
-        return self.name_of_baby    
+        return f"{self.name_of_baby.baby_name} Departure"    
 
 #sitter
 class Sitterform(models.Model):  

@@ -27,9 +27,9 @@ urlpatterns = [
 
     #baby departure
     path('baby_depart/', views.baby_depart, name='baby_depart'),
-    path('depart_views/<int:id>/', views.depart_views, name='depart_views'),
-    path('depart_edits/<int:id>/', views.depart_edits, name='depart_edits'),
-    path('depart_adds/', views.depart_adds, name='depart_adds'),
+    path('depart_baby_view/<int:baby_id>/', views.depart_baby_view, name='depart_baby_view'),
+    path('depart_baby_edit/<int:baby_id>/', views.depart_baby_edit, name='depart_baby_edit'),
+    path('depart_baby_add/', views.depart_baby_add, name='depart_baby_add'),
 
     #baby payment
     path('baby_pay/', views.baby_pay, name='baby_pay'),
