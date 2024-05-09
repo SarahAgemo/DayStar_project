@@ -26,12 +26,12 @@
         margin-left: 490px;
         margin-top: 5px;
         color:#0C356A;
-        text-shadow: 2px 2px 4px #000000;}
+       }
         
 </style>
 </head>
 <body>
-<h4 class="mb-3">Baby departure form</h4><hr>
+<h4 class="mb-3">Baby departure details</h4>
 
 
 <div class="table_container">
@@ -52,11 +52,11 @@
         <tbody>
             
             <tr style="background-color: white;">
-                <td>{{ depart_info.id }}</td>
+                <td>{{ depart_info.baby_id }}</td>
                 <td>{{ depart_info.name_of_baby }}</td>
                 <td>{{ depart_info.baby_picker }}</td>
                 <td>{{ depart_info.date_of_departure }}</td>
-                <td>{{ depart_info.timeout }}</td>
+                <td>{{ depart_info.time_out }}</td>
                 <td>{{ depart_info.comment }}</td>
                 <td>   
                     <a href="{% url 'depart_baby_edit' baby_id=depart_info.baby_id %}" class="btn btn-primary">Edit</a>

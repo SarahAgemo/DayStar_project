@@ -4,8 +4,7 @@
 {% block content %}
 
 <body>
-   
-
+  
 
 
     <div class="box-container" style="display: flex; flex-direction: row-reverse;">
@@ -13,8 +12,8 @@
         <div>
             <div class="box box1">
                 <div class="text">
-                    <h2 class="topic-heading">60.5k</h2>
-                    <h2 class="topic">Total payments</h2>
+                    <h2 class="topic-heading"> {% if count_babies %} {{ count_babies }} {% endif %} </h2>
+                    <h2 class="topic">Total Babies</h2>
                 </div>
 
                 <img src="https://media.geeksforgeeks.org/wp-content/uploads/20221210184645/Untitled-design-(31).png"
@@ -23,8 +22,9 @@
 
             <div class="box box2">
                 <div class="text">
-                    <h2 class="topic-heading">150</h2>
+                    <h2 class="topic-heading"> {% if count_sitters %} {{ count_sitters }} {% endif %} </h2>
                     <h2 class="topic">Total sitters</h2>
+
                 </div>
 
                 <img src="https://media.geeksforgeeks.org/wp-content/uploads/20221210185030/14.png" alt="likes">
@@ -36,8 +36,8 @@
         <div>
             <div class="box box3">
                 <div class="text">
-                    <h2 class="topic-heading">{{ result_count }}</h2>
-                    <h2 class="topic">Total babies</h2>
+                    <h2 class="topic-heading"></h2>
+                    <h2 class="topic">Total dolls</h2>
                 </div>
 
                 <img src="https://media.geeksforgeeks.org/wp-content/uploads/20221210184645/Untitled-design-(32).png"
@@ -46,7 +46,7 @@
 
             <div class="box box4">
                 <div class="text">
-                    <h2 class="topic-heading">70</h2>
+                    <h2 class="topic-heading"></h2>
                     <h2 class="topic">Total stock</h2>
                 </div>
 
@@ -55,202 +55,91 @@
         </div>
 
     </div>
-
-    <div class="" style="display: flex; flex-direction:column;">
-   
-         
-        <div class="container1" 1>
-            <div class="report-header">
-                <h1 class="recent-Articles">Recent babies</h1>
-                <button class="view">View All</button>
-            </div>
-
-
-
-            <div class="report-body">
-                <div class="report-topic-heading">
-                    <h3 class="t-op">Baby ID</h3>
-                    <h3 class="t-op">Name</h3>
-                    <h3 class="t-op">Age</h3>
-                    <h3 class="t-op">Payment status</h3>
-                </div>
-
-                <div class="items">
-                    <div class="item1">
-                        <h3 class="t-op-nextlvl">1</h3>
-                        <h3 class="t-op-nextlvl">Okia</h3>
-                        <h3 class="t-op-nextlvl">2</h3>
-                        <h3 class="t-op-nextlvl label-tag">Paid</h3>
-                    </div>
-
-                   
-                </div>
-            </div>
-        </div> 
-
-        <!-- <div class="container1"2>
-            <table class="w-full">
-                <div class="report-header">
-                    <h1 class="recent-Articles">Recent Babies</h1>
-                    <button class="view" type="submit"> <a href="{">View All</a></button>
-                </div>
-
-            
-                    <thead class="report-body">
-                        <tr class="report-topic-heading">
-                            <th class=""> Baby ID</th>
-                            <th class=""> Name </th>
-                            <th class=""> Age </th>
-                            <th class=""> Payment status</th>
-                        </tr>
-                    </thead>
-                    <tbody class="items">
-                        {% for baby in all_babies %}
-                        <tr class="p-2" class="item1">
-                            <th class=""> B00-{{ baby.baby_id }} </th>
-                            <td class=""> <a href="/baby_list/{{ baby.baby_name }}" class="text-blue-500"> {{ baby.baby_name }} </a> </td>
-                            <td class=""> {{ baby.baby_age }} </td>
-                            <td class=" label-tag"> {{ baby.baby_fee }} </td>
+                    <div class="container2">
+                        <div class="report-header">
+                            <h1 class="recent-Articles">Recent Babies</h1>
+                            <button class="view"></a> View All</button>
+                        </div>
+                    
+                    
+                        <div class="table_container">
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-hover">
+                                    <thead class="table-dark">
+                                        <tr class="table-dark">
+                                            <th scope="col">#</th>
+                                            <th scope="col">Name</th>
+                                            <th scope="col">Gender</th>
+                                            <th scope="col">Date of birth</th>
+                                            <th scope="col">Location</th>
+                                            <th scope="col">Action</th>
+                                                        
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for baby in last_babies %}
+                                        <tr style="background-color: white;">
+                                            <td>{{ baby.baby_id }}</td>
+                                            <td>{{ baby.baby_name }}</td>
+                                            <td>{{ baby.baby_gender }}</td>
+                                            <td>{{ baby.date_of_birth }}</td>
+                                            <td>{{ baby.baby_location }}</td>
+                                                    
+                                            <td>   
+                                                <a href="{ {% url "baby_view" id=baby.baby_id %} }" class="btn btn-primary">View</a>
+                                            </td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
                             
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-            
-            </table>
-        </div>  -->
-
-
-        {% comment %} <table class="w-full">
-            <div class="report-header">
-                <h1 class="recent-Articles">Recent Babies</h1>
-                <button class="view" type="submit"> <a href="">View All</a></button>
-            </div>
-            
-                <tr>
-                    <th>Baby ID</th>
-                    <th>Name</th>
-                    <th>Age</th>
-                    <th>Payment status</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for baby in all_babies %}
-                <tr>
-                    <td>B00-{{ baby.baby_id }}</td>
-                    <td> <a href="/baby_list/{{ baby.baby_name }}" class="text-white-500"> {{ baby.baby_name }} </a></td>
-                    <td>{{ baby.baby_age }}</td>
-                    <td class="t-op-nextlvl label-tag">{{ baby.baby_fee }}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-
-        </table> {% endcomment %}
-
-
-        {% comment %} <table class="w-full">
-            <div class="report-header">
-                <h1 class="recent-Articles">Recent Sitters</h1>
-                <button class="view" type="submit"> <a href="{% url 'baby_list' %}">View All</a></button>
-            </div>
-            <thead>
-                <tr>
-                    <th>Baby ID</th>
-                    <th>Name</th>
-                    <th>Age</th>
-                    <th>Payment status</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for baby in all_babies %}
-                <tr>
-                    <td>B00-{{ baby.baby_id }}</td>
-                    <td> <a href="/baby_list/{{ baby.baby_name }}" class="text-white-500"> {{ baby.baby_name }} </a></td>
-                    <td>{{ baby.baby_age }}</td>
-                    <td class="t-op-nextlvl label-tag">{{ baby.baby_fee }}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-
-        </table> {% endcomment %}
-
-
-
-
-
-
-         <div class="container2">
-            <div class="report-header">
-                <h1 class="recent-Articles">Recent Sitters</h1>
-                <button class="view">View All</button>
-            </div>
-
-
-
-            <div class="report-body">
-                <div class="report-topic-heading">
-                    <h3 class="t-op">Sitter ID</h3>
-                    <h3 class="t-op">Name</h3>
-                    <h3 class="t-op">Age</h3>
-                    <h3 class="t-op">Duty status</h3>
-                </div>
-
-                <div class="items">
-                    <div class="item1">
-                        <h3 class="t-op-nextlvl">1</h3>
-                        <h3 class="t-op-nextlvl">Alupo</h3>
-                        <h3 class="t-op-nextlvl">21</h3>
-                        <h3 class="t-op-nextlvl label-tag">Afternoon</h3>
+                            </div>
+                            </div>
                     </div>
-
-                    <div class="item1">
-                        <h3 class="t-op-nextlvl">2</h3>
-                        <h3 class="t-op-nextlvl">Asekenye</h3>
-                        <h3 class="t-op-nextlvl">36</h3>
-                        <h3 class="t-op-nextlvl label-tag">Morning</h3>
-                    </div>
-
-
-                </div>
-            </div>
-        </div>
+                    </div><br><br>
+          
+<div class="container2">
+    <div class="report-header">
+        <h1 class="recent-Articles">Recent Sitters </h1>
+        <button class="view">View All</button>
     </div>
-    {% endblock %} 
 
-        {% comment %} <div class="container2">
-            <table>
-                <div class="report-header">
-                    <h1 class="recent-Articles">Recent Sitters</h1>
-                    <button class="view">View All</button>
-                </div>
+        
 
-
-                <thead class="report-body">
-                    <tr class="report-topic-heading">
-                        <th class="t-op"> Sitter ID</th>
-                        <th class="t-op"> Name </th>
-                        <th class="t-op"> Age </th>
-                        <th class="t-op"> Duty status</th>
+    <div class="table_container">
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover">
+                <thead class="table-dark">
+                    <tr class="table-dark">
+                        <th scope="col">#</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Gender</th>
+                        <th scope="col">Location</th>
+                        <th scope="col">Date of Birth</th>
+                        <th scope="col">Action</th>
+                        
                     </tr>
                 </thead>
-                <tbody class="items">
-                    {% for student in all_students %}
-                    <tr class="item1">
-                        <th> {{ student.id }} </th>
-                        <td> <a href="/student/view/{{ student.id }}" class="text-blue-500"> {{ student.first_name
-                                }} {{
-                                student.last_name }} </a> </td>
-                        <td> {{ student.email }} </td>
-                        <td> {{ student.age }} </td>
+                <tbody>
+                    {% for sitter in last_sitters %}
+                    <tr style="background-color: white;">
+                        <td>{{ sitter.id }}</td>
+                        <td>{{ sitter.name }}</td>
+                        <td>{{ sitter.gender }}</td>
+                        <td>{{ sitter.location }}</td>
+                        <td>{{ sitter.date_of_birth }}</td>
+                       
+                        <td>   
+                            <a href="{% url 'sit_view' id=sitter.id %}" class="btn btn-primary">View</a>
+                        </td>
                     </tr>
                     {% endfor %}
                 </tbody>
-
             </table>
+        
         </div>
-
-        <!-- </div> -->
-    </div><br><br>
-
-
+        </div>
+</div>
+</div><br><br>
 </body>
-{% endblock %} {% endcomment %}
+{% endblock %} 

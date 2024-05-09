@@ -6,10 +6,10 @@
     h3{margin-left: 490px;
     font-family: sans-serif;
     color:#0C356A;
-    text-shadow: 2px 2px 4px #000000;}
+    }
     
 </style>
-<h3>BABIES  INFORMATION </h3><hr>
+<h3>Baby details </h3>
     <table class="table table-bordered">
         <thead class="table-dark">
             <tr class="table-dark">
@@ -21,6 +21,9 @@
                 <th scope="col">Parent's name</th>
                 <th scope="col">Period of stay</th>
                 <th scope="col">Registration date</th>
+                <th scope="col">Baby bringer</th>
+                <th scope="col">Time in</th>
+                <th scope="col">Assigned to;</th>
                 <th scope=>Action</th>
             </tr>
         </thead>
@@ -35,10 +38,13 @@
                 <td>{{ one_baby.parents_name }}</td>
                 <td>{{ one_baby.period_of_stay }}</td>
                 <td>{{ one_baby.registration_date }}</td>
+                <td>{{ one_baby.baby_bringer }}</td>
+                <td>{{ one_baby.time_in }}</td>
+                <td>{{ one_baby.Assigned_to }}</td>
                 <td> 
                 <td>
                     <div>
-                        <a href="{% url 'baby_edit' id=baby.baby_id %}" class="btn btn-primary mb-3">Edit babies</a>
+                        <a href="{% url 'baby_edit' id=one_baby.baby_id %}" class="btn btn-primary mb-3">Edit babies</a>
 
                     </div>
                 </td>

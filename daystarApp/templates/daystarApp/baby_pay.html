@@ -1,44 +1,72 @@
 {% extends 'daystarApp/base.html' %}
-{% load crispy_forms_tags %}
+
+
 {% load static %}
 
+{% block content%}
 
+<style>
+    
+    
+    .table-responsive {
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); 
+    }
+    h4{margin-left:490px;
+    margin-top:5px ;}
+
+    .table-container {
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        overflow-x: auto; /* Ensure horizontal scroll when needed */
+        max-width: 100%; /* Ensure the table container doesn't overflow its parent */
+    }
+    .table-responsive {
+        overflow-x: auto; /* Ensure horizontal scroll when needed */
+    }
+    h4 {
+        margin-left: 490px;
+        margin-top: 5px;
+        color:#0C356A;
+       }
+        
+</style>
+</head>
 <body>
-    {% block content %}
+<h4 class="mb-3">Baby payments</h4>
+<a href="/add_baby_payment" class="btn btn-primary mb-3">Add new baby payment</a>
 
-<form method="POST" action="">
+<div class="table_container">
+<div class="table-responsive">
+    <table class="table table-bordered table-hover">
+        <thead class="table-dark">
+            <tr class="table-dark">
+          
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Period of stay</th>
+                <th scope="col">Amount paid</th>
+                <th scope="col">Full amount</th>
+                <th scope="col">Balance</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            {% for baby in baby_payment %}
+            <tr style="background-color: white;">
+                
+                <td>{{ baby.baby_id }}</td>
+                <td>{{ baby.name_of_baby }}</td>
+                <td>{{ baby.period_of_stay }}</td>
+                <td>{{ baby.amount_paid }}</td>
+                <td>{{ baby.original_amount }}</td>
+                <td>{{ baby.baby_payment }}</td>
+                
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 
-    {% csrf_token %}
-    <div>
-        {{ baby_payments.baby.label_tag }}
-        {{ baby_payments.baby }}
-        {{ baby_payments.baby.errors }}
-    </div>
-    <div>
-        {{ baby_payments.date.label_tag }}
-        {{ baby_payments.date }}
-        {{ baby_payments.date.errors }}
-    </div>
-    <div>
-        {{ baby_payments.description.label_tag }}
-        {{ baby_payments.description }}
-        {{ baby_payments.description.errors }}
-
-    </div>
-    <div>
-        {{ baby_payments.dolls.label_tag }}
-        {{ baby_payments.dolls }}
-        {{ baby_payments.dolls.errors }}
-    </div>
-    <div>
-        {{ baby_payments.amount.label_tag }}
-        {{ baby_payments.amount }}
-        {{ baby_payments.amount.errors }}
-    </div>
-
-    <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+</div>
+</div>
 
 
-</body>
 {% endblock %}

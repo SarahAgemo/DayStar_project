@@ -25,15 +25,24 @@
     h4 {
         margin-left: 490px;
         margin-top: 5px;
-        color:#0C356A;
-        text-shadow: 2px 2px 4px #000000;}
+        font-size:2rem;
+        ul
         
+        {% comment %} color:#0C356A; {% endcomment %}
+        {% comment %} text-shadow: 2px 2px 4px #000000;} {% endcomment %}
+    } 
 </style>
 </head>
 <body>
-<h4 class="mb-3">LIST OF SITTERS</h4><hr>
-<a href="/sit_add" class="btn btn-primary mb-3">Add new sitter</a>
-
+<h4 class="mb-3" style="">All Sitters</h4>
+<div style="display:flex; flex-direction:row;">
+<div><form action="" method="GET"style="margin-left:30px; padding-right:30px;">
+    {{ all_sitters.form }} 
+    <div><input type="submit" value="Search sitter name"  class="btn btn-primary"/></div>
+    </form></div>
+    
+</div>
+<a href="/sit_add" class="btn btn-primary mb-3" style="margin-left:1000px;">Add new sitter</a>
 <div class="table_container">
 <div class="table-responsive">
     <table class="table table-bordered table-hover">

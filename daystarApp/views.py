@@ -6,12 +6,17 @@ from . forms import *
 from django.template import loader
 from django.contrib.auth import authenticate
 from django.contrib import messages
+from . filters import *
 from django.contrib.auth.decorators import login_required
 from django.contrib.postgres.search import SearchQuery, SearchVector
 from django.db.models import Sum
+from datetime import datetime
+
 
 
 # Create your views here.
+
+
 def index(request):
     return render(request, 'daystarApp/index.html')
 def about_us(request):
@@ -19,6 +24,15 @@ def about_us(request):
 
 
 # Sitters
+
+#sitters registration
+
+def sit_reg_form(request):
+    sit_form = Sitterform.objects.all().order_by('-id')
+    all_sitters = SitterFilter(request.GET, queryset=sit_form)
+    sit_form  = all_sitters.qs 
+    return render(request, 'daystarApp/sit_reg_form.html', {'sit_form': sit_form, 'all_sitters': all_sitters})
+
 
 def sit_add(request):
     if request.method == 'POST':
@@ -46,12 +60,7 @@ def sit_edit(request, id):
         form = Sitter_Form(instance=sitter)
     return render(request, 'daystarApp/sit_edit.html', {'form': form, 'sitter': sitter})
 
-def sit_reg_form(request):
-    sit_form = Sitterform.objects.all()
-    return render(request, 'daystarApp/sit_reg_form.html', {'sit_form': sit_form})
 
-def sit_payments(request):
-    return render(request, 'daystarApp/sit_payments.html')
 
 #sitter arrivals
 def sit_arrival(request):
@@ -119,13 +128,22 @@ def depart_edit(request, id):
     return render(request, 'daystarApp/depart_edit.html', {'form': form, 'depart': depart})
 
 
-# procurement 
-    
-def dolls(request):
-    return render(request, 'daystarApp/dolls.html')
+def sit_payments(request):
+    sit_payment = Sitter_payment.objects.all()
+    return render(request, 'daystarApp/sit_payments.html', {'sit_payment': sit_payment})
 
-def stock(request):
-    return render(request, 'daystarApp/stock.html')
+def add_sit_payment(request):
+    if request.method == 'POST':
+        form = Sitter_payment_Form(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('sit_payments')
+    else:
+        form = Sitter_payment_Form()
+    return render(request, 'daystarApp/add_sit_payment.html', {'form': form})
+
+
+
 
    
 
@@ -166,35 +184,7 @@ def baby_view(request, id):
 
 
 
-#baby arrival
-def baby_arrival(request):
-    baby_arrive = BabyArrival.objects.all()
-    return render(request, 'daystarApp/baby_arrival.html', {'baby_arrive': baby_arrive})
 
-def baby_adds(request):
-    if request.method == 'POST':
-        form = Baby_arrival_Form(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('baby_arrival')
-    else:
-        form = Baby_arrival_Form()    
-    return render(request, 'daystarApp/baby_adds.html', {'form': form})
-
-def baby_views(request, id):
-    baby_info = BabyArrival.objects.get(baby_id=id)
-    return render(request, 'daystarApp/baby_views.html', {'baby_info': baby_info})
-
-def baby_edits(request, id):
-    edit = get_object_or_404(BabyArrival, baby_id=id)
-    if request.method == 'POST':
-        form = Baby_arrival_Form(request.POST, instance=edit)
-        if form.is_valid():
-            form.save()
-            return redirect('baby_arrival')
-    else:
-        form = Baby_arrival_Form(instance=edit)    
-    return render(request, 'daystarApp/baby_edits.html', {'form': form, 'edit': edit})
 
 #baby departure
 def baby_depart(request):
@@ -230,11 +220,19 @@ def depart_baby_edit(request, baby_id):
 
 #baby payment
 def baby_pay(request):
-    return render(request, 'daystarApp/baby_pay.html')
+    baby_payment = BabyPayment.objects.all()
+    return render(request, 'daystarApp/baby_pay.html', {'baby_payment':baby_payment})
+
+def add_baby_payment(request):
+    if request.method == 'POST':
+        form = Baby_payment_Form(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('baby_pay')
+    else:
+        form = Baby_payment_Form()    
+    return render(request, 'daystarApp/add_baby_payment.html', {'form': form})
    
-
-
-    
         
 
 # authentication
@@ -276,3 +274,37 @@ def reset_pass(request):
 def new_pass(request):
     return render(request, 'daystarApp/new_pass.html')
 
+
+
+# procurement 
+    
+def dolls(request):
+    return render(request, 'daystarApp/dolls.html')
+
+def stock(request):
+    return render(request, 'daystarApp/stock.html')
+
+
+
+#dashboard
+ 
+
+def index(request):
+    
+    # count_dolls = Doll.objects.all()
+    # count_stock = Stock.objects.all()
+    count_babies = Baby.objects.all().count()
+    count_sitters = Sitterform.objects.all().count()
+    last_babies = Baby.objects.all()[:5]
+    last_sitters = Sitterform.objects.all()[:5]
+    
+    context = {
+        "count_babies": count_babies,
+        "count_sitters": count_sitters,
+        "last_babies": last_babies,
+        "last_sitters": last_sitters,
+        # "count_dolls": count_dolls,
+        # "count_stock": count_stock,
+    }
+    template = loader.get_template('daystarApp/index.html')
+    return HttpResponse(template.render(context))

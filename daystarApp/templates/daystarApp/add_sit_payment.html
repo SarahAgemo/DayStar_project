@@ -4,7 +4,7 @@
 
 {% block content %}
 <style>
-    .baby-form {
+    .sitter-form {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 10px;
@@ -52,13 +52,13 @@ border: solid black;
     
 </style>  
 
-<h4 >Add new baby here </h4>
+<h4 >Add sitter payment </h4>
 
 
 
 
 <div class="container">
-    <form method="POST" class="baby-form">
+    <form method="POST" class="sitter-form">
 
         {% csrf_token %}
         {{ form | crispy }}
@@ -68,15 +68,5 @@ border: solid black;
 
 
     
-
-
-
-
-
-
-
-
-
-
 
 {%endblock %}

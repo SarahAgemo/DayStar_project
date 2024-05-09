@@ -3,6 +3,8 @@ from .models import *
 from django.forms import forms
 
 
+
+
 class Signin(ModelForm):
     class Meta:
         model = Sign_in
@@ -27,16 +29,15 @@ class Baby_Form(ModelForm):
         model = Baby
         fields = '__all__'        
 
-class Baby_arrival_Form(ModelForm):
-    class Meta:
-        model = BabyArrival
-        fields = '__all__'
-
 class Baby_departure_Form(ModelForm):  
     class Meta:
         model = BabyDeparture
         fields = '__all__'      
 
+class Baby_payment_Form(ModelForm):
+    class Meta:
+        model = BabyPayment
+        fields = '__all__'        
 
 # sitters
 
@@ -55,6 +56,12 @@ class Sitter_departure_Form(ModelForm):
         model = Sitter_departure
         fields = '__all__'
 
-                      
+class Sitter_payment_Form(ModelForm):
+    class Meta:
+        model = Sitter_payment
+        fields = '__all__'
+    def init(self, *args, **kwargs):
+        super().init(*args, **kwargs)
+        self.fields['amount'].disabled = True
 
 

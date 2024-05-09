@@ -26,13 +26,13 @@
         margin-left: 490px;
         margin-top: 5px;
         color:#0C356A;
-        text-shadow: 2px 2px 4px #000000;}
+        }
         
 </style>
 </head>
 <body>
-<h4 class="mb-3">Baby departure</h4><hr>
-<a href="/depart_adds" class="btn btn-primary mb-3">Add new baby departure</a>
+<h4 class="mb-3">Baby departure</h4>
+<a href="/depart_baby_add" class="btn btn-primary mb-3">Add new baby departure</a>
 
 <div class="table_container">
 <div class="table-responsive">
@@ -53,11 +53,11 @@
         <tbody>
             {% for baby in baby_leave %}
             <tr style="background-color: white;">
-                <td>{{ baby.id }}</td>
-                <td>{{ baby.bname_of_baby }}</td>
+                <td>{{ baby.baby_id }}</td>
+                <td>{{ baby.name_of_baby }}</td>
                 <td>{{ baby.baby_picker }}</td>
                 <td>{{ baby.date_of_departure }}</td>
-                <td>{{ baby.timeout}}</td>
+                <td>{{ baby.time_out}}</td>
                 <td>{{ baby.comment }}</td>
                 <td>   
                     <a href="{% url 'depart_baby_view' baby_id=baby.baby_id %}" class="btn btn-primary">View</a>

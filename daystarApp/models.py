@@ -56,38 +56,9 @@ class New_pass(models.Model):
     def __str__(self):
         return self.confirm_password
     
-    # Babies
-
-    
-
-class Baby(models.Model):
-    baby_id = models.AutoField(primary_key=True)
-    baby_name = models.CharField( max_length=20)
-    baby_gender = models.CharField( max_length=20 )
-    date_of_birth = models.DateField( default=timezone.now)
-    baby_location = models.CharField( max_length=20)
-    # baby_image = models.ImageField(upload_to='baby_images', blank=True, null=True)
-    parents_name = models.CharField( max_length=20)
-    period_of_stay = models.CharField(choices=[('half-day', 'Half-day'),('full-day', 'Full-day')], max_length=100)
-    registration_date = models.DateField(default=timezone.now)
    
 
-    def __str__(self):
-        return self.baby_name
-
-    
-class BabyDeparture(models.Model):
-    baby_id = models.AutoField(primary_key=True)
-    name_of_baby = models.ForeignKey(Baby, on_delete=models.CASCADE)
-    baby_picker = models.CharField( max_length=20)
-    date_of_departure = models.DateField(default=timezone.now)
-    time_out = models.TimeField()
-    comment = models.TextField(null=True, blank=True)
-
-    def __str__(self):
-        return f"{self.name_of_baby.baby_name} Departure"    
-
-#sitter
+#sitters
 class Sitterform(models.Model):  
     name=models.CharField(max_length=200)
     gender=models.CharField(choices=[('male', 'Male'),('female', 'Female')], max_length=100)
@@ -109,7 +80,7 @@ class Sitter_arrival(models.Model):
     sitter_number=models.IntegerField(default=0)
     date_of_arrival=models.DateField(default=timezone.now)   
     timein=models.TimeField ()
-    Attendancestatus=models.CharField(choices=[('onduty', 'onduty')], max_length=100)
+    Attendancestatus=models.CharField(choices=[('On-duty', 'On-duty')], max_length=100)
     def __str__(self):
         return str(self.sitter_name)
     
@@ -123,18 +94,66 @@ class Sitter_departure(models.Model):
     def __str__(self):
         return str(self.sitter_name)    
 
-class BabyArrival(models.Model):
+
+ # Babies
+class Baby(models.Model):
     baby_id = models.AutoField(primary_key=True)
-    babys_name = models.ForeignKey(Baby, on_delete=models.CASCADE)
+    baby_name = models.CharField( max_length=20)
+    baby_gender = models.CharField( max_length=20 )
+    date_of_birth = models.DateField( default=timezone.now)
+    baby_location = models.CharField( max_length=20)
+    # baby_image = models.ImageField(upload_to='baby_images', blank=True, null=True)
+    parents_name = models.CharField( max_length=20)
+    period_of_stay = models.CharField(choices=[('half-day', 'Half-day'),('full-day', 'Full-day')], max_length=100)
+    registration_date = models.DateField(default=timezone.now)
     baby_bringer = models.CharField( max_length=20)
-    date_of_arrival = models.DateField(default=timezone.now)
     time_in = models.TimeField()
     Assigned_to=models.ForeignKey(Sitter_arrival,on_delete=models.CASCADE)
+   
+    def __str__(self):
+        return self.baby_name
+
+
+class BabyPayment(models.Model):
+    baby_id = models.AutoField(primary_key=True)
+    name_of_baby = models.ForeignKey(Baby, on_delete=models.CASCADE)
+    period_of_stay = models.CharField(choices=[('half-day', 'Half-day'),('full-day', 'Full-day'),('monthly-halfday','Monthly-halfday'),('monthly-fullday','Monthly-fullday')], max_length=100)
+    amount_paid = models.IntegerField(default=0)
+    original_amount = models.IntegerField(default=0)
+    date = models.DateField(default=timezone.now)
 
     def __str__(self):
-       return self.babys_name
+        return f"{self.name_of_baby.baby_name} Payment"
+
+    def baby_payment(self): 
+        b_payment = self.original_amount - self.amount_paid
+        return int(b_payment)   
+
+
+
+class BabyDeparture(models.Model):
+    baby_id = models.AutoField(primary_key=True)
+    name_of_baby = models.ForeignKey(Baby, on_delete=models.CASCADE)
+    baby_picker = models.CharField( max_length=20)
+    date_of_departure = models.DateField(default=timezone.now)
+    time_out = models.TimeField()
+    comment = models.TextField(null=True, blank=True)
+
+    def __str__(self):
+        return f"{self.name_of_baby.baby_name} Departure" 
     
-# class Sitter_payment(models.Model):    
+#sitter payment    
+class Sitter_payment(models.Model): 
+    sitter_name=models.ForeignKey(Sitter_arrival, on_delete=models.CASCADE) 
+    amount=models.IntegerField(default=3000)
+    date=models.DateField(default=timezone.now)
+    no_of_babies=models.IntegerField(default=0)
+    def __str__(self):
+        return str(self.sitter_name)
+
+    def total_payment(self):
+        payment = self.no_of_babies * self.amount
+        return int(payment)     
 
 
 # dolls
@@ -148,3 +167,12 @@ class Doll(models.Model):
     def __str__(self):
         return self.doll_name
     
+class Doll_payment(models.Model):
+    doll_type = models.CharField( max_length=20, blank=True, null=True )
+    name = models.ForeignKey(Doll, on_delete=models.CASCADE)
+    amount_paid = models.IntegerField(default=0)
+    doll_price = models.IntegerField( null=True, blank=True, default=0)    
+    
+
+    def __str__(self):
+        return f"{self.name.doll_name} Payment"

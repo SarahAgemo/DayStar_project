@@ -20,11 +20,7 @@ urlpatterns = [
     
 
     #baby arrival
-    path('baby_arrival/', views.baby_arrival, name='baby_arrival'),
-    path('baby_adds/', views.baby_adds, name='baby_adds'),
-    path('baby_views/<int:id>/', views.baby_views, name='baby_views'),
-    path('baby_edits/<int:id>/', views.baby_edits, name='baby_edits'),
-
+   
     #baby departure
     path('baby_depart/', views.baby_depart, name='baby_depart'),
     path('depart_baby_view/<int:baby_id>/', views.depart_baby_view, name='depart_baby_view'),
@@ -33,6 +29,7 @@ urlpatterns = [
 
     #baby payment
     path('baby_pay/', views.baby_pay, name='baby_pay'),
+    path('add_baby_payment/', views.add_baby_payment, name='add_baby_payment'),
    
     
     
@@ -49,6 +46,7 @@ urlpatterns = [
     #sitters
 
     #sitter registration 
+    
     path('sit_reg_form/', views.sit_reg_form, name='sit_reg_form'),
     path('sit_add/', views.sit_add, name='sit_add'),
     path('sit_view/<int:id>/', views.sit_view, name='sit_view'),
@@ -70,6 +68,7 @@ urlpatterns = [
   
     #sitter payments
     path('sit_payments/', views.sit_payments, name='sit_payments'),
+    path('add_sit_payment/', views.add_sit_payment, name='add_sit_payment'),
 
 
   
