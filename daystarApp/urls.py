@@ -6,6 +6,10 @@ urlpatterns = [
     #index
     path('', views.index, name='index'),
 
+
+    #homepage
+    path('home/', views.home, name='home'),
+
     #about 
     path('about_us/', views.about_us, name='about_us'),
 
@@ -30,15 +34,64 @@ urlpatterns = [
     #baby payment
     path('baby_pay/', views.baby_pay, name='baby_pay'),
     path('add_baby_payment/', views.add_baby_payment, name='add_baby_payment'),
+    path('edit_baby_payment/<int:id>/', views.edit_baby_payment, name='edit_baby_payment'),
+    
+    #baby_receipt
+    path('baby_receipt/', views.baby_receipt, name='baby_receipt'),
+
+    #baby_receipt detail
+   path('baby_receipt_detail/<int:id>/', views.baby_receipt_detail, name='baby_receipt_detail'),
    
-    
-    
     
 
-    #dolls/stock
-   
-    path('dolls/', views.dolls, name='dolls'),
-    path('stock/', views.stock, name='stock'),
+    #dolls
+    #doll list
+    path('doll_list/', views.doll_list, name='doll_list'),
+
+    #doll add
+    path('add_doll', views.add_doll, name='add_doll'),
+
+    #doll view
+    path('doll_view/<int:id>/', views.doll_view, name='doll_view'),
+
+    #add one doll
+    path('add_one_doll/<int:id>/', views.add_one_doll, name='add_one_doll'),
+
+    #doll edit
+    path('doll_edit/<int:id>/', views.doll_edit, name='doll_edit'),
+    
+    #doll pay
+    path('doll_pay/<int:id>/', views.doll_pay, name='doll_pay'),
+
+    path('doll_pay_list', views.doll_pay_list, name='doll_pay_list'),
+
+    #doll receipt
+    path('doll_receipt', views.doll_receipt, name='doll_receipt'),
+
+    #receipt detail
+    path('receipt_detail/<int:id>/', views.receipt_detail, name='receipt_detail'),
+
+
+
+    #stock
+    path('stock_list/', views.stock_list, name='stock_list'),
+
+    #stock add all
+    path('add_stock', views.add_stock, name='add_stock'),
+
+    #view one stock 
+    path('stock_view/<int:id>/', views.stock_view, name='stock_view'),
+
+    #stock add one
+    path('add_one_stock/<int:id>/', views.add_one_stock, name='add_one_stock'),
+
+    #stock issue
+    path('stock_issue/<int:id>/', views.stock_issue, name='stock_issue'),
+
+    #stock edit
+    path('stock_edit/<int:id>/', views.stock_edit, name='stock_edit'),
+
+
 
 
     
@@ -75,10 +128,10 @@ urlpatterns = [
     
     #authentication
     path('sign_in/', views.sign_in, name='sign_in'),
-    path('sign_up/', views.sign_up, name='sign_up'),
-    path('forgot_pass/', views.forgot_pass, name='forgot_pass'),
-    path('reset_pass/', views.reset_pass, name='reset_pass'),
-    path('new_pass/', views.new_pass, name='new_pass'),
+    
+    # path('forgot_pass/', views.forgot_pass, name='forgot_pass'),
+    # path('reset_pass/', views.reset_pass, name='reset_pass'),
+    # path('new_pass/', views.new_pass, name='new_pass'),
     
         
 ]

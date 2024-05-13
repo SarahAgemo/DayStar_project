@@ -1,0 +1,74 @@
+{% extends 'daystarApp/base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+<body>
+    {% block content %}
+
+    <style>
+        #id_doll_name {
+            width: 50%;
+            border: 1px solid green;
+            border-radius: 10px;
+        }
+    </style>
+    
+    <form method="POST" action="">
+        {% csrf_token %}
+
+        {% comment %} <div class="col-span-2 p-4">
+            <img src="{% static "css/images/duck1.jpg" %}" style="width:400px; height=400px" alt="">
+        </div> {% endcomment %}
+
+        <div class="col-span-2 p-4">
+            <img src="https://picsum.photos/200" class="w-[150px] rounded-lg" alt="">
+        </div>
+
+        <div>
+            <label for="id_stock_id">Stock ID:</label>
+            {{  one_stock.stock_id }}
+            {{  one_stock.stock_id.errors }}
+        </div>
+
+        <div>
+            <label for="id_stock_type">Stock Type:</label>
+            {{  one_stock.stock_type }}
+            {{  one_stock.stock_type.errors }}
+        </div>
+
+        <div>
+            <label for="id_stock_name">Stock Name:</label>
+            {{  one_stock.stock_name }}
+            {{  one_stock.stock_name.errors }}
+        </div>
+
+        <div>
+            <label for="id_stock_price">Stock Price:</label>
+            {{  one_stock.stock_price }}
+            {{  one_stock.stock_price.errors }}
+        </div>                                                     
+
+        <div>
+            <label for="id_stock_quantity">Stock Quantity:</label>
+            {{ one_stock.stock_quantity }}
+            {{ one_stock.stock_quantity.errors }}
+        </div>
+
+        <div>
+            <label for="id_stock_description">Stock Description:</label>
+            {{ one_stock.stock_description }}
+            {{ one_stock.stock_description.errors }}
+        </div>
+
+        <div>
+            <label for="id_date_stocked">Date Stocked:</label>
+            {{ one_stock.date_stocked }}
+            {{ one_stock.date_stocked.errors }}
+        </div>
+
+        
+       
+    </form>
+    
+    </body>
+{% endblock %} 

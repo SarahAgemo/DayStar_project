@@ -1,0 +1,75 @@
+{% extends 'daystarApp/base.html' %}
+
+{% load static %}
+
+{% block content%}
+
+<style>
+    .table-responsive {
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); 
+    }
+    .table-container {
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        overflow-x: auto;
+        max-width: 100%;
+    }
+    h4 {
+        margin-left: 490px;
+        margin-top: 5px;
+        color: #0C356A;
+    }
+</style>
+
+<h4 class="mb-3">All available stock</h4>
+
+<a href="{% url 'add_stock' %}" class="btn btn-primary mb-3" style="margin-left: 1000px;">Add new stock</a>
+
+<div class="table-container">
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+            <thead class="table-dark">
+                <tr class="table-dark">
+                    <th scope="col">#</th>
+                    <th scope="col">Stock type</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Price</th> 
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Description</th> 
+                    <th scope="col">Date stocked</th>                        
+                    <th scope="col">Action</th>
+                </tr>  
+              
+            </thead>
+            <tbody>
+                {% for stock in stock_list %}
+                <tr style="background-color: white;">
+                    <th>{{ stock.stock_id }}</th>
+                    <td>{{ stock.stock_type }}</td>
+                    <td>{{ stock.stock_name }}</td>
+                    <td>{{ stock.stock_price }}</td>
+                    <td>{{ stock.stock_quantity }}</td>
+                    <td>{{ stock.stock_description }}</td>
+                    <td>{{ stock.date_stocked }}</td>
+
+                    <td>   
+                            <div>
+                                <div style="display:flex; flex-direction:row; padding:5px;">
+                                    <a href="{% url 'stock_view' id=stock.stock_id %}" class="btn btn-primary" style="margin-right:10px;">View</a>
+                                    <a href="{% url 'add_one_stock' id=stock.stock_id %}" class="btn btn-primary">Add</a>
+                                </div>
+                                <div>
+                                    <a href=" {% url 'stock_edit' id=stock.stock_id %} "><button type="submit" class="btn btn-primary" style="margin-left:8px; margin-right:10px;">Edit</button></a>
+                                    <a href="{% url 'stock_issue' id=stock.stock_id %} "> <button type="submit" class="btn btn-primary">Issue</button></a>
+                                </div>
+                            </div>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}
+
+

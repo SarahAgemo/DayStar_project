@@ -1,0 +1,36 @@
+{% extends 'daystarApp/base.html' %}
+{% load static %}
+{% block content %}
+<br /><br>
+
+<link rel="stylesheet" href="{% static 'path/to/your/external.css' %}">
+
+<div class="container">
+  <h1 class="card-header text-center" style="font-weight: bolder;">RECEIPTS</h1><br>
+  {% for baby in babe_receipt %}
+  <div class="card">
+    <div class="card-body" style="background-color: beige;">
+      <h4 class="card-title" style="text-align: center;font-weight: bolder;">DayStar Daycare</h4>
+      <h4 class="card-title">Baby name: {{ baby.name_of_baby | title }}</h4>
+      <h4 class="card-text">Parent's name: {{ baby.parent_name }}</h4>
+      <h4 class="card-text">Period of stay: {{ baby.period_of_stay }}</h4>
+      <h4 class="card-text">Date: {{ baby.date }}</h4>
+      <h4 class="card-text">Amount paid: UGX{{ baby.amount_paid }}</h4>
+      <h2>Unit Price: UGX{{ baby.original_amount }}</h2>
+      <div style="flex: 1">
+        <h4 class="card-text">Amount Due: UGX{{ baby.amount_due }}</h4>
+
+        {% comment %} <a href="{% url 'baby_receipt_detail'  %}"> {% endcomment %}
+          <button class="btn btn-info">Print Final Receipt</button>
+        </a>
+
+        <div style="text-align: center; font-style: italic; font-weight: bolder; color: black;">
+          <p> PAYMENT RECEIVED WITH THANKS!!!</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br/>
+  {% endfor %}
+</div>
+{% endblock %}

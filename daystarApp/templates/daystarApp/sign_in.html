@@ -31,12 +31,13 @@
 
     <nav class="navbar navbar-light bg-light">
         <form class="form-inline">
-          <button class="btn btn-outline-success" class="signin" type="button">Sign in</button>
-          <button class="btn btn-outline-success" class="signup" type="button">sign up</button>
+          <a href=" {% url "sign_in" %} " ><button class="btn btn-outline-success" class="signin" type="button">Sign in</button></a>
+          <a href="/" ><button class="btn btn-outline-success" class="signup" type="button">sign up</button></a>
           
         </form>
+        
       </nav>
-
+<hr>
     <p class="tip">Hello, Admin!</p>
     <div class="container" style=" display:flex; flex-direction: row; ">
 
@@ -57,8 +58,8 @@
                     <label>
                         <span>Password</span>
                         <input type="password" name="password" placeholder="1@5$qNo1" required />
-                    </label>
-                    <p class="forgot-pass">Forgot password?</p><br><br><br>
+                    </label><br><br><br> 
+                    {% comment %} <p class="forgot-pass">Forgot password?</p><br><br><br> {% endcomment %}
                     <button type="submit" class="btn btn-primary" style="padding: 15px;
                     margin-top: 40px;
                     margin-bottom: 20px;
@@ -81,7 +82,7 @@
                     <b> Sign up to get started.</b>
                 </p><br><br><br><br><br><br><br><br><br><br>
 
-                <button type="button" class="submit"><a href="{ % url 'sign_up' %}">Sign up</a></button>
+                <button type="button" class="submit"><a href="/">Sign up</a></button>
 
             </div>
 
@@ -100,7 +101,7 @@
         <div class="row gy-4 gy-md-0 align-items-md-center">
           <div class="col-xs-12 col-md-7 order-1 order-md-0">
             <div class="copyright text-center text-md-start">
-              &copy; 2024. All Rights Reserved.
+              &copy; 2024 DayStar Daycare. All Rights Reserved.
             </div>
             <div class="credits text-secondary text-center text-md-start mt-2 fs-8">
               Built by <a href="https://bootstrapbrain.com/" class="link-secondary text-decoration-none">Sarah Agemo</a> with <span class="text-primary">&#9829;</span>

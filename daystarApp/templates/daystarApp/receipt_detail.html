@@ -1,0 +1,78 @@
+{% extends 'daystarApp/base.html'%} 
+{% block content%}
+{% load static %}
+<br />
+
+<style>
+  html,body {
+    background-color: #D8D9DA;
+  }
+
+th,td {
+  border: 1px solid black;
+  text-align: center;
+}
+.card {
+  width: 90%;
+  height: 90%;
+  margin-left: 50px;
+}
+</style>
+
+
+<div class="container" >
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header" style="background-color: beige;">
+          <h4 class="text-center" style="font-weight: bolder;">RECEIPT DETAILS</h4><br>
+          <h5 class="lead" style="font-weight: bolder; text-align: center;">DayStar Daycare</h5>
+          <h5 class="lead" style="font-weight: bolder; text-align: center;">Parent's Name: {{receipt.parents_name | title}}</h5>
+        </div>
+        <div class="card-block" style="background-color: beige;">
+          <div class="table-responsive">
+            <table class="table table-sm">
+              <thead>
+                <tr>
+                  <td><strong>Baby's Name</strong></td>
+                  <td class="text-xs-center"><strong>Doll name</strong></td>
+                  <td class="text-xs-center"><strong>Quantity</strong></td>
+                  <td class="text-xs-right"><strong>Total Bill(Ugx)</strong></td>
+                  <td class="text-xs-right"><strong>Amount Paid(Ugx)</strong></td>
+                  <td class="text-xs-right"><strong>Total Amount Due(UgX)</strong>
+                    <td class="text-xs-right"><strong>Date</strong>
+                  </td>
+                </tr>
+                
+              </thead>
+              <tbody>
+                <tr>
+                  <td>{{ receipt.babe_name | title}}</td>
+                  <td class="text-xs-center">{{receipt.name }}</td>
+                  <td class="text-xs-center">{{receipt.doll_quantity }}</td>
+                  <td class="text-xs-center">UgX{{receipt.doll_price | title}}</td>
+                  <td class="text-xs-right">Ugx{{ receipt.amount_paid }}</td>
+                  <td class="text-xs-right">Ugx{{ receipt.amount_due }}</td>
+                  <td class="text-xs-right">{{ receipt.date }}</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div style="text-align: center; font-style: italic; font-weight: bolder; color: #6c85bd;">
+              <p> PAYMENT RECEIVED WITH THANKS!
+                "Every child matters"
+              </p>
+            </div>
+            <P style="text-align: center; font-style: italic; color: #6c85bd; font-weight: bolder;" >
+              ContactUs 
+              <a href="email.com">info@daystardaycare.2024.com</a>
+            </P>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+
+{% endblock %}

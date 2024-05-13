@@ -46,6 +46,7 @@
                 <th scope="col">Amount paid</th>
                 <th scope="col">Full amount</th>
                 <th scope="col">Balance</th>
+                <th scope="col">Action</th>
                 
             </tr>
         </thead>
@@ -59,6 +60,12 @@
                 <td>{{ baby.amount_paid }}</td>
                 <td>{{ baby.original_amount }}</td>
                 <td>{{ baby.baby_payment }}</td>
+                <td>
+                    <a href="/edit_baby_payment/{{ baby.baby_id }}" class="btn btn-primary">Edit</a>
+                    <a href="/baby_receipt/{{ baby.baby_id }}" class="btn btn-primary">Receipt</a>
+
+                    
+                </td>
                 
             </tr>
             {% endfor %}

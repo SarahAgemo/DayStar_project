@@ -12,10 +12,10 @@
     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   <title>Base</title>
   <link rel="stylesheet" href="{% static 'css/base.css' %}">
-  <link rel="stylesheet" href="{% static 'css/index.css' %}">
-  <link rel="stylesheet" href="{% static 'css/index2.css' %}">
+  <link rel="stylesheet" href="{% static 'css/home.css' %}">
+  <link rel="stylesheet" href="{% static 'css/home1.css' %}">
   
-  <script src="{% static 'index.js' %}"></script>  
+  <script src="{% static 'home.js' %}"></script>  
 </head>
 
 <body>
@@ -51,7 +51,7 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav" style="margin-left: 300px; padding: 10px;">
         <li class="nav-item active">
-          <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="{% url 'about_us' %}">About</a>
@@ -84,8 +84,8 @@
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown3" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">Procurement</a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="{% url 'dolls' %}">Dolls</a>
-            <a class="dropdown-item" href="{% url 'stock' %}">Stock</a>
+            <a class="dropdown-item" href="{% url 'doll_list' %}">Dolls</a>
+            <a class="dropdown-item" href="{% url 'stock_list' %}">Stock</a>
             
 
 
@@ -115,7 +115,7 @@
           <div class="col-md-3">
             <h3>Daycare</h3>
             <ul>
-              <li><a href="/">Home</a></li>
+              <li><a href="{% url 'home' %}">Home</a></li>
               <li><a href="{% url 'about_us' %}">About</a></li>
 
             </ul>
@@ -142,8 +142,8 @@
             <h3 style="margin-left:20px;">Procurement</h3>
             <ul>
       
-              <li><a class="dropdown-item" style="color:white;" href="{% url 'stock' %}">Stock</a></li>
-              <li><a class="dropdown-item" style="color:white;" href="{% url 'dolls' %}">Dolls</a></li>
+              <li><a class="dropdown-item" style="color:white;" href="{% url 'stock_list' %}">Stock</a></li>
+              <li><a class="dropdown-item" style="color:white;" href="{% url 'doll_list' %}">Dolls</a></li>
               
 
             </ul>

@@ -1,0 +1,218 @@
+{% extends 'daystarApp/base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+<body>
+    {% block content %}
+
+    <style>
+        #id_doll_name {
+            width: 50%;
+            border: 1px solid green;
+            border-radius: 10px;
+        }
+    </style>
+    
+    <form method="POST" action="">
+        {% csrf_token %}
+
+        {% comment %} <div class="col-span-2 p-4">
+            <img src="{% static "css/images/duck1.jpg" %}" style="width:400px; height=400px" alt="">
+        </div> {% endcomment %}
+
+        <div class="col-span-2 p-4">
+            <img src="https://picsum.photos/200" class="w-[150px] rounded-lg" alt="">
+        </div>
+
+        <div>
+            <label for="id_doll_id">Doll ID:</label>
+            {{ one_doll.doll_id }}
+            {{ one_doll.doll_id.errors }}
+        </div>
+
+        <div>
+            <label for="id_doll_type">Doll Type:</label>
+            {{ one_doll.doll_type }}
+            {{ one_doll.doll_type.errors }}
+        </div>
+
+        <div>
+            <label for="id_doll_name">Doll Name:</label>
+            {{ one_doll.doll_name }}
+            {{ one_doll.doll_name.errors }}
+        </div>
+
+        <div>
+            <label for="id_doll_price">Doll Price:</label>
+            {{ one_doll.doll_price }}
+            {{ one_doll.doll_price.errors }}
+        </div>
+
+        <div>
+            <label for="id_doll_description">Doll Description:</label>
+            {{ one_doll.doll_description }}
+            {{ one_doll.doll_description.errors }}
+        </div>
+
+        <div>
+            <label for="id_doll_quantity">Doll Quantity:</label>
+            {{ one_doll.doll_quantity }}
+            {{ one_doll.doll_quantity.errors }}
+        </div>
+
+        
+       
+    </form>
+    
+    </body>
+{% endblock %} 
+
+{% comment %} {% extends 'daystarApp/base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+<body>
+    {% block content %}
+
+    <style>
+        #id_doll_name {
+            width: 50%;
+            border: 1px solid green;
+            border-radius: 10px;
+        }
+    </style>
+    
+    <form method="POST" action="">
+        {% csrf_token %}
+
+        <div class="col-span-2 p-4">
+            {% if one_doll.doll_name == 'Duck' %}
+                <img src="{% static 'css/images/duck1.jpg' %}" style="width:400px; height=400px" alt="">
+            {% elif one_doll.doll_name == 'Puppy' %}
+                <img src="{% static 'css/images/puppy1.jpg' %}" style="width:400px; height=400px" alt="">
+            {% elif one_doll.doll_name == 'Car' %}
+                <img src="{% static 'css/images/car1.jpg' %}" style="width:400px; height=400px" alt="">
+            {% elif one_doll.doll_name == 'Baby' %}
+                <img src="{% static 'css/images/girl1.jpg' %}" style="width:400px; height=400px" alt="">
+            {% endif %}
+        </div>
+
+        <div>
+            <label for="id_doll_id">Doll ID:</label>
+            {{ one_doll.doll_id }}
+            {{ one_doll.doll_id.errors }}
+        </div>
+
+        <div>
+            <label for="id_doll_type">Doll Type:</label>
+            {{ one_doll.doll_type }}
+            {{ one_doll.doll_type.errors }}
+        </div>
+
+        <div>
+            <label for="id_doll_name">Doll Name:</label>
+            {{ one_doll.doll_name }}
+            {{ one_doll.doll_name.errors }}
+        </div>
+
+        <div>
+            <label for="id_doll_price">Doll Price:</label>
+            {{ one_doll.doll_price }}
+            {{ one_doll.doll_price.errors }}
+        </div>
+
+        <div>
+            <label for="id_doll_description">Doll Description:</label>
+            {{ one_doll.doll_description }}
+            {{ one_doll.doll_description.errors }}
+        </div>
+
+        <div>
+            <label for="id_doll_quantity">Doll Quantity:</label>
+            {{ one_doll.doll_quantity }}
+            {{ one_doll.doll_quantity.errors }}
+        </div>
+
+        <button type="submit" class="btn btn-primary">Edit doll</button>
+    </form>
+    
+    </body>
+{% endblock %} {% endcomment %}
+
+
+{% comment %} {% extends 'daystarApp/base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+<body>
+    {% block content %}
+
+    <style>
+        #id_doll_name {
+            width: 50%;
+            border: 1px solid green;
+            border-radius: 10px;
+        }
+    </style>
+    
+    <form method="POST" action="">
+        {% csrf_token %}
+
+        <div class="col-span-2 p-4">
+            {% if one_doll.doll_name == 'Duck' %}
+                <img src="{% static "css/images/duck1.jpg" %}" style="width:400px; height=400p" alt="">
+            {% elif one_doll.doll_name == 'Puppy' %}
+                <img src="{% static "css/images/puppy1.jpg" %}" style="width:400px; height=400p" alt="">
+            {% elif one_doll.doll_name == 'Car' %}
+                <img src="{% static "css/images/car1.jpg" %}" style="width:400px; height=400p" alt="">
+            {% elif one_doll.doll_name == 'Baby' %}
+                <img src="{% static "css/images/girl.jpg" %}" style="width:400px; height=400p" alt="">
+            {% endif %}
+        </div>
+
+        <div>
+            <label for="id_doll_id">Doll ID:</label>
+            {{ one_doll.doll_id }}
+            {{ one_doll.doll_id.errors }}
+        </div>
+
+        <div>
+            <label for="id_doll_type">Doll Type:</label>
+            {{ one_doll.doll_type }}
+            {{ one_doll.doll_type.errors }}
+        </div>
+
+        <div>
+            <label for="id_doll_name">Doll Name:</label>
+            {{ one_doll.doll_name }}
+            {{ one_doll.doll_name.errors }}
+        </div>
+
+        <div>
+            <label for="id_doll_price">Doll Price:</label>
+            {{ one_doll.doll_price }}
+            {{ one_doll.doll_price.errors }}
+        </div>
+
+        <div>
+            <label for="id_doll_description">Doll Description:</label>
+            {{ one_doll.doll_description }}
+            {{ one_doll.doll_description.errors }}
+        </div>
+
+        <div>
+            <label for="id_doll_quantity">Doll Quantity:</label>
+            {{ one_doll.doll_quantity }}
+            {{ one_doll.doll_quantity.errors }}
+        </div>
+
+        <button type="submit" class="btn btn-primary">Edit doll</button>
+    </form>
+    
+    </body>
+{% endblock %} {% endcomment %}
+
+
+
+
+

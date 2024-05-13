@@ -122,7 +122,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR,'static'),
+    os.path.join(BASE_DIR / 'static')
 ]
 
 # Default primary key field type
@@ -135,4 +135,4 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / "media"
 LOGIN_URL = '/sign_in/'
-LOGIN_REDIRECT_URL = '/index/'
+LOGIN_REDIRECT_URL = '/home/'

@@ -121,6 +121,8 @@ class BabyPayment(models.Model):
     amount_paid = models.IntegerField(default=0)
     original_amount = models.IntegerField(default=0)
     date = models.DateField(default=timezone.now)
+    parent_name = models.CharField(max_length=20)
+    amount_due = models.IntegerField(default=0)
 
     def __str__(self):
         return f"{self.name_of_baby.baby_name} Payment"
@@ -158,21 +160,56 @@ class Sitter_payment(models.Model):
 
 # dolls
 class Doll(models.Model):
-    doll_type = models.CharField( max_length=20, blank=True, null=True)
-    doll_name = models.CharField( max_length=20, blank=True, null=True)
+    doll_id = models.AutoField(primary_key=True)
+    doll_type = models.CharField(choices=[('birds', 'Birds'),('animals', 'Animals'),('vehicles','Vehicles'),('human','Human'),('other','Other')], max_length=20)
+    doll_name = models.CharField( max_length=20)
     doll_price = models.IntegerField( null=True, blank=True, default=0)
     doll_description = models.TextField( max_length=30, blank=True, null=True)
-    doll_image = models.ImageField(upload_to='doll_images', blank=True, null=True)
+    doll_quantity = models.IntegerField( null=True, blank=True, default=0)
+    # doll_image = models.ImageField(upload_to='doll_images', blank=True, null=True)
 
     def __str__(self):
         return self.doll_name
     
 class Doll_payment(models.Model):
-    doll_type = models.CharField( max_length=20, blank=True, null=True )
+    babe_name = models.ForeignKey(Baby, on_delete=models.CASCADE)
+    doll_type = models.CharField(choices=[('birds', 'Birds'),('animals', 'Animals'),('vehicles','Vehicles'),('human','Human'),('other','Other')], max_length=20)
     name = models.ForeignKey(Doll, on_delete=models.CASCADE)
     amount_paid = models.IntegerField(default=0)
-    doll_price = models.IntegerField( null=True, blank=True, default=0)    
+    doll_price = models.IntegerField( null=True, blank=True, default=0)
+    doll_quantity = models.IntegerField( null=True, blank=True, default=0) 
+    parents_name = models.CharField( max_length=20)
+    date = models.DateField(default=timezone.now)
+    amount_due = models.IntegerField(default=0)
+
     
 
     def __str__(self):
         return f"{self.name.doll_name} Payment"
+    
+    def doll_payment(self): 
+        d_payment = self.doll_price - self.amount_paid
+        return int(d_payment)
+    
+
+class Stock(models.Model):
+    stock_id = models.AutoField(primary_key=True)
+    stock_type = models.CharField(choices=[('milk', 'Milk'),('diapers', 'Diapers'),('fruits', 'Fruits'),('wipes','Wipes'),('other','Other')], max_length=200)    
+    stock_name = models.CharField(max_length=200)
+    stock_price = models.IntegerField(default=0)
+    stock_quantity = models.IntegerField(default=0)
+    stock_description = models.TextField( max_length=30, blank=True, null=True)
+    date_stocked = models.DateTimeField(default=timezone.now)
+
+    def __str__(self):
+        return self.stock_name
+    
+class Stock_issue(models.Model):
+    stock_type = models.CharField(choices=[('milk', 'Milk'),('diapers', 'Diapers'),('fruits', 'Fruits'),('wipes','Wipes')], max_length=200)    
+    name = models.ForeignKey(Stock, on_delete=models.CASCADE)
+    stock_quantity = models.IntegerField(default=0)
+    date = models.DateField(default=timezone.now)
+    comment = models.TextField(null=True, blank=True)
+
+    def __str__(self):
+        return f"{self.name.stock_name} Issue" 
