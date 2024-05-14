@@ -20,7 +20,7 @@
       <div style="flex: 1">
         <h4 class="card-text">Amount Due: UGX{{ baby.amount_due }}</h4>
 
-        {% comment %} <a href="{% url 'baby_receipt_detail'  %}"> {% endcomment %}
+        <a href="{% url 'baby_receipt_detail' baby.baby_id %}">
           <button class="btn btn-info">Print Final Receipt</button>
         </a>
 

@@ -298,15 +298,15 @@ def edit_baby_payment(request, id):
 # Baby receipt
 
 
-def baby_receipt_detail(request, id):
-    receipt_detail = BabyPayment.objects.get(id=id)
-    return render(request, 'daystarApp/baby_receipt_detail.html', {'receipt_detail': receipt_detail})
 
 
 def baby_receipt(request):
     babe_receipt = BabyPayment.objects.all().order_by('-baby_id')
     return render(request,'daystarApp/baby_receipt.html',{'babe_receipt':babe_receipt})
 
+def baby_receipt_detail(request, id):
+    receipt_detail = BabyPayment.objects.get(baby_id=id)
+    return render(request, 'daystarApp/baby_receipt_detail.html', {'receipt_detail': receipt_detail})
 
 
 

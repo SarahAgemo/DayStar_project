@@ -69,7 +69,7 @@ urlpatterns = [
     path('doll_receipt', views.doll_receipt, name='doll_receipt'),
 
     #receipt detail
-    path('receipt_detail/<int:id>/', views.receipt_detail, name='receipt_detail'),
+    path('receipt_detail/<int:receipt_id>/', views.receipt_detail, name='receipt_detail'),
 
 
 
