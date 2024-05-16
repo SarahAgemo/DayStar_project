@@ -26,7 +26,10 @@ footer {
   footer a:hover {
     color: #ff7424;
     text-decoration: none;
+
   }
+
+   
   
   footer .social-icons li {
     /* display: inline-block; Display social icons side-by-side */
@@ -38,22 +41,7 @@ footer {
     margin-top: 20px; /* Space between content and copyright */
   }
   
-  footer .back-to-top {
-    position: fixed; /* Fix back-to-top button to bottom */
-    bottom: 40px;
-    right: 20px;
-    background-color: #5B7C84;
-    border: 10px ;
-    border-radius: 20px;
-    color: #fff; /* White button text */
-    width: 100px;
-    text-align: center;
-    text-decoration: none; /* Remove underline on button */
-    margin-right: 50px; 
-    padding: 6px; ;      
-  }
-
-  
+ 
   
     .navcontainer {
       position: fixed;

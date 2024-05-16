@@ -14,6 +14,7 @@
   <link rel="stylesheet" href="{% static 'css/base.css' %}">
   <link rel="stylesheet" href="{% static 'css/home.css' %}">
   <link rel="stylesheet" href="{% static 'css/home1.css' %}">
+  <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
   
   <script src="{% static 'home.js' %}"></script>  
 </head>
@@ -96,8 +97,8 @@
 
 
     </div>
-    <a href="" class="split" style="margin-right: 50px; padding: 6px; border: 10px ; border-radius: 20px; width: 100px;  
-        text-align: center; background-color: #ff7424; color: white;  text-decoration: none;">Log out</a>
+    <a href=" {% url "index" %} " class="split" style="margin-right: 50px; padding: 6px; border: 10px ; border-radius: 20px; width: 100px;  
+        text-align: center;  background:#3f0097; color: white;  text-decoration: none;">Log out</a>
 
   </nav> 
 
@@ -153,7 +154,7 @@
       <div class="copyright">
         <p>&copy; 2024 DayStar daycare. All rights reserved.</p>
       </div>
-      <a href="#" class="back-to-top">Back to Top</a>
+      {% comment %} <a href="#" class="back-to-top" >Back to Top</a> {% endcomment %}
     </footer>
 
 

@@ -26,12 +26,12 @@ button {
   
 }
 
-.tip {
+.tip{
   font-size: 30px;
   margin: 40px auto 50px;
   text-align: center;
-  color: #5B7C84;
-  font-weight: 700;
+  
+  font-weight: 70px;
 }
 
 .cont {

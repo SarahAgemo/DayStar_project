@@ -10,10 +10,7 @@ class Signin(ModelForm):
         model = Sign_in
         fields = '__all__'
 
-class Signup(ModelForm):
-    class Meta:
-        model = Sign_up
-        fields = '__all__'
+
 
 
 

@@ -1,4 +1,138 @@
 {% extends 'daystarApp/base.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+    /* Table Styles */
+    .table-container {
+        max-width: 100%;
+        overflow-x: auto;
+    }
+
+    .table-bordered th,
+    .table-bordered td {
+        border: 1px solid #dee2e6;
+    }
+
+    .table-hover tbody tr:hover {
+        background-color: rgba(0, 0, 0, 0.075);
+    }
+
+    /* Container Styles */
+    .box-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 20px;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Table Header Styles */
+    .table-head {
+        background: #3f0097;
+        color: white;
+        font-weight: bold;
+    }
+
+    .table-head th {
+        padding: 10px;
+        text-align: center;
+    }
+
+    /* Responsive Styles */
+    @media screen and (max-width: 768px) {
+        .box-container {
+            flex-direction: column;
+        }
+    }
+
+    @media screen and (max-width: 576px) {
+        .table-head th {
+            font-size: 12px;
+            padding: 8px;
+        }
+    }
+
+    #reg{
+        color: #3f0097;
+        font-size: 30px;
+        margin: 40px auto 50px;
+        text-align: center;
+        
+        font-weight: 70px;
+    }
+
+    #add{
+        padding: 15px;
+        margin-top: 30px;
+        margin-left: 50px;
+        margin-bottom: 10px;
+        background:#3f0097;
+        width:150px;
+        border-radius:30px;
+        font-weight: bold;
+        margin-left:100px;
+    }
+</style>
+
+<h4 class="mb-3" id="reg">Baby registration on arrival</h4>
+<a href="/baby_add" class="btn btn-primary mb-3" id="add" >Add new baby</a>
+
+<div class="container2">
+    <div class="table-container">
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover">
+                <thead class="table-head">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Gender</th>
+                        <th scope="col">Date of birth</th>
+                        <th scope="col">Location</th>
+                        <th scope="col">Parent's name</th>
+                        <th scope="col">Period of stay</th>
+                        <th scope="col">Registration date</th>
+                        <th scope="col">Baby bringer</th>
+                        <th scope="col">Time in</th>
+                        <th scope="col">Assigned to</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for baby in baby_form %}
+                    <tr>
+                        <td>{{ baby.baby_id }}</td>
+                        <td>{{ baby.baby_name }}</td>
+                        <td>{{ baby.baby_gender }}</td>
+                        <td>{{ baby.date_of_birth }}</td>
+                        <td>{{ baby.baby_location }}</td>
+                        <td>{{ baby.parents_name }}</td>
+                        <td>{{ baby.period_of_stay }}</td>
+                        <td>{{ baby.registration_date }}</td>
+                        <td>{{ baby.baby_bringer }}</td>
+                        <td>{{ baby.time_in }}</td>
+                        <td>{{ baby.Assigned_to }}</td>
+                        <td>
+                            <a href="{% url 'baby_view' id=baby.baby_id %}" class="btn btn-primary" style="padding:8px; width:60px;">View</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div><br><br>
+
+{% endblock %}
+
+
+
+
+{% comment %} {% extends 'daystarApp/base.html' %}
 
 
 {% load static %}
@@ -82,4 +216,4 @@
 
 {% endblock %}
 
-
+ {% endcomment %}

@@ -3,6 +3,93 @@
 {% load static %}
 
 {% block content %}
+
+<style>
+    .baby-form {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 10px;
+        max-width: 50%;
+        margin: auto;
+        padding: 15px;
+        background-color: white;
+        border-radius: 0px;
+        border: none;
+    }
+
+    .baby-form label {
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+
+    .baby-form input[type="text"],
+    .baby-form select {
+        width: 100%;
+        padding: 8px;
+        border: none;
+        border-bottom: 1px solid black;
+        box-sizing: border-box;
+    }
+
+    .baby-form button[type="submit"] {
+        margin-top: 10px;
+        {% comment %} background-color: blue; {% endcomment %}
+        color: white;
+        border: none;
+        {% comment %} border-radius: 5px; {% endcomment %}
+        font-size: 16px;
+        cursor: pointer;
+        padding: 8px 20px;
+        padding: 15px;
+        {% comment %} margin-top: 150px; {% endcomment %}
+        margin-left: 50px;
+        margin-bottom: 20px;
+        background:#3f0097;
+        width:400px;
+        border-radius:30px;
+        font-weight: bold;
+    }
+
+    h4 {
+        text-align: center;
+        font-family: sans-serif;
+        color: #0C356A;
+        margin-bottom: 20px;
+    }
+
+    .edit{
+        
+       color: #3f0097;
+       font-size: 30px;
+       margin: 40px auto 50px;
+       text-align: center;
+  
+     font-weight: 70px;
+          
+    }
+</style>
+
+
+
+<h4 class="edit">Edit baby details</h4>
+<div class="container">
+    <form method="POST" class="baby-form">
+
+        {% csrf_token %}
+        {{ form | crispy }}
+
+        <button type="submit" class="btn btn-primary">Update</button>
+    </form>
+</div><br><br>
+{% endblock %}
+
+
+
+{% comment %} {% extends 'daystarApp/base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block content %}
 <style>
     .baby-form {
         display: grid;
@@ -20,7 +107,6 @@ border: solid black;
     padding-right: 15px;
     background-color:white;
 
-    
         
        
     }
@@ -33,10 +119,7 @@ border: solid black;
     }
 
   
-    
-    
-    
-    
+
 
     label {
         font-weight: bold;
@@ -75,4 +158,4 @@ border: solid black;
     
 
 
-{%endblock %}
+{%endblock %} {% endcomment %}

@@ -4,6 +4,7 @@ import re
 from django.core.exceptions import ValidationError
 
 
+
 # Create your models here.
  
 
@@ -20,42 +21,14 @@ def NIN(value):
 
    # Authentication 
 class Sign_in(models.Model):
-     email = models.EmailField(max_length=30, blank=True, null=True)
-     password = models.CharField(max_length=20, blank=True, null=True)
+     email = models.EmailField(max_length=30, blank=False, null=True)
+     password = models.CharField(max_length=20, blank=False, null=True)
 
      def __str__(self):
          return self.email
 
-class Sign_up(models.Model):
-    name = models.CharField( max_length=20, blank=True, null=True)
-    email = models.EmailField(max_length=30, blank=True, null=True)
-    phone = models.IntegerField( null=True, blank=True)
-    password = models.CharField( max_length=20, blank=True, null=True)
-    repeat_password = models.CharField( max_length=20, blank=True, null=True)
-   
-    def __str__(self):
-        return self.name
 
-class Forgot_pass(models.Model):
-    email = models.EmailField(max_length=30, blank=True, null=True)
-   
 
-    def __str__(self):
-        return self.email
-    
-class Reset_pass(models.Model):
-    otp = models.IntegerField(null=True, blank=True)    
-    
-    def __int__(self):
-        return self.otp
-    
-class New_pass(models.Model):
-    new_password = models.CharField(max_length=20, blank=True, null=True)
-    confirm_password = models.CharField(max_length=20, blank=True, null=True)
-
-    def __str__(self):
-        return self.confirm_password
-    
    
 
 #sitters

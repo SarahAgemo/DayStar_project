@@ -4,8 +4,13 @@ from . import views
 
 urlpatterns = [
     #index
+    
+    #authentication
     path('', views.index, name='index'),
 
+    
+    #logout
+    #  path('logout/', views.logout, name='logout'),
 
     #homepage
     path('home/', views.home, name='home'),
@@ -126,8 +131,7 @@ urlpatterns = [
 
   
     
-    #authentication
-    path('sign_in/', views.sign_in, name='sign_in'),
+   
     
     # path('forgot_pass/', views.forgot_pass, name='forgot_pass'),
     # path('reset_pass/', views.reset_pass, name='reset_pass'),

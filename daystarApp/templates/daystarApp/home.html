@@ -4,7 +4,24 @@
 {% block content %}
 
 <body>
-  
+  <style>
+
+      .table-head{
+        background:#3f0097;
+        
+      }
+
+      .no{
+        color:white;
+       
+        font-weight:bold;
+        margin-left:10px;
+        margin-top:10px;
+      }
+
+    
+      {% comment %} #3f0097 {% endcomment %}
+  </style>
 
 
     <div class="box-container" style="display: flex; flex-direction: row;">
@@ -16,8 +33,7 @@
                     <h2 class="topic">Total Babies</h2>
                 </div>
 
-                <img src="https://media.geeksforgeeks.org/wp-content/uploads/20221210184645/Untitled-design-(31).png"
-                    alt="Views">
+                <img src=" {% static "css/images/baby_icon2.png" %}" alt="Views">
             </div><br><br>
 
             <div class="box box2" style="margin-right:5px; margin-top:20px;">
@@ -27,7 +43,7 @@
 
                 </div>
 
-                <img src="https://media.geeksforgeeks.org/wp-content/uploads/20221210185030/14.png" alt="likes">
+                <img src=" {% static "css/images/sitter_icon2.png" %}" alt="Views">
             </div>
 
         {% comment %} </div> {% endcomment %}
@@ -40,8 +56,7 @@
                     <h2 class="topic">Total dolls</h2>
                 </div>
 
-                <img src="https://media.geeksforgeeks.org/wp-content/uploads/20221210184645/Untitled-design-(32).png"
-                    alt="comments">
+                <img src=" {% static "css/images/doll_icon2.png" %}" alt="Views">
             </div><br><br>
 
             <div class="box box4" style="background-color:#5500CB; margin-right:20px; margin-top:20px;">
@@ -50,7 +65,7 @@
                     <h2 class="topic">Total stock</h2>
                 </div>
 
-                <img src="https://media.geeksforgeeks.org/wp-content/uploads/20221210185029/13.png" alt="published">
+                <img src=" {% static "css/images/stock_icon1.png" %}" alt="Views">
             </div>
         {% comment %} </div> {% endcomment %}
 
@@ -58,21 +73,21 @@
                     <div class="container2">
                         <div class="report-header">
                             <h1 class="recent-Articles">Recent Babies</h1>
-                            <a href=" {% url "beb_reg_form" %}" ><button class="view"> View All</button></a>
+                            <a href=" {% url "beb_reg_form" %}" ><button class="view" style="padding:8px; width:80px;"> View All</button></a>
                         </div>
                     
                     
                         <div class="table_container">
                             <div class="table-responsive">
                                 <table class="table table-bordered table-hover">
-                                    <thead class="table-dark">
-                                        <tr class="table-dark">
-                                            <th scope="col">#</th>
-                                            <th scope="col">Name</th>
-                                            <th scope="col">Gender</th>
-                                            <th scope="col">Date of birth</th>
-                                            <th scope="col">Location</th>
-                                            <th scope="col">Action</th>
+                                    <thead class="table-head" class="thead">
+                                        <tr class="table">
+                                            <th scope="col" class="no">#</th>
+                                            <th scope="col" class="no">Name</th>
+                                            <th scope="col" class="no">Gender</th>
+                                            <th scope="col" class="no">Date of birth</th>
+                                            <th scope="col" class="no">Location</th>
+                                            <th scope="col" class="no">Action</th>
                                                         
                                         </tr>
                                     </thead>
@@ -86,7 +101,7 @@
                                             <td>{{ baby.baby_location }}</td>
                                                     
                                             <td>   
-                                                <a href="{% url "baby_view" id=baby.baby_id %}" class="btn btn-primary">View</a>
+                                                <a href="{% url "baby_view" id=baby.baby_id %}" class="btn btn-primary" style="padding:8px; width:80px;">View</a>
                                             </td>
                                         </tr>
                                         {% endfor %}
@@ -101,7 +116,7 @@
 <div class="container2">
     <div class="report-header">
         <h1 class="recent-Articles">Recent Sitters </h1>
-        <a href=" {% url "sit_reg_form" %}" ><button class="view">View All</button></a>
+        <a href=" {% url "sit_reg_form" %}" ><button class="view" style="padding:8px; width:80px;">View All</button></a>
     </div>
 
         
@@ -109,14 +124,14 @@
     <div class="table_container">
         <div class="table-responsive">
             <table class="table table-bordered table-hover">
-                <thead class="table-dark">
-                    <tr class="table-dark">
-                        <th scope="col">#</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Gender</th>
-                        <th scope="col">Location</th>
-                        <th scope="col">Date of Birth</th>
-                        <th scope="col">Action</th>
+                <thead class="table-head">
+                    <tr class="table">
+                        <th scope="col" class="no">#</th>
+                        <th scope="col" class="no">Name</th>
+                        <th scope="col" class="no">Gender</th>
+                        <th scope="col" class="no">Location</th>
+                        <th scope="col" class="no">Date of Birth</th>
+                        <th scope="col" class="no">Action</th>
                         
                     </tr>
                 </thead>
@@ -130,7 +145,7 @@
                         <td>{{ sitter.date_of_birth }}</td>
                        
                         <td>   
-                            <a href="{% url 'sit_view' id=sitter.id %}" class="btn btn-primary">View</a>
+                            <a href="{% url 'sit_view' id=sitter.id %}" class="btn btn-primary" style="padding:8px; width:80px;">View</a>
                         </td>
                     </tr>
                     {% endfor %}

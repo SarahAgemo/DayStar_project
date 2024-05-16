@@ -1,58 +1,114 @@
 {% extends 'daystarApp/base.html' %}
 {% load static %}
-{% block content  %}
+{% block content %}
 <style>
-
-    h3{margin-left: 490px;
-    font-family: sans-serif;
-    color:#0C356A;
+    /* Center the heading */
+    h2 {
+        text-align: center;
+        font-family: sans-serif;
+        color: #0C356A;
     }
-    
-</style>
-<h3>Baby details </h3>
-    <table class="table table-bordered">
-        <thead class="table-dark">
-            <tr class="table-dark">
-                <th scope="col">#</th>
-                <th scope="col">Name</th>
-                <th scope="col">Gender</th>
-                <th scope="col">Date of birth</th>
-                <th scope="col">Location</th>
-                <th scope="col">Parent's name</th>
-                <th scope="col">Period of stay</th>
-                <th scope="col">Registration date</th>
-                <th scope="col">Baby bringer</th>
-                <th scope="col">Time in</th>
-                <th scope="col">Assigned to;</th>
-                <th scope=>Action</th>
-            </tr>
-        </thead>
-        <tbody>
-           
-            <tr >
-                <td>{{ one_baby.baby_id }}</td>
-                <td>{{ one_baby.baby_name }}</td>
-                <td>{{ one_baby.baby_gender }}</td>
-                <td>{{ one_baby.date_of_birth }}</td>
-                <td>{{ one_baby.baby_location }}</td>
-                <td>{{ one_baby.parents_name }}</td>
-                <td>{{ one_baby.period_of_stay }}</td>
-                <td>{{ one_baby.registration_date }}</td>
-                <td>{{ one_baby.baby_bringer }}</td>
-                <td>{{ one_baby.time_in }}</td>
-                <td>{{ one_baby.Assigned_to }}</td>
-                
-                <td>
-                    <div>
-                        <a href="{% url 'baby_edit' id=one_baby.baby_id %}" class="btn btn-primary mb-3">Edit babies</a>
 
-                    </div>
-                </td>
-            </tr>
-            
-        </tbody>
-    </table>
+    /* Style for the form container */
+    .form-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* Style for form fields */
+    .form-field {
+        margin-bottom: 10px;
+        text-align: left;
+    }
+
+    /* Style for buttons */
+    .btn {
+        margin: 10px;
+        padding: 10px 20px;
+        width: 150px;
+        text-align: center;
+        
+    }
+</style>
+
+<h2>Baby details</h2>
+
+<div class="form-container">
+    <form method="POST" action="">
+        {% csrf_token %}
+
+        <div class="form-field">
+            <label for="id_baby_id">BABY ID:</label>
+            {{ one_baby.baby_id }}
+            {{ one_baby.baby_id.errors }}
+        </div>
+
+        <div>
+            <label for="id_baby_name">BABY NAME:</label>
+            {{ one_baby.baby_name }}
+            {{ one_baby.baby_name.errors }}
+        </div>
+    
+        <div>
+            <label for="id_baby_gender">GENDER:</label>
+            {{ one_baby.baby_gender }}
+            {{ one_baby.baby_gender.errors }}
+        </div>
+    
+        <div>
+            <label for="id_date_of_birth">DATE OF BIRTH:</label>
+            {{ one_baby.date_of_birth }}
+            {{ one_baby.date_of_birth.errors }}
+        </div>
+    
+        <div>
+            <label for="id_baby_location">LOCATION:</label>
+            {{ one_baby.baby_location }}
+            {{ one_baby.baby_location.errors }}
+        </div>
+    
+        <div>
+            <label for="id_parents_name ">PARENT'S NAME:</label>
+            {{ one_baby.parents_name  }}
+            {{ one_baby.parents_name.errors }}
+        </div>
+    
+        <div>
+            <label for="id_period_of_stay">PERIOD OF STAY:</label>
+            {{ one_baby.period_of_stay }}
+            {{ one_baby.period_of_stay.errors }}
+        </div>
+    
+        <div>
+            <label for="id_registration_date">REGISTRATION DATE:</label>
+            {{ one_baby.registration_date }}
+            {{ one_baby.registration_date.errors }}
+        </div>
+    
+        <div>
+            <label for="id_baby_bringer">BABY BRINGER:</label>
+            {{ one_baby.baby_bringer }}
+            {{ one_baby.baby_bringer.errors }}
+        </div>
+    
+        <div>
+            <label for="id_time_in">TIME IN:</label>
+            {{ one_baby.time_in }}
+            {{ one_baby.time_in.errors }}
+        </div>
+    
+        <div>
+            <label for="id_Assigned_to">ASSIGNED TO:</label>
+            {{ one_baby.Assigned_to }}
+            {{ one_baby.Assigned_to.errors }}
+        </div>
+
+        <div>
+            <a href="{% url 'baby_edit' id=one_baby.baby_id %}" class="btn btn-primary">Edit babies</a>
+            <a href="/beb_reg_form" class="btn btn-primary" style="background-color: #5500cb;">Go back</a>
+        </div>
+    </form>
 </div>
-<a href="/beb_reg_form"><button class="btn btn-primary">Go back</button></a>
-</body>
+
 {% endblock %}

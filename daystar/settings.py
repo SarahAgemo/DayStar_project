@@ -134,5 +134,7 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 # Media files (uploaded user files)
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / "media"
-LOGIN_URL = '/login/'
+LOGIN_URL = '/'
 LOGIN_REDIRECT_URL = '/home/'
+LOGOUT_URL = '/logout/'
+LOGOUT_REDIRECT_URL = '/'

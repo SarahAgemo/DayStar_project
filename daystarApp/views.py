@@ -4,7 +4,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from .models import *
 from . forms import *
 from django.template import loader
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from . filters import *
 from django.contrib.auth.decorators import login_required
@@ -17,20 +17,8 @@ from django.http import HttpResponseBadRequest
 
 # Create your views here.
 
-# authentication
-def index(request):
-    form =None
-    if request.method == 'POST':
-        form = Signup(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('sign_in')
-        else:
-            form = Signup()
-    return render(request, 'daystarApp/index.html', {'form': form})
 
-#sign_in
-def sign_in(request):
+def index(request):
     if request.method == 'POST':
         signinform = Signin(request.POST)
         if signinform.is_valid():
@@ -43,10 +31,10 @@ def sign_in(request):
             else:
                 # Handle invalid credentials here
                 error_message = "Invalid email or password."
-                return render(request, 'daystarApp/sign_in.html', {'signinform': signinform, 'error_message': error_message})
+                return render(request, 'daystarApp/index.html', {'signinform': signinform, 'error_message': error_message})
     else:
         signinform = Signin()
-    return render(request, 'daystarApp/sign_in.html', {'signinform': signinform})
+    return render(request, 'daystarApp/index.html', {'signinform': signinform})
 
 
 def home(request):
@@ -54,6 +42,11 @@ def home(request):
 
 def about_us(request):
     return render(request, 'daystarApp/about_us.html')
+
+def logout(request):
+    logout(request)
+    return redirect('index')
+    
 
 
 # Sitters
