@@ -26,7 +26,7 @@
         <h4 class="card-text">Amount Due : UGX{{ doll.amount_due }}</h4>
 
        
-        <a href="{% url 'receipt_detail' doll.receipt_id %}">
+        <a href="{% url 'receipt_detail' doll.id %}">
           <input type="submit" value="Print Final Receipt" class="btn btn-info" type="button"/>
         </a>
 

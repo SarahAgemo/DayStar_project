@@ -1,15 +1,7 @@
 from django.forms import ModelForm
 from .models import *
 from django.forms import forms
-
-
-
-
-class Signin(ModelForm):
-    class Meta:
-        model = Sign_in
-        fields = '__all__'
-
+from django import forms
 
 
 

@@ -85,69 +85,35 @@
   </nav>
 <hr>
     <p class="tip" id="admin">Hello, Admin!</p>
-    <div class="container" style=" display:flex; flex-direction: row; ">
+    <div class="container" style="display:flex; flex-direction: row;">
 
-
-
-        <div class="cont" style="flex: 1;">
+      <div class="cont" style="flex: 1;">
           <h2 style="margin-left: 160px; margin-top:20px;">Welcome back,</h2>
-
-
-            <form method="POST" action=" {% url 'home' %} ">
-                {% csrf_token %}
-                {{ signinform | crispy }}
-
-                <button type="submit" class="btn btn-primary" style="padding: 15px;
-                    margin-top: 150px;
-                    margin-left: 50px;
-                    margin-bottom: 20px;
-                    background:#3f0097;
-                    width:400px;
-                    border-radius:30px;
-                    font-weight: bold;">Sign in</button>
-
-                {% comment %} {% comment %} <div class="form sign-in">
-                    <h2 style="margin-left: 140px;">Welcome back,</h2>
-                    <label>
-                        <span>Email</span>
-                        <input type="email" name="email" placeholder="name@example.com" required />
-                    </label>
-                    <label>
-                        <span>Password</span>
-                        <input type="password" name="password" placeholder="1@5$qNo1" required />
-                    </label><br><br><br> 
-                    {% comment %} <p class="forgot-pass">Forgot password?</p><br><br><br> {% endcomment %}
-                    {% comment %} <button type="submit" class="btn btn-primary" style="padding: 15px;
-                    margin-top: 40px;
-                    margin-bottom: 20px;
-                    background: #5B7C84;
-                    width:400px;
-                    font-weight: bold;">Sign in</button>
-
-                </div> {% endcomment %}  
-
-
-            </form>
-
-        </div>
-
-
-        <div class="cont" id="contain" style="flex: 1;">
-            <div class="form sign-in">
-                <h2 style="margin-left: 120px; color: white;"></h2><br><br><br>
-                <p style="margin-left: 120px; font-size: larger;">
-                    <b> </b>
-                </p><br><br><br><br><br><br><br><br><br><br>
-
-               
-
-            </div>
-
-        </div>
-
-
-    </div>
-
+  
+          <form method="POST" action="{% url 'index' %}">
+              {% csrf_token %} 
+              {{ form }}
+              <button type="submit" class="btn btn-primary" style="padding: 15px;
+                      margin-top: 150px;
+                      margin-left: 50px;
+                      margin-bottom: 20px;
+                      background:#3f0097;
+                      width:400px;
+                      border-radius:30px;
+                      font-weight: bold;">Sign in</button>
+          </form>
+      </div>
+  
+      <div class="cont" id="contain" style="flex: 1;">
+          <div class="form sign-in">
+              <h2 style="margin-left: 120px; color: white;"></h2><br><br><br>
+              <p style="margin-left: 120px; font-size: larger;">
+                  <b> </b>
+              </p><br><br><br><br><br><br><br><br><br><br>
+          </div>
+      </div>
+  
+  </div>
      
      <!-- Footer 2 - Bootstrap Brain Component -->
 <footer class="footer">

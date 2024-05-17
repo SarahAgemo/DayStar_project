@@ -3,7 +3,7 @@ from .models import *
 
 # Register your models here.
 
-admin.site.register(Sign_in)
+
 admin.site.register(Doll)
 
 
