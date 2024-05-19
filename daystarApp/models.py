@@ -35,9 +35,9 @@ class Sitterform(models.Model):
     next_of_kin=models.CharField( max_length=200)
     national_identification_number=models.CharField(max_length=200, validators=[NIN])
     recommenders_name=models.CharField(max_length=200)
-    religon=models.CharField(max_length=200,null=True, blank=True)
+    religion=models.CharField(max_length=200)
     level_of_education=models.CharField( choices=[('degree','Degree'),('diploma','Diploma'),('highschool certificate','Highschool certificate'),('others','Others')],max_length=200)
-    sitter_number=models.IntegerField(default=0)
+    
     contacts=models.CharField(max_length=200, validators=[contacts]) 
     date=models.DateField()
     def __str__(self):
@@ -45,7 +45,7 @@ class Sitterform(models.Model):
 
 class Sitter_arrival(models.Model):
     sitter_name=models.ForeignKey(Sitterform, on_delete=models.CASCADE) 
-    sitter_number=models.IntegerField(default=0)
+   
     date_of_arrival=models.DateField(default=timezone.now)   
     timein=models.TimeField ()
     Attendancestatus=models.CharField(choices=[('On-duty', 'On-duty')], max_length=100)
@@ -54,7 +54,7 @@ class Sitter_arrival(models.Model):
     
 class Sitter_departure(models.Model):
     sitter_name=models.ForeignKey(Sitter_arrival, on_delete=models.CASCADE) 
-    sitter_number=models.IntegerField(default=0)
+   
     date_of_departure=models.DateField(default=timezone.now)   
     timeout=models.TimeField ()
     Attendancestatus=models.CharField(choices=[('offduty', 'offduty')], max_length=100)

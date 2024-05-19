@@ -1,73 +1,76 @@
 {% extends 'daystarApp/base.html' %}
-
-
 {% load static %}
 
 {% block content%}
 
 <style>
-    
-    
-    .table-responsive {
-        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); 
-    }
-    h4{margin-left:490px;
-    margin-top:5px ;}
-
+    /* Add some styling for the container and table */
     .table-container {
         box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
         overflow-x: auto; /* Ensure horizontal scroll when needed */
         max-width: 100%; /* Ensure the table container doesn't overflow its parent */
+        margin: 20px 20px; /* Center the container and add some spacing */
+        padding: 20px; /* Add padding inside the container */
+        background-color:white;
+        border-radius: 20px;
+        
     }
+    
     .table-responsive {
         overflow-x: auto; /* Ensure horizontal scroll when needed */
     }
+    
     h4 {
         margin-left: 490px;
         margin-top: 5px;
-        color:#0C356A;
+        color: #0C356A;
     }
-        
+
+    .table thead {
+        background-color: #3f0097; /* Set table head background color to purple */
+        color: white; /* Ensure the text color is white for contrast */
+    }
 </style>
+
 </head>
 <body>
-<h4 class="mb-3">Sitter arrival details</h4>
-<a href="/sit_adds" class="btn btn-primary mb-3">Add new sitter</a>
 
-<div class="table_container">
-<div class="table-responsive">
-    <table class="table table-bordered table-hover">
-        <thead class="table-dark">
-            <tr class="table-dark">
-                <th scope="col">#</th>
-                <th scope="col">Name</th>
-                <th scope="col">Sitter's Number</th>
-                <th scope="col">Date</th>
-                <th scope="col">Time in</th>
-                <th scope="col">Attendance status</th>
-                <th scope=>Action</th>
-               
-            </tr>
-        </thead>
-        <tbody>
-            {% for sitter in sit_arrive %}
-            <tr style="background-color: white;">
-                <td>{{ sitter.id }}</td>
-                <td>{{ sitter.sitter_name }}</td>
-                <td>{{ sitter.sitter_number }}</td>
-                <td>{{ sitter.date_of_arrival }}</td>
-                <td>{{ sitter.timein }}</td>
-                <td>{{ sitter.Attendancestatus }}</td>
-                <td>   
-                    <a href="{% url 'sit_views' id=sitter.id %}" class="btn btn-primary">View</a>
-                </td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+<div class="table-container">
+    {% comment %} <h4 class="mb-3">Sitter arrival details</h4>
+    <a href="/sit_adds" class="btn btn-primary mb-3" >Add sitter arrival</a> {% endcomment %}
+    <div class="report-header">
+        <h1 class="recent-Articles">Sitter arrival details</h1>
+        <a href="/sit_adds" ><button class="view" style="padding:8px; width:100px;">Add sitter</button></a>
+    </div>
 
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Time in</th>
+                    <th scope="col">Attendance status</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for sitter in sit_arrive %}
+                <tr style="background-color: white;">
+                    <td>SOO{{ sitter.id }}</td>
+                    <td>{{ sitter.sitter_name }}</td>
+                    <td>{{ sitter.date_of_arrival }}</td>
+                    <td>{{ sitter.timein }}</td>
+                    <td>{{ sitter.Attendancestatus }}</td>
+                    <td>
+                        <a href="{% url 'sit_views' id=sitter.id %}" class="btn btn-primary">View</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 </div>
-</div>
-
 
 {% endblock %}

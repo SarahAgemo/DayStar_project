@@ -1,60 +1,113 @@
 {% extends 'daystarApp/base.html' %}
 {% load static %}
-{% block content  %}
+{% block content %}
 <style>
-
-    h3{margin-left: 490px;
-    font-family: sans-serif;
-    color:#0C356A;
+    /* Center the heading */
+    h4#sit {
+        font-family: sans-serif;
+        color: #5500cb;
+        text-align: center;
+        font-size: 30px; 
+        font-weight: 600; 
+        margin: 20px 0;
     }
-    
-</style>
-<h3>Sitter information </h3>
-    <table class="table table-bordered">
-        <thead class="table-dark">
-            <tr class=>
-               
-                <th scope="col">#</th>
-                <th scope="col">Name</th>
-                <th scope="col">Gender</th>
-                <th scope="col">Location</th>
-                <th scope="col">Date of Birth</th>
-                <th scope="col">Next of Kin</th>
-                <th scope="col">NIN</th>
-                <th scope="col">Recommender's Name</th>
-                <th scope="col">Religion</th>
-                <th scope="col">Level of Education</th>
-                <th scope="col">Sitter's Number</th>
-                <th scope="col">Contacts</th>
-                <th scope=>Action</th>
-            </tr>
-        </thead>
-        <tbody>
-           
-            <tr >
-                <td> {{ one_sitter.id }}</td>
-               <td>{{one_sitter.name}}</td>
-                <td>{{one_sitter.gender}}</td>
-                <td>{{one_sitter.location}}</td>
-                <td>{{one_sitter.date_of_birth}}</td>
-                <td>{{one_sitter.next_of_kin}}</td>
-                <td>{{one_sitter.national_identification_number}}</td>
-                <td>{{one_sitter.recommenders_name}}</td>
-                <td>{{one_sitter.religon}}</td>
-                <td>{{one_sitter.level_of_education}}</td>
-                <td>{{one_sitter.sitter_number}}</td>
-                <td>{{ one_sitter.contacts}}</td>
-                <td>
-                    <div>
-                        <a href="{% url 'sit_edit' id=one_sitter.id %}" class="btn btn-primary mb-3">Edit sitters</a>
 
-                    </div>
-                </td>
-            </tr>
-            
-        </tbody>
-    </table>
-</div>
-<a href="/sit_reg_form"><button class="btn btn-primary">Go back</button></a>
-</body>
+    /* Style for the form container */
+    .form-container {
+        max-width: 600px; /* Adjust max-width to fit contents */
+        margin: 0 auto; /* Center the container */
+        padding: 20px; /* Add padding for spacing */
+        border: 1px solid #ccc; /* Add border */
+        border-radius: 8px; /* Optional: add rounded corners */
+        background-color: white; /* Add white background */
+        text-align: center; /* Center-align content */
+    }
+
+    /* Style for form fields */
+    .form-field {
+        margin-bottom: 10px;
+        text-align: left;
+        margin-left:120px;
+    }
+
+    /* Style for buttons */
+    .btn {
+        margin: 10px;
+        padding: 10px 20px;
+        width: 150px;
+        text-align: center;
+        border-radius:30px;
+    }
+    .btn-purple {
+       
+        color: white;
+        border: none;
+    }
+</style>
+<br><br>
+<div class="form-container">
+    <h4 id="sit">Sitter Information</h4>
+    
+    <div class="form-field">
+        <b><label for="id_sitter_id">Sitter ID:</label></b>
+        {{ one_sitter.id }}
+    </div>
+
+    <div class="form-field">
+        <b><label for="id_sitter_name">Name:</label></b>
+        {{ one_sitter.name }}
+    </div>
+
+    <div class="form-field">
+        <b><label for="id_sitter_gender">Gender:</label></b>
+        {{ one_sitter.gender }}
+    </div>
+
+    <div class="form-field">
+        <b><label for="id_sitter_location">Location:</label></b>
+        {{ one_sitter.location }}
+    </div>
+
+    <div class="form-field">
+        <b><label for="id_date_of_birth">Date of Birth:</label></b>
+        {{ one_sitter.date_of_birth }}
+    </div>
+
+    <div class="form-field">
+        <b><label for="id_next_of_kin">Next of Kin:</label></b>
+        {{ one_sitter.next_of_kin }}
+    </div>
+
+    <div class="form-field">
+        <b><label for="id_national_identification_number">NIN:</label></b>
+        {{ one_sitter.national_identification_number }}
+    </div>
+
+    <div class="form-field">
+        <b><label for="id_recommenders_name">Recommender's Name:</label></b>
+        {{ one_sitter.recommenders_name }}
+    </div>
+
+    <div class="form-field">
+        <b><label for="id_religion">Religion:</label></b>
+        {{ one_sitter.religion }}
+    </div>
+
+    <div class="form-field">
+        <b><label for="id_level_of_education">Level of Education:</label></b>
+        {{ one_sitter.level_of_education }}
+    </div>
+
+
+    <div class="form-field">
+    <b><label for="id_contacts">Contacts:</label></b>
+        {{ one_sitter.contacts }}
+    </div>
+
+    <div>
+        <a href="{% url 'sit_edit' id=one_sitter.id %}" class="btn btn-primary">Edit</a>
+        <a href="/sit_reg_form" class="btn btn-primary" style="background-color: #5500cb;">Go Back</a>
+    </div>
+</div><br><br>
+
 {% endblock %}

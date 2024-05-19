@@ -74,7 +74,7 @@ def logout(request):
 #sitters registration
 @login_required
 def sit_reg_form(request):
-    sit_form = Sitterform.objects.all().order_by('-id')
+    sit_form = Sitterform.objects.all().order_by('-id') 
     all_sitters = SitterFilter(request.GET, queryset=sit_form)
     sit_form  = all_sitters.qs 
     return render(request, 'daystarApp/sit_reg_form.html', {'sit_form': sit_form, 'all_sitters': all_sitters})

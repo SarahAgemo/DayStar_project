@@ -1,95 +1,104 @@
 {% extends 'daystarApp/base.html' %}
 
-
 {% load static %}
 
 {% block content%}
 
 <style>
-    
-    
-    .table-responsive {
-        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); 
-    }
-    h4{margin-left:490px;
-    margin-top:5px ;}
-
     .table-container {
+        background-color: white; /* White background for the container */
+        padding: 20px; /* Padding around the container */
         box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
         overflow-x: auto; /* Ensure horizontal scroll when needed */
         max-width: 100%; /* Ensure the table container doesn't overflow its parent */
+        border-radius: 20px;
+        margin:10px; /*
     }
+
     .table-responsive {
         overflow-x: auto; /* Ensure horizontal scroll when needed */
     }
+
     h4 {
         margin-left: 490px;
         margin-top: 5px;
-        font-size:2rem;
-        ul
-        
-        {% comment %} color:#0C356A; {% endcomment %}
-        {% comment %} text-shadow: 2px 2px 4px #000000;} {% endcomment %}
+        font-size: 2rem;
     } 
+
+    .table thead th {
+        background-color: #3f0097; /*  color for the table headers */
+        color: white; /* White text for better contrast */
+    }
+
+    .table tbody tr {
+        background-color: white; /* White background for table rows */
+    }
+
+    #search{
+        background-color: #3f0097;
+    }
 </style>
-</head>
-<body>
-<h4 class="mb-3" style="">All Sitters</h4>
-<div style="display:flex; flex-direction:row;">
-<div><form action="" method="GET"style="margin-left:30px; padding-right:30px;">
-    {{ all_sitters.form }} 
-    <div><input type="submit" value="Search sitter name"  class="btn btn-primary"/></div>
-    </form></div>
-    
-</div>
-<a href="/sit_add" class="btn btn-primary mb-3" style="margin-left:1000px;">Add new sitter</a>
-<div class="table_container">
-<div class="table-responsive">
-    <table class="table table-bordered table-hover">
-        <thead class="table-dark">
-            <tr class="table-dark">
-                <th scope="col">#</th>
-                <th scope="col">Name</th>
-                <th scope="col">Gender</th>
-                <th scope="col">Location</th>
-                <th scope="col">Date of Birth</th>
-                <th scope="col">Next of Kin</th>
-                <th scope="col">NIN</th>
-                <th scope="col">Recommender's Name</th>
-                <th scope="col">Religion</th>
-                <th scope="col">Level of Education</th>
-                <th scope="col">Sitter's Number</th>
-                <th scope="col">Contacts</th>
-                <th scope=>Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for sitter in sit_form %}
-            <tr style="background-color: white;">
-                <td>{{ sitter.id }}</td>
-                <td>{{ sitter.name }}</td>
-                <td>{{ sitter.gender }}</td>
-                <td>{{ sitter.location }}</td>
-                <td>{{ sitter.date_of_birth }}</td>
-                <td>{{ sitter.next_of_kin }}</td>
-                <td>{{ sitter.national_identification_number }}</td>
-                <td>{{ sitter.recommenders_name }}</td>
-                <td>{{ sitter.religon }}</td>
-                <td>{{ sitter.level_of_education }}</td>
-                <td>{{ sitter.sitter_number }}</td>
-                <td>{{ sitter.contacts }}</td>
-                <td>   
-                    <a href="{% url 'sit_view' id=sitter.id %}" class="btn btn-primary">View</a>
-                </td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
 
-</div>
+
+<br><br>
+<div style="display: flex; flex-direction: row;">
+    <div>
+        <form action="" method="GET" style="margin-left: 30px; padding-right: 30px;">
+            {{ all_sitters.form }}
+            <div><input type="submit" value="Search sitter name" class="btn btn-primary" id="search" /></div>
+        </form>
+    </div>
 </div>
 
+
+
+<div class="table-container">
+    <div class="report-header">
+        <h1 class="recent-Articles">All Sitters</h1>
+        <a href="/sit_add" ><button class="view" style="padding:8px; width:150px;">Add new sitter</button></a>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Gender</th>
+                    <th scope="col">Location</th>
+                    <th scope="col">Date of Birth</th>
+                    <th scope="col">Next of Kin</th>
+                    <th scope="col">NIN</th>
+                    <th scope="col">Recommender's Name</th>
+                    <th scope="col">Religion</th>
+                    <th scope="col">Level of Education</th>
+                    
+                    <th scope="col">Contacts</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for sitter in sit_form %}
+                <tr>
+                    <td>S00{{ sitter.id }}</td>
+                    <td>{{ sitter.name }}</td>
+                    <td>{{ sitter.gender }}</td>
+                    <td>{{ sitter.location }}</td>
+                    <td>{{ sitter.date_of_birth }}</td>
+                    <td>{{ sitter.next_of_kin }}</td>
+                    <td>{{ sitter.national_identification_number }}</td>
+                    <td>{{ sitter.recommenders_name }}</td>
+                    <td>{{ sitter.religion }}</td>
+                    <td>{{ sitter.level_of_education }}</td>
+                
+                    <td>{{ sitter.contacts }}</td>
+                    <td>
+                        <a href="{% url 'sit_view' id=sitter.id %}" class="btn btn-primary">View</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
 
 {% endblock %}
-
-

@@ -48,19 +48,22 @@
 
     h4 {
         text-align: center;
-        font-family: sans-serif;
-        color: #0C356A;
-        margin-bottom: 20px;
+        font-size: 30px; 
+        font-weight: 600; 
+        color: #5500cb; 
+        margin: 20px;
     }
 </style>
 
-<h4>Add new baby here</h4>
+
 
 <div class="container">
+    <br><br>
     <form method="POST" class="baby-form">
+        <h4>Add new baby here</h4><br>
         {% csrf_token %}
         {{ form | crispy }}
-        <button type="submit" class="btn btn-primary">Save</button>
+        <button type="submit" class="btn btn-primary">Add</button>
     </form>
 </div><br><br>
 

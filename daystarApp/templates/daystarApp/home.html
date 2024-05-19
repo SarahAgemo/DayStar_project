@@ -20,13 +20,13 @@
       }
 
     
-      {% comment %} #3f0097 {% endcomment %}
+      
   </style>
 
 
     <div class="box-container" style="display: flex; flex-direction: row;">
 
-        {% comment %} <div> {% endcomment %}
+        
             <div class="box box1" style="margin-left:20px; margin-top:20px;">
                 <div class="text">
                     <h2 class="topic-heading"> {% if count_babies %} {{ count_babies }} {% endif %} </h2>
@@ -46,10 +46,7 @@
                 <img src=" {% static "css/images/sitter_icon2.png" %}" alt="Views">
             </div>
 
-        {% comment %} </div> {% endcomment %}
-
-
-        {% comment %} <div> {% endcomment %}
+       
             <div class="box box3" style="background-color:#3F0097; margin-top:20px;">
                 <div class="text">
                     <h2 class="topic-heading"> {% if count_dolls %} {{ count_dolls }} {% endif %} </h2>
@@ -67,7 +64,7 @@
 
                 <img src=" {% static "css/images/stock_icon1.png" %}" alt="Views">
             </div>
-        {% comment %} </div> {% endcomment %}
+       
 
     </div>
                     <div class="container2">
@@ -82,7 +79,7 @@
                                 <table class="table table-bordered table-hover">
                                     <thead class="table-head" class="thead">
                                         <tr class="table">
-                                            <th scope="col" class="no">#</th>
+                                            <th scope="col" class="no">ID</th>
                                             <th scope="col" class="no">Name</th>
                                             <th scope="col" class="no">Gender</th>
                                             <th scope="col" class="no">Date of birth</th>
@@ -94,7 +91,7 @@
                                     <tbody>
                                         {% for baby in last_babies %}
                                         <tr style="background-color: white;">
-                                            <td>{{ baby.baby_id }}</td>
+                                            <td>B00{{ baby.baby_id }}</td>
                                             <td>{{ baby.baby_name }}</td>
                                             <td>{{ baby.baby_gender }}</td>
                                             <td>{{ baby.date_of_birth }}</td>
@@ -126,7 +123,7 @@
             <table class="table table-bordered table-hover">
                 <thead class="table-head">
                     <tr class="table">
-                        <th scope="col" class="no">#</th>
+                        <th scope="col" class="no">ID</th>
                         <th scope="col" class="no">Name</th>
                         <th scope="col" class="no">Gender</th>
                         <th scope="col" class="no">Location</th>
@@ -138,7 +135,7 @@
                 <tbody>
                     {% for sitter in last_sitters %}
                     <tr style="background-color: white;">
-                        <td>{{ sitter.id }}</td>
+                        <td>S00{{ sitter.id }}</td>
                         <td>{{ sitter.name }}</td>
                         <td>{{ sitter.gender }}</td>
                         <td>{{ sitter.location }}</td>

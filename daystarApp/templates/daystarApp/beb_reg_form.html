@@ -57,38 +57,39 @@
         }
     }
 
-    #reg{
+    #reg {
         color: #3f0097;
         font-size: 30px;
         margin: 40px auto 50px;
         text-align: center;
-        
-        font-weight: 70px;
+        font-weight: bold;
     }
 
-    #add{
+    #add {
         padding: 15px;
         margin-top: 30px;
-        margin-left: 50px;
         margin-bottom: 10px;
-        background:#3f0097;
-        width:150px;
-        border-radius:30px;
+        background: #3f0097;
+        width: 150px;
+        border-radius: 30px;
         font-weight: bold;
-        margin-left:100px;
+        margin-left: 100px;
     }
 </style>
 
-<h4 class="mb-3" id="reg">Baby registration on arrival</h4>
-<a href="/baby_add" class="btn btn-primary mb-3" id="add" >Add new baby</a>
+
 
 <div class="container2">
+    <div class="report-header">
+        <h1 class="recent-Articles">Baby registration on arrival</h1>
+        <a href="/baby_add" ><button class="view" style="padding:8px; width:150px;">Add new baby</button></a>
+    </div>
     <div class="table-container">
         <div class="table-responsive">
             <table class="table table-bordered table-hover">
                 <thead class="table-head">
                     <tr>
-                        <th scope="col">#</th>
+                        <th scope="col">ID</th>
                         <th scope="col">Name</th>
                         <th scope="col">Gender</th>
                         <th scope="col">Date of birth</th>
@@ -105,7 +106,7 @@
                 <tbody>
                     {% for baby in baby_form %}
                     <tr>
-                        <td>{{ baby.baby_id }}</td>
+                        <td>B00{{ baby.baby_id }}</td>
                         <td>{{ baby.baby_name }}</td>
                         <td>{{ baby.baby_gender }}</td>
                         <td>{{ baby.date_of_birth }}</td>
@@ -117,7 +118,7 @@
                         <td>{{ baby.time_in }}</td>
                         <td>{{ baby.Assigned_to }}</td>
                         <td>
-                            <a href="{% url 'baby_view' id=baby.baby_id %}" class="btn btn-primary" style="padding:8px; width:60px;">View</a>
+                            <a href="{% url 'baby_view' id=baby.baby_id %}" class="btn btn-primary" style="padding: 8px; width: 60px;">View</a>
                         </td>
                     </tr>
                     {% endfor %}
@@ -128,92 +129,3 @@
 </div><br><br>
 
 {% endblock %}
-
-
-
-
-{% comment %} {% extends 'daystarApp/base.html' %}
-
-
-{% load static %}
-
-{% block content%}
-
-<style>
-    
-    
-    .table-responsive {
-        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); 
-    }
-    h4{margin-left:490px;
-    margin-top:5px ;}
-
-    .table-container {
-        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-        overflow-x: auto; /* Ensure horizontal scroll when needed */
-        max-width: 100%; /* Ensure the table container doesn't overflow its parent */
-    }
-    .table-responsive {
-        overflow-x: auto; /* Ensure horizontal scroll when needed */
-    }
-    h4 {
-        margin-left: 490px;
-        margin-top: 5px;
-        color:#0C356A;
-    }
-        
-</style>
-</head>
-<body>
-<h4 class="mb-3">Baby registration on arrival</h4>
-<a href="/baby_add" class="btn btn-primary mb-3">Add new baby</a>
-
-<div class="table_container">
-<div class="table-responsive">
-    <table class="table table-bordered table-hover">
-        <thead class="table-dark">
-            <tr class="table-dark">
-                <th scope="col">#</th>
-                <th scope="col">Name</th>
-                <th scope="col">Gender</th>
-                <th scope="col">Date of birth</th>
-                <th scope="col">Location</th>
-                <th scope="col">Parent's name</th>
-                <th scope="col">Period of stay</th>
-                <th scope="col">Registration date</th>
-                <th scope="col">Baby bringer</th>
-                <th scope="col">Time in</th>
-                <th scope="col">Assigned to;</th>
-                <th scope=>Action</th>
-                
-            </tr>
-        </thead>
-        <tbody>
-            {% for baby in baby_form %}
-            <tr style="background-color: white;">
-                <td>{{ baby.baby_id }}</td>
-                <td>{{ baby.baby_name }}</td>
-                <td>{{ baby.baby_gender }}</td>
-                <td>{{ baby.date_of_birth }}</td>
-                <td>{{ baby.baby_location }}</td>
-                <td>{{ baby.parents_name }}</td>
-                <td>{{ baby.period_of_stay }}</td>
-                <td>{{ baby.registration_date }}</td>
-                <td>{{ baby.baby_bringer }}</td>
-                <td>{{ baby.time_in }}</td>
-                <td>{{ baby.Assigned_to }}</td>
-                <td>   
-                    <a href="{% url 'baby_view' id=baby.baby_id%}" class="btn btn-primary">View</a>
-                </td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-
-</div>
-</div>
-
-
-{% endblock %}
-
- {% endcomment %}

@@ -14,6 +14,12 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        border: 1px solid #ccc; /* Add border */
+        background-color: white; /* Add white background */
+        padding: 20px; /* Add padding for spacing */
+        border-radius: 8px; /* Optional: add rounded corners */
+        max-width: 600px; /* Adjust max-width to fit contents */
+        margin: 0 auto; /* Center the container */
     }
 
     /* Style for form fields */
@@ -28,13 +34,14 @@
         padding: 10px 20px;
         width: 150px;
         text-align: center;
-        
     }
 </style>
 
-<h2>Baby details</h2>
+<br>
 
 <div class="form-container">
+    <h2>Baby details</h2>
+    <br>
     <form method="POST" action="">
         {% csrf_token %}
 
@@ -49,7 +56,7 @@
             {{ one_baby.baby_name }}
             {{ one_baby.baby_name.errors }}
         </div>
-    
+
         <div>
             <label for="id_baby_gender">GENDER:</label>
             {{ one_baby.baby_gender }}
@@ -104,11 +111,13 @@
             {{ one_baby.Assigned_to.errors }}
         </div>
 
+    
         <div>
             <a href="{% url 'baby_edit' id=one_baby.baby_id %}" class="btn btn-primary">Edit babies</a>
             <a href="/beb_reg_form" class="btn btn-primary" style="background-color: #5500cb;">Go back</a>
         </div>
     </form>
 </div>
-
+<br>
 {% endblock %}
+
