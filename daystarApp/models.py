@@ -44,8 +44,7 @@ class Sitterform(models.Model):
         return self.name
 
 class Sitter_arrival(models.Model):
-    sitter_name=models.ForeignKey(Sitterform, on_delete=models.CASCADE) 
-   
+    sitter_name=models.ForeignKey(Sitterform, on_delete=models.CASCADE)    
     date_of_arrival=models.DateField(default=timezone.now)   
     timein=models.TimeField ()
     Attendancestatus=models.CharField(choices=[('On-duty', 'On-duty')], max_length=100)
@@ -53,8 +52,7 @@ class Sitter_arrival(models.Model):
         return str(self.sitter_name)
     
 class Sitter_departure(models.Model):
-    sitter_name=models.ForeignKey(Sitter_arrival, on_delete=models.CASCADE) 
-   
+    sitter_name=models.ForeignKey(Sitter_arrival, on_delete=models.CASCADE)    
     date_of_departure=models.DateField(default=timezone.now)   
     timeout=models.TimeField ()
     Attendancestatus=models.CharField(choices=[('offduty', 'offduty')], max_length=100)

@@ -30,6 +30,7 @@
         background-color: #3f0097; /* Set table head background color to purple */
         color: white; /* Ensure the text color is white for contrast */
     }
+    
 </style>
 
 </head>
@@ -58,7 +59,7 @@
             <tbody>
                 {% for sitter in sit_arrive %}
                 <tr style="background-color: white;">
-                    <td>SOO{{ sitter.id }}</td>
+                    <td>S00{{ sitter.id }}</td>
                     <td>{{ sitter.sitter_name }}</td>
                     <td>{{ sitter.date_of_arrival }}</td>
                     <td>{{ sitter.timein }}</td>

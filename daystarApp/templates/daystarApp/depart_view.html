@@ -1,75 +1,75 @@
 {% extends 'daystarApp/base.html' %}
-
-
 {% load static %}
 
-{% block content%}
-
+{% block content %}
 <style>
-    
-    
-    .table-responsive {
-        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); 
+    /* Center the heading */
+    h4#sit {
+        font-family: sans-serif;
+        color:  #3f0097;
+        text-align: center;
+        font-size: 30px; 
+        font-weight: 600; 
+        margin: 20px 0;
     }
-    h4{margin-left:490px;
-    margin-top:5px ;}
 
-    .table-container {
-        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-        overflow-x: auto; /* Ensure horizontal scroll when needed */
-        max-width: 100%; /* Ensure the table container doesn't overflow its parent */
+    /* Style for the form container */
+    .form-container {
+        max-width: 600px; /* Adjust max-width to fit contents */
+        margin: 0 auto; /* Center the container */
+        padding: 20px; /* Add padding for spacing */
+        border: 1px solid #ccc; /* Add border */
+        border-radius: 8px; /* Optional: add rounded corners */
+        background-color: white; /* Add white background */
+        text-align: left; /* Align content to left */
     }
-    .table-responsive {
-        overflow-x: auto; /* Ensure horizontal scroll when needed */
+
+    /* Style for form fields */
+    .form-field {
+        margin-bottom: 10px;
     }
-    h4 {
-        margin-left: 490px;
-        margin-top: 5px;
-        color:#0C356A;
-        }
-        
+
+    /* Style for buttons */
+    .btn {
+        margin: 10px;
+        padding: 10px 20px;
+        width: 150px;
+        text-align: center;
+        border-radius: 30px;
+    }
+    .btn-purple {
+        color: white;
+        border: none;
+    }
 </style>
-</head>
-<body>
-<h4 class="mb-3">Sitters off-duty</h4>
+<br><br>
+<div class="form-container">
+    <h4 id="sit">Departure details</h4>
+    
+    <div class="form-field">
+        <b>Sitter ID:</b>S00 {{ view.id }}
+    </div>
 
+    <div class="form-field">
+        <b>Name:</b> {{ view.sitter_name }}
+    </div>
 
-<div class="table_container">
-<div class="table-responsive">
-    <table class="table table-bordered table-hover">
-        <thead class="table-dark">
-            <tr class="table-dark">
-                <th scope="col">#</th>
-                <th scope="col">Name</th>
-                <th scope="col">Sitter's Number</th>
-                <th scope="col">Date</th>
-                <th scope="col">Time out</th>
-                <th scope="col">Attendance status</th>
-                <th scope=>Action</th>
+    <div class="form-field">
+        <b>Date of Departure:</b> {{ view.date_of_departure }}
+    </div>
 
+    <div class="form-field">
+        <b>Time out:</b> {{ view.timeout }}
+    </div>
 
-               
-            </tr>
-        </thead>
-        <tbody>
-            
-            <tr style="background-color: white;">
-                <td>{{ view.id }}</td>
-                <td>{{ view.sitter_name }}</td>
-                <td>{{ view.sitter_number }}</td>
-                <td>{{ view.date_of_departure }}</td>
-                <td>{{ view.timeout}}</td>
-                <td>{{ view.Attendancestatus }}</td>
-                <td>   
-                    <a href="{% url 'depart_edit' id=view.id %}" class="btn btn-primary">Edit</a>
-                </td>
-            </tr>
-        
-        </tbody>
-    </table>
+    <div class="form-field">
+        <b>Attendance Status:</b> {{ view.Attendancestatus }}
+    </div>
 
-</div>
-</div>
-
+    <div>
+        <a href="{% url 'depart_edit' id=view.id %}" class="btn btn-primary">Edit</a>
+        <a href="/sit_depart" class="btn btn-primary" style="background-color:  #3f0097;">Go Back</a>
+    </div>
+</div><br><br>
 
 {% endblock %}

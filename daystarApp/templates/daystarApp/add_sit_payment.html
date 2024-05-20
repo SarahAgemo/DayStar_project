@@ -4,69 +4,89 @@
 
 {% block content %}
 <style>
-    .sitter-form {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
-       max-width: 50%;
-        margin: auto;
-        border-radius: 5px;
-border: solid black;
-    margin-bottom: 6px;
-    border-radius: 10px;
-    padding-left: 20px;
-    padding-bottom: 15px;
-    padding-top: 15px;
-    padding-right: 15px;
-    background-color:white;
-       
-    }
-
-    h4 {
-        text-align: center;
+    /* Center the heading */
+    h4#sit {
         font-family: sans-serif;
-        color: #0C356A;
-        
+        color: #5500cb;
+        text-align: center;
+        font-size: 30px; 
+        font-weight: 600; 
+        margin: 20px 0;
     }
 
-   
+    /* Style for the form container */
+    .form-container {
+        max-width: 50%;
+        margin: auto;
+        padding: 15px;
+        background-color: white;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
 
-    label {
+    /* Style for form fields */
+    .form-container .form-group label {
         font-weight: bold;
-        margin-top: 7px;
-        margin-bottom:5px ;
     }
 
-    button[type="submit"] {
-    margin-top: 2px;
-       
+    .form-container .form-control {
+        border: none;
+        border-bottom: 1px solid #ced4da;
+        border-radius: 0;
+        padding: 10px;
+        box-sizing: border-box;
+    }
+
+    /* Style for buttons */
+    .btn {
+        margin: 10px 5px 0 0;
+        padding: 10px 20px;
+        text-align: center;
+        border-radius: 30px;
+        font-weight: bold;
+        width: 100px; /* Ensure both buttons have the same width */
+    }
+
+    .btn-primary {
         background-color: blue;
         color: white;
         border: none;
-        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .btn-purple {
+        background-color: #5500cb;
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
+
+    #back {
+        margin-top: 10px;
+        color: white;
+        border: none;
         font-size: 16px;
         cursor: pointer;
-        
+        padding: 10px 20px;
+        background: #3f0097;
+        width: 120px;
+        border-radius: 30px;
+        font-weight: bold;
+        text-align: center;
     }
-        
-    
-</style>  
+</style>
 
-<h4 >Add sitter payment </h4>
-
-
-
-
-<div class="container">
-    <form method="POST" class="sitter-form">
-
+<br><br>
+<div class="form-container">
+    <h4 id="sit">Add Sitter Payment</h4><br>
+    <form method="POST" class="baby-form">
         {% csrf_token %}
-        {{ form | crispy }}
-        <button type="submit" class="btn btn-primary" >Save</button>
+        {{ form|crispy }}
+        
+        <div>
+            <button type="submit" class="btn btn-primary">Add</button>
+            <a href="/sit_payments"><button type="button" class="btn btn-primary" id="back" style="background-color:  #3f0097;">Go back</button></a>
+        </div>
     </form>
-</div>
-
-
-    
-
-{%endblock %}
+</div><br><br>
+{% endblock %}

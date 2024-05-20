@@ -1,75 +1,108 @@
 {% extends 'daystarApp/base.html' %}
-
-
 {% load static %}
 
 {% block content%}
 
 <style>
-    
-    
-    .table-responsive {
-        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); 
-    }
-    h4{margin-left:490px;
-    margin-top:5px ;}
-
+    /* Add some styling for the container and table */
     .table-container {
         box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
         overflow-x: auto; /* Ensure horizontal scroll when needed */
         max-width: 100%; /* Ensure the table container doesn't overflow its parent */
+        margin: 20px; /* Center the container and add some spacing */
+        padding: 20px; /* Add padding inside the container */
+        background-color: white;
+        border-radius: 20px;
     }
+    
     .table-responsive {
         overflow-x: auto; /* Ensure horizontal scroll when needed */
     }
-    h4 {
-        margin-left: 490px;
-        margin-top: 5px;
-        color:#0C356A;
+    
+    .report-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 0; /* Remove margin to align with table head */
     }
-        
+
+    .report-header h1 {
+        color: #3f0097; /* Match the color of the table head */
+        margin: 0; /* Remove default margin for better alignment */
+    }
+
+    .view {
+        padding: 8px;
+        width: 150px;
+        background-color: #3f0097;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .view:hover {
+        background-color: #2d0070;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        border: none;
+        border-radius: 5px;
+        padding: 8px 12px;
+        color: white;
+        text-decoration: none;
+    }
+
+    .btn-primary:hover {
+        background-color: #0056b3;
+    }
+
+    .table thead {
+        background-color: #3f0097; /* Set table head background color to purple */
+        color: white; /* Ensure the text color is white for contrast */
+    }
+
+    .table thead th {
+        border-bottom: none; /* Ensure no border between table head and table rows */
+    }
+    
 </style>
-</head>
-<body>
-<h4 class="mb-3">Sitter departure details</h4>
-<a href="/depart_add" class="btn btn-primary mb-3">Add new sitter</a>
 
-<div class="table_container">
-<div class="table-responsive">
-    <table class="table table-bordered table-hover">
-        <thead class="table-dark">
-            <tr class="table-dark">
-                <th scope="col">#</th>
-                <th scope="col">Name</th>
-                <th scope="col">Sitter's Number</th>
-                <th scope="col">Date</th>
-                <th scope="col">Time out</th>
-                <th scope="col">Attendance status</th>
-                <th scope=>Action</th>
+<div class="table-container">
+    <div class="report-header">
+        <h1 class="recent-Articles">Sitter departure details</h1>
+        <a href="/depart_add"><button class="view">Add new sitter</button></a>
+    </div>
 
-
-               
-            </tr>
-        </thead>
-        <tbody>
-            {% for sitter in sit_leave %}
-            <tr style="background-color: white;">
-                <td>{{ sitter.id }}</td>
-                <td>{{ sitter.sitter_name }}</td>
-                <td>{{ sitter.sitter_number }}</td>
-                <td>{{ sitter.date_of_departure }}</td>
-                <td>{{ sitter.timeout}}</td>
-                <td>{{ sitter.Attendancestatus }}</td>
-                <td>   
-                    <a href="{% url 'depart_view' id=sitter.id %}" class="btn btn-primary">View</a>
-                </td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Name</th>                  
+                    <th scope="col">Date</th>
+                    <th scope="col">Time out</th>
+                    <th scope="col">Attendance status</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for sitter in sit_leave %}
+                <tr style="background-color: white;">
+                    <td>S00{{ sitter.id }}</td>
+                    <td>{{ sitter.sitter_name }}</td>                   
+                    <td>{{ sitter.date_of_departure }}</td>
+                    <td>{{ sitter.timeout}}</td>
+                    <td>{{ sitter.Attendancestatus }}</td>
+                    <td>
+                        <a href="{% url 'depart_view' id=sitter.id %}" class="btn btn-primary">View</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 </div>
-</div>
-
 
 {% endblock %}
