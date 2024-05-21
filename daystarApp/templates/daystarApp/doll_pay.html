@@ -48,7 +48,7 @@
         margin-bottom:5px ;
     }
 
-    button[type="submit"] {
+    button[type="submit"] , #go {
         margin-top: 10px;
         color: white;
         border: none;
@@ -71,7 +71,11 @@
         <h4>Make doll payment </h4>
         {% csrf_token %}
         {{ pay_form | crispy }}
+
+        <div>
         <button type="submit" class="btn btn-primary">Get receipt</button>
+        <a href="/doll_list" class="btn btn-primary" id="go" style="background-color: #5500cb;">Go Back</a>
+        </div>
     </form>
 </div><br><br>
 {% endblock %}

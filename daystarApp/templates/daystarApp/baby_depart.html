@@ -1,74 +1,105 @@
 {% extends 'daystarApp/base.html' %}
-
-
 {% load static %}
 
-{% block content%}
-
+{% block content %}
 <style>
-    
-    
-    .table-responsive {
-        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); 
+    /* Table Styles */
+    .table-bordered th,
+    .table-bordered td {
+        border: 1px solid #dee2e6;
     }
-    h4{margin-left:490px;
-    margin-top:5px ;}
 
-    .table-container {
-        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-        overflow-x: auto; /* Ensure horizontal scroll when needed */
-        max-width: 100%; /* Ensure the table container doesn't overflow its parent */
+    .table-hover tbody tr:hover {
+        background-color: rgba(0, 0, 0, 0.075);
     }
-    .table-responsive {
-        overflow-x: auto; /* Ensure horizontal scroll when needed */
+
+    /* Table Header Styles */
+    .table-head {
+        background: #3f0097;
+        color: white;
+        font-weight: bold;
     }
-    h4 {
-        margin-left: 490px;
-        margin-top: 5px;
-        color:#0C356A;
+
+    .table-head th {
+        padding: 10px;
+        text-align: center;
+    }
+
+    /* Responsive Styles */
+    @media screen and (max-width: 576px) {
+        .table-head th {
+            font-size: 12px;
+            padding: 8px;
         }
-        
+    }
+
+    .btn-primary {
+        background-color: blue;
+        color: white;
+        border: none;
+        padding: 8px 16px;
+        border-radius: 4px;
+        text-decoration: none;
+    }
+
+    .btn-primary:hover {
+        background-color: #280066;
+    }
+
+    /* White Container Styles */
+    .white-container {
+        background-color: white;
+        padding: 20px;
+        border-radius: 20px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        margin:20px;
+    }
+    h1 {
+        text-align: center;
+        font-size: 30px; 
+        font-weight: 600; 
+        color: #5500cb; 
+        margin: 20px;
+    }
 </style>
-</head>
-<body>
-<h4 class="mb-3">Baby departure</h4>
-<a href="/depart_baby_add" class="btn btn-primary mb-3">Add new baby departure</a>
 
-<div class="table_container">
-<div class="table-responsive">
-    <table class="table table-bordered table-hover">
-        <thead class="table-dark">
-            <tr class="table-dark">
-                <th scope="col">#</th>
-                <th scope="col">Name</th>
-                <th scope="col">Baby picker</th>
-                <th scope="col">Date</th>
-                <th scope="col">Time out</th>
-                <th scope="col">comment</th>
-                <th scope=>Action</th>
-
-                
-            </tr>
-        </thead>
-        <tbody>
-            {% for baby in baby_leave %}
-            <tr style="background-color: white;">
-                <td>{{ baby.baby_id }}</td>
-                <td>{{ baby.name_of_baby }}</td>
-                <td>{{ baby.baby_picker }}</td>
-                <td>{{ baby.date_of_departure }}</td>
-                <td>{{ baby.time_out}}</td>
-                <td>{{ baby.comment }}</td>
-                <td>   
-                    <a href="{% url 'depart_baby_view' baby_id=baby.baby_id %}" class="btn btn-primary">View</a>
-                </td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-
+<br><br>
+<div class="white-container">
+    <div class="report-header">
+        <h1 class="recent-Articles">Baby Departure</h1>
+        <a href="/depart_baby_add" ><button class="view" style="padding:8px; width:150px;">Add new baby departure</button></a>
+    </div>
+    
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+            <thead class="table-head">
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Baby picker</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Time out</th>
+                    <th scope="col">Comment</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for baby in baby_leave %}
+                <tr>
+                    <td>B00{{ baby.baby_id }}</td>
+                    <td>{{ baby.name_of_baby }}</td>
+                    <td>{{ baby.baby_picker }}</td>
+                    <td>{{ baby.date_of_departure }}</td>
+                    <td>{{ baby.time_out }}</td>
+                    <td>{{ baby.comment }}</td>
+                    <td>
+                        <a href="{% url 'depart_baby_view' baby_id=baby.baby_id %}" class="btn btn-primary" style="padding: 8px; width: 60px;">View</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 </div>
-</div>
-
-
+<br><br>
 {% endblock %}

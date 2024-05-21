@@ -30,14 +30,14 @@
         box-sizing: border-box;
     }
 
-    .baby-form button[type="submit"] {
+    .baby-form button[type="submit"] , #go{
         margin-top: 10px;
         color: white;
         border: none;
         font-size: 16px;
         cursor: pointer;
         padding: 10px 20px;
-        background:#3f0097;
+        {% comment %} background:#3f0097; {% endcomment %}
         width:150px;
         border-radius:30px;
         font-weight: bold;
@@ -63,7 +63,11 @@
         <h4>Add new baby here</h4><br>
         {% csrf_token %}
         {{ form | crispy }}
+
+        <div>
         <button type="submit" class="btn btn-primary">Add</button>
+        <a href="/beb_reg_form" class="btn btn-primary" id="go" style="background-color: #5500cb;">Go Back</a>
+        </div>
     </form>
 </div><br><br>
 

@@ -6,7 +6,9 @@
     h2 {
         text-align: center;
         font-family: sans-serif;
-        color: #0C356A;
+        color: #5500cb;
+        margin-bottom: 20px;
+        font-weight: bold;
     }
 
     /* Style for the form container */
@@ -34,6 +36,7 @@
         padding: 10px 20px;
         width: 150px;
         text-align: center;
+        border-radius: 30px;
     }
 </style>
 
@@ -46,67 +49,67 @@
         {% csrf_token %}
 
         <div class="form-field">
-            <label for="id_baby_id">BABY ID:</label>
+            <label for="id_baby_id"><b>Baby id:</b></label>
             {{ one_baby.baby_id }}
             {{ one_baby.baby_id.errors }}
         </div>
 
         <div>
-            <label for="id_baby_name">BABY NAME:</label>
+            <label for="id_baby_name"><b>Baby name:</b></label>
             {{ one_baby.baby_name }}
             {{ one_baby.baby_name.errors }}
         </div>
 
         <div>
-            <label for="id_baby_gender">GENDER:</label>
+            <label for="id_baby_gender"><b>Gender:</b></label>
             {{ one_baby.baby_gender }}
             {{ one_baby.baby_gender.errors }}
         </div>
     
         <div>
-            <label for="id_date_of_birth">DATE OF BIRTH:</label>
+            <label for="id_date_of_birth"><b>Date of birth:</b></label>
             {{ one_baby.date_of_birth }}
             {{ one_baby.date_of_birth.errors }}
         </div>
     
         <div>
-            <label for="id_baby_location">LOCATION:</label>
+            <label for="id_baby_location"><b>Location:</b></label>
             {{ one_baby.baby_location }}
             {{ one_baby.baby_location.errors }}
         </div>
     
         <div>
-            <label for="id_parents_name ">PARENT'S NAME:</label>
+            <label for="id_parents_name "><b>Parent's name:</b></label>
             {{ one_baby.parents_name  }}
             {{ one_baby.parents_name.errors }}
         </div>
     
         <div>
-            <label for="id_period_of_stay">PERIOD OF STAY:</label>
+            <label for="id_period_of_stay"><b>Period of stay:</b></label>
             {{ one_baby.period_of_stay }}
             {{ one_baby.period_of_stay.errors }}
         </div>
     
         <div>
-            <label for="id_registration_date">REGISTRATION DATE:</label>
+            <label for="id_registration_date"><b>Registration date:</b></label>
             {{ one_baby.registration_date }}
             {{ one_baby.registration_date.errors }}
         </div>
     
         <div>
-            <label for="id_baby_bringer">BABY BRINGER:</label>
+            <label for="id_baby_bringer"><b>Baby bringer:</b></label>
             {{ one_baby.baby_bringer }}
             {{ one_baby.baby_bringer.errors }}
         </div>
     
         <div>
-            <label for="id_time_in">TIME IN:</label>
+            <label for="id_time_in"><b>Time in:</b></label>
             {{ one_baby.time_in }}
             {{ one_baby.time_in.errors }}
         </div>
     
         <div>
-            <label for="id_Assigned_to">ASSIGNED TO:</label>
+            <label for="id_Assigned_to"><b>Assigned in:</b></label>
             {{ one_baby.Assigned_to }}
             {{ one_baby.Assigned_to.errors }}
         </div>

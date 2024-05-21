@@ -1,73 +1,87 @@
 {% extends 'daystarApp/base.html' %}
 
-
 {% load static %}
 
-{% block content%}
-
-<style>
-    
-    
-    .table-responsive {
-        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); 
-    }
-    h4{margin-left:490px;
-    margin-top:5px ;}
-
-    .table-container {
-        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-        overflow-x: auto; /* Ensure horizontal scroll when needed */
-        max-width: 100%; /* Ensure the table container doesn't overflow its parent */
-    }
-    .table-responsive {
-        overflow-x: auto; /* Ensure horizontal scroll when needed */
-    }
-    h4 {
-        margin-left: 490px;
-        margin-top: 5px;
-        color:#0C356A;
-       }
-        
-</style>
-</head>
 <body>
-<h4 class="mb-3">Baby departure details</h4>
+{% block content %}
+<style>
+    /* Center the heading */
+    h4#depart-heading {
+        font-family: sans-serif;
+        color: #5500cb;
+        text-align: center;
+        font-size: 30px; 
+        font-weight: 600; 
+        margin: 20px 0;
+        font-weight: bold;
+    }
 
+    /* Style for the form container */
+    .form-container {
+        max-width: 600px; /* Adjust max-width to fit contents */
+        margin: 0 auto; /* Center the container */
+        padding: 20px; /* Add padding for spacing */
+        border: 1px solid #ccc; /* Add border */
+        border-radius: 0px; /* Optional: add rounded corners */
+        background-color: white; /* Add white background */
+        text-align: left; /* Left-align content */
+    }
 
-<div class="table_container">
-<div class="table-responsive">
-    <table class="table table-bordered table-hover">
-        <thead class="table-dark">
-            <tr class="table-dark">
-                <th scope="col">#</th>
-                <th scope="col">Name</th>
-                <th scope="col">baby_picker</th>
-                <th scope="col">Date</th>
-                <th scope="col">Time out</th>
-                <th scope="col">comment</th>
-                <th scope=>Action</th>
-               
-            </tr>
-        </thead>
-        <tbody>
-            
-            <tr style="background-color: white;">
-                <td>{{ depart_info.baby_id }}</td>
-                <td>{{ depart_info.name_of_baby }}</td>
-                <td>{{ depart_info.baby_picker }}</td>
-                <td>{{ depart_info.date_of_departure }}</td>
-                <td>{{ depart_info.time_out }}</td>
-                <td>{{ depart_info.comment }}</td>
-                <td>   
-                    <a href="{% url 'depart_baby_edit' baby_id=depart_info.baby_id %}" class="btn btn-primary">Edit</a>
-                </td>
-            </tr>
-        
-        </tbody>
-    </table>
+    /* Style for form fields */
+    .form-field {
+        margin-bottom: 10px;
+    }
 
-</div>
-</div>
+    /* Style for buttons */
+    .btn {
+        margin: 10px;
+        padding: 10px 20px;
+        width: 150px;
+        text-align: center;
+        border-radius: 30px;
+    }
+    .btn-primary {
+        background-color: blue;
+        color: white;
+        border: none;
+    }
+   
+</style>
+<br><br>
+<div class="form-container">
+    <h4 id="depart-heading">Baby Departure Details</h4>
+    
+    <div class="form-field">
+        <b>Name:</b>
+        {{ depart_info.name_of_baby }}
+    </div>
 
+    <div class="form-field">
+        <b>Baby Picker:</b>
+        {{ depart_info.baby_picker }}
+    </div>
+
+    <div class="form-field">
+        <b>Date:</b>
+        {{ depart_info.date_of_departure }}
+    </div>
+
+    <div class="form-field">
+        <b>Time Out:</b>
+        {{ depart_info.time_out }}
+    </div>
+
+    <div class="form-field">
+        <b>Comment:</b>
+        {{ depart_info.comment }}
+    </div>
+
+   
+    <div class="btn-container">
+        <a href="{% url 'depart_baby_edit' baby_id=depart_info.baby_id %}" class="btn btn-primary">Edit</a>
+        <a href="/baby_depart" class="btn btn-primary" id="but" style="background-color: #5500cb;">Go Back</a>
+    </div>
+</div><br><br>
 
 {% endblock %}
+</body>

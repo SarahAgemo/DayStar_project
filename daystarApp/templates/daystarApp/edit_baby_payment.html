@@ -4,79 +4,68 @@
 
 {% block content %}
 <style>
-    .baby-form {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
-       max-width: 50%;
-        margin: auto;
-        border-radius: 5px;
-border: solid black;
-    margin-bottom: 6px;
-    border-radius: 10px;
-    padding-left: 20px;
-    padding-bottom: 15px;
-    padding-top: 15px;
-    padding-right: 15px;
-    background-color:white;
-       
-    }
-
+    /* Center the heading */
     h4 {
-        text-align: center;
         font-family: sans-serif;
         color: #0C356A;
-        
+        text-align: center;
     }
 
-   
+    /* Style for the form container */
+    .baby-form {
+        display: grid;
+        grid-template-columns: repeat(1fr);
+        gap: 10px;
+        max-width: 50%;
+        margin: auto;
+        padding: 15px;
+        background-color: white;
+        border-radius: 10px;
+        {% comment %} border: solid 1px black; {% endcomment %}
+    }
 
-    label {
+    .baby-form label {
         font-weight: bold;
         margin-top: 7px;
-        margin-bottom:5px ;
+        margin-bottom: 5px;
     }
 
-    button[type="submit"] {
-    margin-top: 2px;
-       
+    .baby-form button[type="submit"] {
+        margin-top: 2px;
         background-color: blue;
         color: white;
         border: none;
-        border-radius: 5px;
+        border-radius: 30px;
         font-size: 16px;
         cursor: pointer;
-        
+        padding: 10px 20px;
+        width: 150px;
     }
-        
-    
-</style>  
+    h4 {
+        font-family: sans-serif;
+        color:  #3f0097;
+        text-align: center;
+        font-size: 30px; 
+        font-weight: 600; 
+        margin: 20px 0;
+    }
+</style>
 
-<h4 >Edit payments here </h4>
 
-
-
-
+<br><br>
 <div class="container">
+    
     <form method="POST" class="baby-form">
-
+        <h4>Edit baby payments </h4>
         {% csrf_token %}
         {{ form | crispy }}
-        <button type="submit" class="btn btn-primary" >Edit</button>
+
+        <div>
+        <button type="submit">Edit</button>
+        <a href="/baby_pay" class="btn btn-purple"><button type="submit" style="background-color:  #3f0097;">Go back</button></a>
+        </div>
+
     </form>
-</div>
+</div><br><br>
 
-
-    
-
-
-
-
-
-
-
-
-
-
-
-{%endblock %}
+{% endblock %}
