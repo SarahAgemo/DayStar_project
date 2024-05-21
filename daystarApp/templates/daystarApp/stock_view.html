@@ -3,72 +3,105 @@
 {% load static %}
 
 <body>
-    {% block content %}
+  {% block content %}
 
     <style>
-        #id_doll_name {
-            width: 50%;
-            border: 1px solid green;
-            border-radius: 10px;
-        }
+      #id_doll_name {
+        width: 50%;
+        border: 1px solid green;
+        border-radius: 10px;
+      }
+
+      /* Style for centering the container */
+      .form-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background-color: white; /* Match background color */
+        padding: 20px; /* Add padding */
+        border: 1px solid #ccc; /* Add border */
+        border-radius: 8px; /* Add rounded corners */
+        max-width: 600px; /* Set max-width */
+        margin: 0 auto; /* Center the container */
+      }
+
+      /* Style for the image */
+      .form-container img {
+        margin-bottom: 20px; /* Add some space between image and form */
+      }
+
+      /* Style for form fields */
+      .form-field {
+        margin-bottom: 10px;
+        text-align: left;
+      }
+
+      /* Style for buttons */
+      .btn {
+        margin: 10px;
+        padding: 10px 20px;
+        width: 150px;
+        text-align: center;
+        border-radius:30px;
+      }
     </style>
-    
-    <form method="POST" action="">
+    <br> <br>
+    <div class="form-container">
+      <img src="https://picsum.photos/200" class="w-[150px] rounded-lg" alt="">
+
+      <form method="POST" action="">
         {% csrf_token %}
 
-        {% comment %} <div class="col-span-2 p-4">
-            <img src="{% static "css/images/duck1.jpg" %}" style="width:400px; height=400px" alt="">
-        </div> {% endcomment %}
+        <div class="form-field">
+          <label for="id_stock_id">Stock ID:</label>
+          {{ one_stock.stock_id }}
+          {{ one_stock.stock_id.errors }}
+        </div>
 
-        <div class="col-span-2 p-4">
-            <img src="https://picsum.photos/200" class="w-[150px] rounded-lg" alt="">
+        <div class="form-field">
+          <label for="id_stock_type">Stock Type:</label>
+          {{ one_stock.stock_type }}
+          {{ one_stock.stock_type.errors }}
+        </div>
+
+        <div class="form-field">
+          <label for="id_stock_name">Stock Name:</label>
+          {{ one_stock.stock_name }}
+          {{ one_stock.stock_name.errors }}
+        </div>
+
+        <div class="form-field">
+          <label for="id_stock_price">Stock Price:</label>
+          {{ one_stock.stock_price }}
+          {{ one_stock.stock_price.errors }}
+        </div>
+
+        <div class="form-field">
+          <label for="id_stock_quantity">Stock Quantity:</label>
+          {{ one_stock.stock_quantity }}
+          {{ one_stock.stock_quantity.errors }}
+        </div>
+
+        <div class="form-field">
+          <label for="id_stock_description">Stock Description:</label>
+          {{ one_stock.stock_description }}
+          {{ one_stock.stock_description.errors }}
+        </div>
+
+        <div class="form-field">
+          <label for="id_date_stocked">Date Stocked:</label>
+          {{ one_stock.date_stocked }}
+          {{ one_stock.date_stocked.errors }}
         </div>
 
         <div>
-            <label for="id_stock_id">Stock ID:</label>
-            {{  one_stock.stock_id }}
-            {{  one_stock.stock_id.errors }}
+          <a href="/stock_list" class="btn btn-primary" style="background-color: #5500cb;">Go Back</a>
         </div>
+      </form>
+    </div>
+    <br><br>
 
-        <div>
-            <label for="id_stock_type">Stock Type:</label>
-            {{  one_stock.stock_type }}
-            {{  one_stock.stock_type.errors }}
-        </div>
-
-        <div>
-            <label for="id_stock_name">Stock Name:</label>
-            {{  one_stock.stock_name }}
-            {{  one_stock.stock_name.errors }}
-        </div>
-
-        <div>
-            <label for="id_stock_price">Stock Price:</label>
-            {{  one_stock.stock_price }}
-            {{  one_stock.stock_price.errors }}
-        </div>                                                     
-
-        <div>
-            <label for="id_stock_quantity">Stock Quantity:</label>
-            {{ one_stock.stock_quantity }}
-            {{ one_stock.stock_quantity.errors }}
-        </div>
-
-        <div>
-            <label for="id_stock_description">Stock Description:</label>
-            {{ one_stock.stock_description }}
-            {{ one_stock.stock_description.errors }}
-        </div>
-
-        <div>
-            <label for="id_date_stocked">Date Stocked:</label>
-            {{ one_stock.date_stocked }}
-            {{ one_stock.date_stocked.errors }}
-        </div>
-
-        
-       
-    </form>
-    
-    </body>
-{% endblock %} 
+  {% endblock %}
+</body>

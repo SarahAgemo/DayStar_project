@@ -6,72 +6,81 @@
 <style>
     .baby-form {
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: 1fr;
         gap: 10px;
-       max-width: 50%;
+        max-width: 50%;
         margin: auto;
-        border-radius: 5px;
-border: solid black;
-    margin-bottom: 6px;
-    border-radius: 10px;
-    padding-left: 20px;
-    padding-bottom: 15px;
-    padding-top: 15px;
-    padding-right: 15px;
-    background-color:white;
-       
+        padding: 15px;
+        background-color: white;
+        border-radius: 0px;
+        border: none;
+    }
+
+    .baby-form label {
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+
+    .baby-form input[type="text"],
+    .baby-form select {
+        width: 100%;
+        padding: 8px;
+        border: none;
+        border-bottom: 1px solid black;
+        box-sizing: border-box;
+        outline: none; /* Removes default input focus outline */
+    }
+
+    .baby-form button[type="submit"] {
+        margin-top: 10px;
+        color: white;
+        border: none;
+        font-size: 16px;
+        cursor: pointer;
+        padding: 10px 20px;
+        {% comment %} background: #3f0097; {% endcomment %}
+        background: blue;
+        width: 150px;
+        border-radius: 30px;
+        font-weight: bold;
+        text-align: center;
+    }
+
+    #back {
+        margin-top: 10px;
+        color: white;
+        border: none;
+        font-size: 16px;
+        cursor: pointer;
+        padding: 10px 20px;
+        background: #3f0097;
+        width: 150px;
+        border-radius: 30px;
+        font-weight: bold;
+        text-align: center;
     }
 
     h4 {
         text-align: center;
-        font-family: sans-serif;
-        color: #0C356A;
-        
+        font-size: 30px;
+        font-weight: 600;
+        color: #5500cb;
+        margin: 20px;
     }
-
-   
-
-    label {
-        font-weight: bold;
-        margin-top: 7px;
-        margin-bottom:5px ;
-    }
-
-    button[type="submit"] {
-    margin-top: 2px;
-       
-        background-color: blue;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        font-size: 16px;
-        cursor: pointer;
-        
-    }
-        
-    
-</style>  
-
-<h4 >Edit stock here </h4>
-
-
-
+</style>
 
 <div class="container">
+    <br><br>
     <form method="POST" class="baby-form">
-
+        <h4>Edit stock here</h4><br>
         {% csrf_token %}
         {{ form | crispy }}
-        <button type="submit" class="btn btn-primary" >Edit</button>
+        <div>
+            <button type="submit" class="btn btn-primary">Edit</button>
+            <a href="/stock_list"><button type="button" class="btn btn-primary" id="back">Go back</button></a>
+            
+        </div>
     </form>
-</div>
+</div><br><br>
 
-
-    
-
-
-
-
-
-
-{%endblock %}
+{% endblock %}
