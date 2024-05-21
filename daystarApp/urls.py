@@ -127,6 +127,7 @@ urlpatterns = [
     #sitter payments
     path('sit_payments/', views.sit_payments, name='sit_payments'),
     path('add_sit_payment/', views.add_sit_payment, name='add_sit_payment'),
+    path('edit_sit_payment/<int:id>/', views.edit_sit_payment, name='edit_sit_payment'),
 
 
   

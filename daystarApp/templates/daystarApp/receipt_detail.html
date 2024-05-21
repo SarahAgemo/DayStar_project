@@ -4,9 +4,7 @@
 <br />
 
 <style>
-  html,body {
-    background-color: #D8D9DA;
-  }
+  
 
 th,td {
   border: 1px solid black;
@@ -17,6 +15,24 @@ th,td {
   height: 90%;
   margin-left: 50px;
 }
+#but {
+
+  background: #5500cb;
+  color: white;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 10px 20px;
+  width:170px;
+  border-radius:30px;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 100px;
+  margin-right: 10px;
+
+}
 </style>
 
 
@@ -24,12 +40,12 @@ th,td {
   <div class="row">
     <div class="col-md-12">
       <div class="card">
-        <div class="card-header" style="background-color: beige;">
-          <h4 class="text-center" style="font-weight: bolder;">RECEIPT DETAILS</h4><br>
+        <div class="card-header" style="background-color: white;">
+          <h4 class="text-center" style="font-weight: bolder;">Receipt details</h4><br>
           <h5 class="lead" style="font-weight: bolder; text-align: center;">DayStar Daycare</h5>
           <h5 class="lead" style="font-weight: bolder; text-align: center;">Parent's Name: {{receipt.parents_name | title}}</h5>
         </div>
-        <div class="card-block" style="background-color: beige;">
+        <div class="card-block" style="background-color: white;">
           <div class="table-responsive">
             <table class="table table-sm">
               <thead>
@@ -58,12 +74,12 @@ th,td {
               </tbody>
             </table>
 
-            <div style="text-align: center; font-style: italic; font-weight: bolder; color: #6c85bd;">
+            <div style="text-align: center; font-style: italic; font-weight: bolder; color:  #5500cb;">
               <p> PAYMENT RECEIVED WITH THANKS!
                 "Every child matters"
               </p>
             </div>
-            <P style="text-align: center; font-style: italic; color: #6c85bd; font-weight: bolder;" >
+            <P style="text-align: center; font-style: italic; color:  #5500cb; font-weight: bolder;" >
               ContactUs 
               <a href="email.com">info@daystardaycare.2024.com</a>
             </P>
@@ -74,5 +90,6 @@ th,td {
   </div>
 </div>
 <br>
+<a href="/doll_receipt"><button type="button" class="btn btn-primary" id="but" style="background-color: #5500cb;" id="but">Go back</button></a>
 
 {% endblock %}

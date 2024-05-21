@@ -1,0 +1,193 @@
+{% extends 'daystarApp/base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block content %}
+<style>
+    /* Center the heading */
+    h4#sit {
+        font-family: sans-serif;
+        color: #3f0097;
+        text-align: center;
+        font-size: 30px;
+        font-weight: 600;
+        margin: 20px 0;
+    }
+
+    /* Style for the form container */
+    .form-container {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 10px;
+        max-width: 50%;
+        margin: auto;
+        padding: 15px;
+        background-color: white;
+        border-radius: 0px;
+        border: none;
+    }
+
+    /* Style for form fields */
+    .form-container label {
+        font-weight: bold;
+        margin-bottom: 5px;
+        text-align: left;
+    }
+
+    .form-container input[type="text"],
+    .form-container select {
+        width: 100%;
+        padding: 8px;
+        border: none;
+        border-bottom: 1px solid black;
+        box-sizing: border-box;
+    }
+
+    /* Style for buttons */
+    .btn {
+        margin: 10px;
+        padding: 10px 20px;
+        width: 150px;
+        text-align: center;
+        border-radius: 30px;
+        font-weight: bold;
+        transition: color 0.3s ease;
+    }
+
+    .btn-primary {
+        background-color: blue;
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
+
+    .btn-primary:hover {
+        color: white;
+    }
+
+    .btn-purple {
+        background-color: #3f0097;
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
+
+    .btn-purple:hover {
+        color: white;
+    }
+</style>
+<br><br>
+<div class="form-container">
+    <h4 class="" style="text-transform:none"> {{ edit.sitter_name }}'s payments</h4>
+    
+    <form method="POST" class="baby-form">
+        {% csrf_token %}
+        {{ form | crispy }}
+        
+        <div>
+            <button type="submit" class="btn btn-primary">Edit</button>
+            <a href="/sit_payments" class="btn btn-purple">Go Back</a>
+        </div>
+    </form>
+</div><br><br>
+{% endblock %}
+
+
+{% comment %} {% extends 'daystarApp/base.html'%}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block content %}
+<style>
+    .sitter-form {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+       max-width: 50%;
+        margin: auto;
+        border-radius: 5px;
+    border-radius: 10px;
+    padding-left: 20px;
+    padding-bottom: 15px;
+    padding-top: 15px;
+    padding-right: 15px;
+    background-color:white;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    border: 5px solid rgba(0, 128, 255, 0.2);
+    box-shadow: 0 0 0.1rem rgba(0, 0, 0, 0.1);
+    transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    
+    input[type="text"],
+    input[type="number"],
+    input[type="date"],
+    select {
+        border: 2px solid rgba(0, 128, 255, 0.2);
+        box-shadow: 0 0 0.1rem rgba(0, 0, 0, 0.1);
+        transition: border-color 0.3s, box-shadow 0.3s;
+        padding: 10px; /* Added padding */
+        border-radius: 5px; /* Added border radius */   
+    }
+
+    h4 {
+        text-align: center;
+        font-family: sans-serif;
+        color: #0C356A;
+        text-shadow: 2px 2px 4px #000000;
+        margin-top:85px;
+    }
+
+  
+    .container select[name="sitter_name"] {
+        border: 2px solid rgba(0, 128, 255, 0.2);
+        box-shadow: 0 0 0.1rem rgba(0, 0, 0, 0.1);
+        transition: border-color 0.3s, box-shadow 0.3s; }
+    
+    
+    
+
+    label {
+        font-weight: bold;
+        margin-top: 7px;
+        margin-bottom:5px ;
+    }
+
+   
+        
+    button[type="submit"] {
+        margin-top: 8px;
+        background-color:#0c356a ;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        max-width: 250px;
+        height: 40px;
+        padding: 10px;
+        transition: background-color 0.8s, color 0.7s; /* Adding transition effect */
+    }
+    
+    button[type="submit"]:hover {
+        /* Changing background color on hover */
+      background-color: #094f9f; /* Changing text color on hover */
+    }
+    body{    background-color: #c8beb5;
+    }
+        
+    
+</style>  
+    <h4 class="" style="text-transform:uppercase"> {{ edit.sitter_name }}'S paymentS</h4>
+<div class="container">
+    <form method="POST" class="sitter-form">
+
+        {% csrf_token %}
+        {{ form | crispy }}
+        <button type="submit" class="btn btn-primary" >Edit</button>
+    </form>
+</div>
+
+{% endblock %} {% endcomment %}
+
+ 

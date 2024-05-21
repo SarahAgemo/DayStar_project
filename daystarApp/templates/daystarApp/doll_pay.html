@@ -2,34 +2,45 @@
 {% load crispy_forms_tags %}
 {% load static %}
 
+
+<body>
 {% block content %}
 <style>
     .sitter-form {
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: 1fr;
         gap: 10px;
-       max-width: 50%;
+        max-width: 50%;
         margin: auto;
-        border-radius: 5px;
-border: solid black;
-    margin-bottom: 6px;
-    border-radius: 10px;
-    padding-left: 20px;
-    padding-bottom: 15px;
-    padding-top: 15px;
-    padding-right: 15px;
-    background-color:white;
-       
+        padding: 15px;
+        background-color: white;
+        border-radius: 0px;
+        border: none;
+    }
+
+
+    .sitter-form label {
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+
+    .sitter-form input[type="text"],
+    .sitter-form select {
+        width: 100%;
+        padding: 8px;
+        border: none;
+        border-bottom: 1px solid black;
+        box-sizing: border-box;
     }
 
     h4 {
         text-align: center;
-        font-family: sans-serif;
-        color: #0C356A;
-        
+        font-size: 30px; 
+        font-weight: 600; 
+        color: #5500cb; 
+        margin: 20px;
     }
-
-   
+    
 
     label {
         font-weight: bold;
@@ -38,32 +49,30 @@ border: solid black;
     }
 
     button[type="submit"] {
-    margin-top: 2px;
-       
-        background-color: blue;
+        margin-top: 10px;
         color: white;
         border: none;
-        border-radius: 5px;
         font-size: 16px;
         cursor: pointer;
-        
+        padding: 10px 20px;
+        {% comment %} background:#3f0097; {% endcomment %}
+        width:150px;
+        border-radius:30px;
+        font-weight: bold;
+        text-align: center;
+
     }
-        
-    
 </style>  
 
-<h4 >Make payment here </h4>
 
-
-
-
+<br><br>
 <div class="container">
     <form method="POST" class="sitter-form">
-
+        <h4>Make doll payment </h4>
         {% csrf_token %}
         {{ pay_form | crispy }}
-        <button type="submit" class="btn btn-primary" >Save</button>
+        <button type="submit" class="btn btn-primary">Get receipt</button>
     </form>
-</div>
-
+</div><br><br>
 {% endblock %}
+</body>

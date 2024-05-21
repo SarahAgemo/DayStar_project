@@ -36,24 +36,6 @@ def index(request):
 
 
 
-# def index(request):
-    # if request.method == 'POST':
-    #     signinform = Signin(request.POST)
-    #     if signinform.is_valid():
-    #         email = signinform.cleaned_data['username']
-    #         password = signinform.cleaned_data['password']
-    #         user = authenticate(request, email=email, password=password)
-    #         if user is not None:
-    #             login(request, user)
-    #             return redirect('home')
-    #         else:
-    #             # Handle invalid credentials here
-    #             error_message = "Invalid email or password."
-    #             return render(request, 'daystarApp/index.html', {'signinform': signinform, 'error_message': error_message})
-    # else:
-    #     signinform = Signin()
-    # return render(request, 'daystarApp/index.html', {'signinform': signinform})
-
 @login_required
 def home(request):
     return render(request, 'daystarApp/home.html')
@@ -198,7 +180,17 @@ def add_sit_payment(request):
     return render(request, 'daystarApp/add_sit_payment.html', {'form': form})
 
 
-
+@login_required
+def edit_sit_payment(request, id):
+    edit = get_object_or_404(Sitter_payment, id=id)
+    if request.method == 'POST':
+        form = Sitter_payment_Form(request.POST, instance=edit)
+        if form.is_valid():
+            form.save()
+            return redirect('sit_payments')
+    else:
+        form = Sitter_payment_Form(instance=edit)
+    return render(request, 'daystarApp/edit_sit_payment.html', {'form': form, 'edit': edit})
 
    
 

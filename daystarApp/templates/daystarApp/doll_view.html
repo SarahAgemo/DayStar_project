@@ -3,216 +3,98 @@
 {% load static %}
 
 <body>
-    {% block content %}
+  {% block content %}
 
     <style>
-        #id_doll_name {
-            width: 50%;
-            border: 1px solid green;
-            border-radius: 10px;
-        }
+      #id_doll_name {
+        width: 50%;
+        border: 1px solid green;
+        border-radius: 10px;
+      }
+
+      /* Style for centering the container */
+      .form-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background-color: white; /* Match background color */
+        padding: 20px; /* Add padding */
+        border: 1px solid #ccc; /* Add border */
+        border-radius: 8px; /* Add rounded corners */
+        max-width: 600px; /* Set max-width */
+        margin: 0 auto; /* Center the container */
+      }
+
+      /* Style for the image */
+      .form-container img {
+        margin-bottom: 20px; /* Add some space between image and form */
+      }
+
+      /* Style for form fields */
+      .form-field {
+        margin-bottom: 10px;
+        text-align: left;
+      }
+
+      /* Style for buttons */
+      .btn {
+        margin: 10px;
+        padding: 10px 20px;
+        width: 150px;
+        text-align: center;
+      }
     </style>
-    
-    <form method="POST" action="">
+    <br> <br>
+    <div class="form-container">
+      <img src="https://picsum.photos/200" class="w-[150px] rounded-lg" alt="">
+
+      <form method="POST" action="">
         {% csrf_token %}
 
-        {% comment %} <div class="col-span-2 p-4">
-            <img src="{% static "css/images/duck1.jpg" %}" style="width:400px; height=400px" alt="">
-        </div> {% endcomment %}
+        <div class="form-field">
+          <label for="id_doll_id">Doll ID:</label>
+          {{ one_doll.doll_id }}
+          {{ one_doll.doll_id.errors }}
+        </div>
 
-        <div class="col-span-2 p-4">
-            <img src="https://picsum.photos/200" class="w-[150px] rounded-lg" alt="">
+        <div class="form-field">
+          <label for="id_doll_type">Doll Type:</label>
+          {{ one_doll.doll_type }}
+          {{ one_doll.doll_type.errors }}
+        </div>
+
+        <div class="form-field">
+          <label for="id_doll_name">Doll Name:</label>
+          {{ one_doll.doll_name }}
+          {{ one_doll.doll_name.errors }}
+        </div>
+
+        <div class="form-field">
+          <label for="id_doll_price">Doll Price:</label>
+          {{ one_doll.doll_price }}
+          {{ one_doll.doll_price.errors }}
+        </div>
+
+        <div class="form-field">
+          <label for="id_doll_description">Doll Description:</label>
+          {{ one_doll.doll_description }}
+          {{ one_doll.doll_description.errors }}
+        </div>
+
+        <div class="form-field">
+          <label for="id_doll_quantity">Doll Quantity:</label>
+          {{ one_doll.doll_quantity }}
+          {{ one_doll.doll_quantity.errors }}
         </div>
 
         <div>
-            <label for="id_doll_id">Doll ID:</label>
-            {{ one_doll.doll_id }}
-            {{ one_doll.doll_id.errors }}
+          <a href="/doll_list" class="btn btn-primary" style="background-color: #5500cb;">Go Back</a>
         </div>
+      </form>
+    </div>
+    <br><br>
 
-        <div>
-            <label for="id_doll_type">Doll Type:</label>
-            {{ one_doll.doll_type }}
-            {{ one_doll.doll_type.errors }}
-        </div>
-
-        <div>
-            <label for="id_doll_name">Doll Name:</label>
-            {{ one_doll.doll_name }}
-            {{ one_doll.doll_name.errors }}
-        </div>
-
-        <div>
-            <label for="id_doll_price">Doll Price:</label>
-            {{ one_doll.doll_price }}
-            {{ one_doll.doll_price.errors }}
-        </div>
-
-        <div>
-            <label for="id_doll_description">Doll Description:</label>
-            {{ one_doll.doll_description }}
-            {{ one_doll.doll_description.errors }}
-        </div>
-
-        <div>
-            <label for="id_doll_quantity">Doll Quantity:</label>
-            {{ one_doll.doll_quantity }}
-            {{ one_doll.doll_quantity.errors }}
-        </div>
-
-        
-       
-    </form>
-    
-    </body>
-{% endblock %} 
-
-{% comment %} {% extends 'daystarApp/base.html' %}
-{% load crispy_forms_tags %}
-{% load static %}
-
-<body>
-    {% block content %}
-
-    <style>
-        #id_doll_name {
-            width: 50%;
-            border: 1px solid green;
-            border-radius: 10px;
-        }
-    </style>
-    
-    <form method="POST" action="">
-        {% csrf_token %}
-
-        <div class="col-span-2 p-4">
-            {% if one_doll.doll_name == 'Duck' %}
-                <img src="{% static 'css/images/duck1.jpg' %}" style="width:400px; height=400px" alt="">
-            {% elif one_doll.doll_name == 'Puppy' %}
-                <img src="{% static 'css/images/puppy1.jpg' %}" style="width:400px; height=400px" alt="">
-            {% elif one_doll.doll_name == 'Car' %}
-                <img src="{% static 'css/images/car1.jpg' %}" style="width:400px; height=400px" alt="">
-            {% elif one_doll.doll_name == 'Baby' %}
-                <img src="{% static 'css/images/girl1.jpg' %}" style="width:400px; height=400px" alt="">
-            {% endif %}
-        </div>
-
-        <div>
-            <label for="id_doll_id">Doll ID:</label>
-            {{ one_doll.doll_id }}
-            {{ one_doll.doll_id.errors }}
-        </div>
-
-        <div>
-            <label for="id_doll_type">Doll Type:</label>
-            {{ one_doll.doll_type }}
-            {{ one_doll.doll_type.errors }}
-        </div>
-
-        <div>
-            <label for="id_doll_name">Doll Name:</label>
-            {{ one_doll.doll_name }}
-            {{ one_doll.doll_name.errors }}
-        </div>
-
-        <div>
-            <label for="id_doll_price">Doll Price:</label>
-            {{ one_doll.doll_price }}
-            {{ one_doll.doll_price.errors }}
-        </div>
-
-        <div>
-            <label for="id_doll_description">Doll Description:</label>
-            {{ one_doll.doll_description }}
-            {{ one_doll.doll_description.errors }}
-        </div>
-
-        <div>
-            <label for="id_doll_quantity">Doll Quantity:</label>
-            {{ one_doll.doll_quantity }}
-            {{ one_doll.doll_quantity.errors }}
-        </div>
-
-        <button type="submit" class="btn btn-primary">Edit doll</button>
-    </form>
-    
-    </body>
-{% endblock %} {% endcomment %}
-
-
-{% comment %} {% extends 'daystarApp/base.html' %}
-{% load crispy_forms_tags %}
-{% load static %}
-
-<body>
-    {% block content %}
-
-    <style>
-        #id_doll_name {
-            width: 50%;
-            border: 1px solid green;
-            border-radius: 10px;
-        }
-    </style>
-    
-    <form method="POST" action="">
-        {% csrf_token %}
-
-        <div class="col-span-2 p-4">
-            {% if one_doll.doll_name == 'Duck' %}
-                <img src="{% static "css/images/duck1.jpg" %}" style="width:400px; height=400p" alt="">
-            {% elif one_doll.doll_name == 'Puppy' %}
-                <img src="{% static "css/images/puppy1.jpg" %}" style="width:400px; height=400p" alt="">
-            {% elif one_doll.doll_name == 'Car' %}
-                <img src="{% static "css/images/car1.jpg" %}" style="width:400px; height=400p" alt="">
-            {% elif one_doll.doll_name == 'Baby' %}
-                <img src="{% static "css/images/girl.jpg" %}" style="width:400px; height=400p" alt="">
-            {% endif %}
-        </div>
-
-        <div>
-            <label for="id_doll_id">Doll ID:</label>
-            {{ one_doll.doll_id }}
-            {{ one_doll.doll_id.errors }}
-        </div>
-
-        <div>
-            <label for="id_doll_type">Doll Type:</label>
-            {{ one_doll.doll_type }}
-            {{ one_doll.doll_type.errors }}
-        </div>
-
-        <div>
-            <label for="id_doll_name">Doll Name:</label>
-            {{ one_doll.doll_name }}
-            {{ one_doll.doll_name.errors }}
-        </div>
-
-        <div>
-            <label for="id_doll_price">Doll Price:</label>
-            {{ one_doll.doll_price }}
-            {{ one_doll.doll_price.errors }}
-        </div>
-
-        <div>
-            <label for="id_doll_description">Doll Description:</label>
-            {{ one_doll.doll_description }}
-            {{ one_doll.doll_description.errors }}
-        </div>
-
-        <div>
-            <label for="id_doll_quantity">Doll Quantity:</label>
-            {{ one_doll.doll_quantity }}
-            {{ one_doll.doll_quantity.errors }}
-        </div>
-
-        <button type="submit" class="btn btn-primary">Edit doll</button>
-    </form>
-    
-    </body>
-{% endblock %} {% endcomment %}
-
-
-
-
-
+  {% endblock %}
+</body>

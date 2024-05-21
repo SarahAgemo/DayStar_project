@@ -94,7 +94,7 @@
                     <td>{{ sitter.no_of_babies }}</td>
                     <td>{{ sitter.total_payment }}</td>
                     <td>
-                        <a href="" class="view" id="vie">Edit</a>
+                        <a href=" {% url 'edit_sit_payment' id=sitter.id %} " class="view" id="vie">Edit</a>
                     </td>
                 </tr>
                 {% endfor %}

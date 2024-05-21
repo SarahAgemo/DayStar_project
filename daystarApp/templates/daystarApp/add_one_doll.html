@@ -4,66 +4,55 @@
 
 {% block content %}
 <style>
-    .sitter-form {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
-       max-width: 50%;
-        margin: auto;
-        border-radius: 5px;
-border: solid black;
-    margin-bottom: 6px;
-    border-radius: 10px;
-    padding-left: 20px;
-    padding-bottom: 15px;
-    padding-top: 15px;
-    padding-right: 15px;
-    background-color:white;
-       
-    }
+  .doll-quantity-form {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    max-width: 50%;
+    margin: auto;
+    padding: 15px;
+    background-color: white;
+    border-radius: 0px;
+    border: none;
+  }
 
-    h4 {
-        text-align: center;
-        font-family: sans-serif;
-        color: #0C356A;
-        
-    }
+  .doll-quantity-form label {
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
 
-   
+  .doll-quantity-form input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    border: none;
+    border-bottom: 1px solid black;
+    box-sizing: border-box;
+  }
 
-    label {
-        font-weight: bold;
-        margin-top: 7px;
-        margin-bottom:5px ;
-    }
-
-    button[type="submit"] {
-    margin-top: 2px;
-       
-        background-color: blue;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        font-size: 16px;
-        cursor: pointer;
-        
-    }
-        
-    
-</style>  
-
-<h4 >Add doll quantity </h4>
-
-
-
+  .doll-quantity-form button[type="submit"] {
+    margin-top: 10px;
+    color: white;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 10px 20px;
+    background-color: purple;  /* Match the go back button color */
+    width: 150px;
+    border-radius: 30px;
+    font-weight: bold;
+    text-align: center;
+  }
+</style>
 
 <div class="container">
-    <form method="POST" class="sitter-form">
-
-        {% csrf_token %}
-        {{ form | crispy }}
-        <button type="submit" class="btn btn-primary" >Save</button>
-    </form>
+  <br><br>
+  <form method="POST" class="doll-quantity-form">
+    <h4 style="color: #5500cb;  font-weight: bold;">Add doll quantity</h4><br>
+    {% csrf_token %}
+    {{ form | crispy }}
+    <button type="submit" class="btn btn-primary"  id="back" style="background-color: #5500cb;">Add</button>
+  </form>
+  <br><br>
 </div>
 
 {% endblock %}

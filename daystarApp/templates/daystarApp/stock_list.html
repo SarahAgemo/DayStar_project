@@ -1,35 +1,89 @@
 {% extends 'daystarApp/base.html' %}
-
 {% load static %}
 
-{% block content%}
+{% block content %}
 
 <style>
-    .table-responsive {
-        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); 
-    }
     .table-container {
         box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
         overflow-x: auto;
         max-width: 100%;
+        margin: 20px;
+        padding: 20px;
+        background-color: white;
+        border-radius: 20px;
     }
-    h4 {
-        margin-left: 490px;
-        margin-top: 5px;
-        color: #0C356A;
+
+    .table-responsive {
+        overflow-x: auto;
+    }
+
+    .report-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 0px;
+    }
+
+    .report-header h1 {
+        color: #5500cb;
+        margin: 0;
+    }
+
+    .btn-primary, .view {
+        padding: 8px;
+        background-color: #5500cb;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        text-decoration: none;
+    }
+
+    .btn-primary:hover {
+        background-color: #092146;
+        text-decoration: none;
+    }
+
+    .table thead {
+        background-color: #5500cb;
+        color: white;
+    }
+
+    .table thead th {
+        border-bottom: none;
+    }
+
+    .view {
+        color: white;
+        background-color: blue;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        text-decoration: none;
+        padding: 5px;
+        margin-right: 5px;
+    }
+
+    .view:hover {
+        color: white;
+        text-decoration: none;
     }
 </style>
 
-<h4 class="mb-3">All available stock</h4>
-
-<a href="{% url 'add_stock' %}" class="btn btn-primary mb-3" style="margin-left: 1000px;">Add new stock</a>
-
 <div class="table-container">
+    <div class="report-header">
+        <h1 class="recent-Articles">All available stock</h1>
+        <div>
+            <a href="{% url 'add_stock' %}" class="btn-primary">Add new stock</a>
+        </div>
+    </div>
+
     <div class="table-responsive">
         <table class="table table-bordered table-hover">
-            <thead class="table-dark">
-                <tr class="table-dark">
-                    <th scope="col">#</th>
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
                     <th scope="col">Stock type</th>
                     <th scope="col">Name</th>
                     <th scope="col">Price</th> 
@@ -38,30 +92,22 @@
                     <th scope="col">Date stocked</th>                        
                     <th scope="col">Action</th>
                 </tr>  
-              
             </thead>
             <tbody>
                 {% for stock in stock_list %}
                 <tr style="background-color: white;">
-                    <th>{{ stock.stock_id }}</th>
+                    <td>{{ stock.stock_id }}</td>
                     <td>{{ stock.stock_type }}</td>
                     <td>{{ stock.stock_name }}</td>
                     <td>{{ stock.stock_price }}</td>
                     <td>{{ stock.stock_quantity }}</td>
                     <td>{{ stock.stock_description }}</td>
                     <td>{{ stock.date_stocked }}</td>
-
-                    <td>   
-                            <div>
-                                <div style="display:flex; flex-direction:row; padding:5px;">
-                                    <a href="{% url 'stock_view' id=stock.stock_id %}" class="btn btn-primary" style="margin-right:10px;">View</a>
-                                    <a href="{% url 'add_one_stock' id=stock.stock_id %}" class="btn btn-primary">Add</a>
-                                </div>
-                                <div>
-                                    <a href=" {% url 'stock_edit' id=stock.stock_id %} "><button type="submit" class="btn btn-primary" style="margin-left:8px; margin-right:10px;">Edit</button></a>
-                                    <a href="{% url 'stock_issue' id=stock.stock_id %} "> <button type="submit" class="btn btn-primary">Issue</button></a>
-                                </div>
-                            </div>
+                    <td>
+                        <a href="{% url 'stock_view' id=stock.stock_id %}" class="view">View</a>
+                        <a href="{% url 'add_one_stock' id=stock.stock_id %}" class="view">Add</a>
+                        <a href="{% url 'stock_edit' id=stock.stock_id %}" class="view">Edit</a>
+                        <a href="{% url 'stock_issue' id=stock.stock_id %}" class="view">Issue </a>
                     </td>
                 </tr>
                 {% endfor %}
@@ -71,5 +117,3 @@
 </div>
 
 {% endblock %}
-
-

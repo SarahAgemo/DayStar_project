@@ -4,30 +4,57 @@
 <br /><br>
 
 <style>
-  html,body {
-    background-color: #D8D9DA;
+  #ca {
+    background-color: white;
   }
+
+  h1 {
+    text-align: center;
+    font-size: 30px; 
+    font-weight: 600; 
+    color: #5500cb; 
+    margin: 20px;
+}
+#sub, #but {
+
+    background: #5500cb;
+    color: white;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 10px 20px;
+    width:170px;
+    border-radius:30px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+  
+}
 </style>
 <div class="container" >
   <h1 class="card-header text-center" style="font-weight: bolder;">RECEIPTS</h1><br>
   {% for doll in dolls %}
-  <div class="card">
-    <div class="card-body" style="background-color: beige;">
+  <div class="card" id="ca">
+    <div class="card-body" style="background-color: white;">
       <h4 class="card-title" style="text-align: center;font-weight: bolder;">DayStar Daycare</h4>
-      <h4 class="card-title">Baby name : {{doll.babe_name | title}}</h4>
-      <h4 class="card-text">Parent's name : {{doll.parents_name}}</h4>
-      <h4 class="card-text">Doll type :  {{ doll.doll_type }}</h4>
-      <h4 class="card-text">Doll name :  {{ doll.name }}</h4>
-      <h4 class="card-text">Quantity :  {{ doll.doll_quantity }}</h4>
-      <h4 class="card-text">Date: {{doll.date }}</h4>
-      <h4 class="card-text">Amount paid : UGX{{doll.amount_paid }}</h4>
-      <h2>Unit Price :  UGX{{ doll.doll_price }}</h2>
+      <h4 class="card-title"><b>Baby name :</b> {{doll.babe_name | title}}</h4>
+      <h4 class="card-text"><b>Parent's name :</b> {{doll.parents_name}}</h4>
+      <h4 class="card-text"><b>Doll type : </b> {{ doll.doll_type }}</h4>
+      <h4 class="card-text"><b>Doll name :</b>  {{ doll.name }}</h4>
+      <h4 class="card-text"><b>Quantity : </b> {{ doll.doll_quantity }}</h4>
+      <h4 class="card-text"><b>Date: {{doll.date }}</h4>
+      <h4 class="card-text"><b>Amount paid :</b> UGX{{doll.amount_paid }}</h4>
+      <h2><b>Unit Price :  UGX{{ doll.doll_price }}</h2>
       <div style="flex: 1">
-        <h4 class="card-text">Amount Due : UGX{{ doll.amount_due }}</h4>
+        <h4 class="card-text"><b>Amount Due :</b> UGX{{ doll.amount_due }}</h4>
 
        
         <a href="{% url 'receipt_detail' doll.id %}">
-          <input type="submit" value="Print Final Receipt" class="btn btn-info" type="button"/>
+          <input type="submit" value="Print Final Receipt" class="btn btn-info" id="sub" type="button"/>
+          <a href="/doll_list"><button type="button" class="btn btn-primary" id="but" style="background-color: #5500cb;" id="but">Go back</button></a>
         </a>
 
         <div style="text-align: center; font-style: italic; font-weight: bolder; color: black;">
