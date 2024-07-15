@@ -4,10 +4,8 @@ import re
 from django.core.exceptions import ValidationError
 
 
-
 # Create your models here.
  
-
 def contacts(value):
     if len(value) !=10:
         raise ValidationError("Only 10 digits are allowed")
@@ -16,15 +14,6 @@ def NIN(value):
     if len(value) !=14:
         raise ValidationError("Only 14 digits are allowed")           
 
-
-
-
-   # Authentication 
-
-
-
-
-   
 
 #sitters
 class Sitterform(models.Model):  

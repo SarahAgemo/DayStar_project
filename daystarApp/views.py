@@ -13,6 +13,8 @@ from django.contrib.postgres.search import SearchQuery, SearchVector
 from django.db.models import Sum
 from datetime import datetime
 from django.http import HttpResponseBadRequest
+from .filters import BabyFilter
+from .models import Baby
 
 
 def index(request):
@@ -56,7 +58,7 @@ def logout(request):
 #sitters registration
 @login_required
 def sit_reg_form(request):
-    sit_form = Sitterform.objects.all().order_by('-id') 
+    sit_form = Sitterform.objects.all().order_by('id') 
     all_sitters = SitterFilter(request.GET, queryset=sit_form)
     sit_form  = all_sitters.qs 
     return render(request, 'daystarApp/sit_reg_form.html', {'sit_form': sit_form, 'all_sitters': all_sitters})
@@ -198,11 +200,13 @@ def edit_sit_payment(request, id):
 # Babies
 
 #baby registration
-
+ 
 @login_required
 def beb_reg_form(request):
-    baby_form = Baby.objects.all()
-    return render(request, 'daystarApp/beb_reg_form.html', {'baby_form': baby_form})
+    baby_form = Baby.objects.all().order_by('baby_id')
+    all_babies = BabyFilter(request.GET, queryset=baby_form)
+    baby_form  = all_babies.qs
+    return render(request, 'daystarApp/beb_reg_form.html', {'baby_form': baby_form, 'all_babies': all_babies})
 
 @login_required
 def baby_add(request):

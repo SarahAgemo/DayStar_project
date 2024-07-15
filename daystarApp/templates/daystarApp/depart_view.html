@@ -41,6 +41,9 @@
         color: white;
         border: none;
     }
+    #go {
+        background-color: #3f0097;
+    }
 </style>
 <br><br>
 <div class="form-container">
@@ -68,7 +71,7 @@
 
     <div>
         <a href="{% url 'depart_edit' id=view.id %}" class="btn btn-primary">Edit</a>
-        <a href="/sit_depart" class="btn btn-primary" ">Go Back</a>
+        <a href="/sit_depart" class="btn btn-primary" id="go">Go Back</a>
     </div>
 </div><br><br>
 

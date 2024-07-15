@@ -3,58 +3,48 @@
 
 {% block content %}
 <style>
-    /* Table Styles */
+    /* Container Styles */
     .table-container {
+        background-color: white;
+        padding: 20px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        overflow-x: auto;
         max-width: 100%;
+        border-radius: 20px;
+        margin: 10px;
+    }
+
+    .table-responsive {
         overflow-x: auto;
     }
 
-    .table-bordered th,
-    .table-bordered td {
-        border: 1px solid #dee2e6;
+    /* Table Styles */
+    .table thead th {
+        background-color: #3f0097;
+        color: white;
+        font-weight: bold;
+        padding: 10px;
+        text-align: center;
+    }
+
+    .table tbody tr {
+        background-color: white;
     }
 
     .table-hover tbody tr:hover {
         background-color: rgba(0, 0, 0, 0.075);
     }
 
-    /* Container Styles */
-    .box-container {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        flex-wrap: wrap;
-        gap: 20px;
-        padding: 20px;
-        background-color: #fff;
-        border-radius: 10px;
-        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-    }
+    /* Header Styles */
+    h4 {
+        margin-left: 490px;
+        margin-top: 5px;
+        font-size: 2rem;
+    } 
 
-    /* Table Header Styles */
-    .table-head {
-        background: #3f0097;
-        color: white;
-        font-weight: bold;
-    }
-
-    .table-head th {
-        padding: 10px;
-        text-align: center;
-    }
-
-    /* Responsive Styles */
-    @media screen and (max-width: 768px) {
-        .box-container {
-            flex-direction: column;
-        }
-    }
-
-    @media screen and (max-width: 576px) {
-        .table-head th {
-            font-size: 12px;
-            padding: 8px;
-        }
+    /* Button Styles */
+    #search {
+        background-color: #3f0097;
     }
 
     #reg {
@@ -75,56 +65,76 @@
         font-weight: bold;
         margin-left: 100px;
     }
+
+    /* Responsive Styles */
+    @media screen and (max-width: 768px) {
+        .box-container {
+            flex-direction: column;
+        }
+    }
+
+    @media screen and (max-width: 576px) {
+        .table-head th {
+            font-size: 12px;
+            padding: 8px;
+        }
+    }
 </style>
 
+<br><br>
+<div style="display: flex; flex-direction: row;">
+    <div>
+        <form action="" method="GET" style="margin-left: 30px; padding-right: 30px;">
+            {{ all_babies.form }}
+            <div><input type="submit" value="Search baby name" class="btn btn-primary" id="search"/></div>
+        </form>
+    </div>
+</div>
 
-
-<div class="container2">
+<div class="table-container">
     <div class="report-header">
         <h1 class="recent-Articles">Baby registration on arrival</h1>
         <a href="/baby_add" ><button class="view" style="padding:8px; width:150px;">Add new baby</button></a>
     </div>
-    <div class="table-container">
-        <div class="table-responsive">
-            <table class="table table-bordered table-hover">
-                <thead class="table-head">
-                    <tr>
-                        <th scope="col">ID</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Gender</th>
-                        <th scope="col">Date of birth</th>
-                        <th scope="col">Location</th>
-                        <th scope="col">Parent's name</th>
-                        <th scope="col">Period of stay</th>
-                        <th scope="col">Registration date</th>
-                        <th scope="col">Baby bringer</th>
-                        <th scope="col">Time in</th>
-                        <th scope="col">Assigned to</th>
-                        <th scope="col">Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for baby in baby_form %}
-                    <tr>
-                        <td>B00{{ baby.baby_id }}</td>
-                        <td>{{ baby.baby_name }}</td>
-                        <td>{{ baby.baby_gender }}</td>
-                        <td>{{ baby.date_of_birth }}</td>
-                        <td>{{ baby.baby_location }}</td>
-                        <td>{{ baby.parents_name }}</td>
-                        <td>{{ baby.period_of_stay }}</td>
-                        <td>{{ baby.registration_date }}</td>
-                        <td>{{ baby.baby_bringer }}</td>
-                        <td>{{ baby.time_in }}</td>
-                        <td>{{ baby.Assigned_to }}</td>
-                        <td>
-                            <a href="{% url 'baby_view' id=baby.baby_id %}" class="btn btn-primary" style="padding: 8px; width: 60px;">View</a>
-                        </td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-        </div>
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover" style="width: 100%;">
+            <thead class="table-head">
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Gender</th>
+                    <th scope="col">Date of birth</th>
+                    <th scope="col">Location</th>
+                    <th scope="col">Parent's name</th>
+                    <th scope="col">Period of stay</th>
+                    <th scope="col">Registration date</th>
+                    <th scope="col">Baby bringer</th>
+                    <th scope="col">Time in</th>
+                    <th scope="col">Assigned to</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for baby in baby_form %}
+                <tr>
+                    <td>B00{{ baby.baby_id }}</td>
+                    <td>{{ baby.baby_name }}</td>
+                    <td>{{ baby.baby_gender }}</td>
+                    <td>{{ baby.date_of_birth }}</td>
+                    <td>{{ baby.baby_location }}</td>
+                    <td>{{ baby.parents_name }}</td>
+                    <td>{{ baby.period_of_stay }}</td>
+                    <td>{{ baby.registration_date }}</td>
+                    <td>{{ baby.baby_bringer }}</td>
+                    <td>{{ baby.time_in }}</td>
+                    <td>{{ baby.Assigned_to }}</td>
+                    <td>
+                        <a href="{% url 'baby_view' id=baby.baby_id %}" class="btn btn-primary" style="padding: 8px; width: 60px;">View</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
     </div>
 </div><br><br>
 

@@ -1,91 +1,160 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sign in</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="/static/css/sign_in.css">
-</head>
-<body>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/static/css/sign_in.css" />
+  </head>
+  <body>
     <style>
-        #contain {
-            background-image: url('/static/css/images/creamlogo.png');
-            background-repeat: no-repeat;
-            background-size: cover;
-            width: 400px;
-            margin: 0 auto 100px;
-        }
-        #id_email, #id_password {
-            background-color: transparent;
-            border: none;
-            border-radius: 0;
-            box-shadow: none;
-            outline: none;
-            text-indent: 6px;
-            height: 40px;
-            border-bottom: 1px solid #ccc;
-            padding: 5px;
-        }
-        #admin {
-            color: #3f0097;
-            font-weight: bold;
-        }
-        .cont {
-            flex: 1;
-            margin: 20px; /* Add margin to create space between divs */
-        }
+      #contain {
+        background-image: url("/static/css/images/creamlogo.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+        width: 400px;
+        margin: 0 auto 100px;
+      }
+      #id_email,
+      #id_password {
+        background-color: transparent;
+        border: none;
+        border-radius: 0;
+        box-shadow: none;
+        outline: none;
+        text-indent: 6px;
+        height: 40px;
+        border-bottom: 1px solid #ccc;
+        padding: 5px;
+      }
+      #admin {
+        color: #3f0097;
+        font-weight: bold;
+      }
+      .cont {
+        flex: 1;
+        margin: 20px; /* Add margin to create space between divs */
+      }
     </style>
 
     <nav class="navbar navbar-light bg-light d-flex justify-content-between">
-        <div class="logo">
-            <img src="/static/css/images/logo3.png" style="width: 100px; margin-left:5px;" alt="">
-        </div>
-        <form class="form-inline">
-            <a href="/"><button class="btn btn-outline-primary" type="button">Sign in</button></a>
-            <div style="margin-left: 10px;"></div> <!-- Space between Sign in and Admin buttons -->
-            <a href="/admin"><button class="btn btn-outline-primary" type="button">Admin</button></a>
-        </form>
+      <div class="logo">
+        <img
+          src="/static/css/images/logo3.png"
+          style="width: 100px; margin-left: 5px"
+          alt=""
+        />
+      </div>
+      <form class="form-inline">
+        <a href="/"
+          ><button class="btn btn-outline-primary" type="button">
+            Sign in
+          </button></a
+        >
+        <div style="margin-left: 10px"></div>
+        <!-- Space between Sign in and Admin buttons -->
+        <a href="/admin"
+          ><button class="btn btn-outline-primary" type="button">
+            Admin
+          </button></a
+        >
+      </form>
     </nav>
 
     <p class="tip" id="admin">DayStar Daycare</p>
-    <div class="container" style="display: flex; flex-direction: row;">
-        <div class="cont">
-            <h2 style="margin-left: 160px; margin-top:20px;" id="admin">Welcome back,</h2>
-            <form method="POST" action="/">
-              {% csrf_token %}
-                {% comment %} <input type="hidden" name="csrfmiddlewaretoken" value="aucVXf1xVPdOgn6uikBS4ZYsO6Q0QcImol8SjgUNZkyqo10ZxGQeGFD8oy5NqdQa"> {% endcomment %}
-                <div>
-                    <label for="id_username">Username:</label>
-                    <input type="text" name="username" autofocus="" autocapitalize="none" autocomplete="username" maxlength="150" required="" id="id_username">
-                </div>
-                <div>
-                    <label for="id_password">Password:</label>
-                    <input type="password" name="password" autocomplete="current-password" required="" id="id_password">
-                </div>
-                <button type="submit" class="btn btn-primary" style="padding: 15px; margin-top: 100px; margin-left: 50px; margin-bottom: 20px; background:#3f0097; width:400px; border-radius:30px; font-weight: bold;">Sign in</button>
-            </form>
+    <div class="container" style="display: flex; flex-direction: row">
+      <div class="cont">
+        <h2 style="margin-left: 160px; margin-top: 20px" id="admin">
+          Welcome back,
+        </h2>
+        <form method="POST" action="/">
+          {% csrf_token %} {% comment %}
+          <input
+            type="hidden"
+            name="csrfmiddlewaretoken"
+            value="aucVXf1xVPdOgn6uikBS4ZYsO6Q0QcImol8SjgUNZkyqo10ZxGQeGFD8oy5NqdQa"
+          />
+          {% endcomment %}
+          <div>
+            <label for="id_username">Username:</label>
+            <input
+              type="text"
+              name="username"
+              autofocus=""
+              autocapitalize="none"
+              autocomplete="username"
+              maxlength="150"
+              required=""
+              id="id_username"
+            />
+          </div>
+          <div>
+            <label for="id_password">Password:</label>
+            <input
+              type="password"
+              name="password"
+              autocomplete="current-password"
+              required=""
+              id="id_password"
+            />
+          </div>
+          <button
+            type="submit"
+            class="btn btn-primary"
+            style="
+              padding: 15px;
+              margin-top: 100px;
+              margin-left: 50px;
+              margin-bottom: 20px;
+              background: #3f0097;
+              width: 400px;
+              border-radius: 30px;
+              font-weight: bold;
+            "
+          >
+            Sign in
+          </button>
+        </form>
+      </div>
+      <div class="cont" id="contain">
+        <div class="form sign-in">
+          <h2 style="margin-left: 120px; color: white"></h2>
+          <p style="margin-left: 120px; font-size: larger">
+            <b> </b>
+          </p>
         </div>
-        <div class="cont" id="contain">
-            <div class="form sign-in">
-                <h2 style="margin-left: 120px; color: white;"></h2>
-                <p style="margin-left: 120px; font-size: larger;">
-                    <b> </b>
-                </p>
-            </div>
-        </div>
+      </div>
     </div>
 
     <footer class="footer">
-        <div class="bg-light py-4 py-md-5 py-xl-8 border-top border-light-subtle">
-            <div class="container overflow-hidden">
-                <div class="row gy-4 gy-md-0 align-items-md-center">
-                    <div class="col-xs-12 col-md-7 order-1 order-md-0">
-                        <div class="copyright text-center text-md-start">
-                            © 2024 DayStar Daycare. All Rights Reserved.
-                        </div>
-                        <div class="credits text-secondary text-center text-md-start mt-2 fs-8">
-                            Built by <a href="https://bootstrapbrain.com/" class="link-secondary text-decoration-none">Sarah Agemo</a> with <span class="text-primary">♥</span>
-                        </div>
-                    </div>
-                    
+      <div class="bg-light py-4 py-md-5 py-xl-8 border-top border-light-subtle">
+        <div class="container overflow-hidden">
+          <div class="row gy-4 gy-md-0 align-items-md-center">
+            <div class="col-xs-12 col-md-7 order-1 order-md-0">
+              <div class="copyright text-center text-md-start">
+                © 2024 DayStar Daycare. All Rights Reserved.
+              </div>
+              <div
+                class="credits text-secondary text-center text-md-start mt-2 fs-8"
+              >
+                Built by
+                <a
+                  href="https://bootstrapbrain.com/"
+                  class="link-secondary text-decoration-none"
+                  >Sarah Agemo</a
+                >
+                with <span class="text-primary">♥</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
